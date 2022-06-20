@@ -9,4 +9,9 @@
 # include <sys/stat.h>
 # include "../libft/libft.h"
 
+typedef struct s_info
+{
+	char	*map;
+}				t_info;
+
 #endif
