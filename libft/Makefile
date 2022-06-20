@@ -3,16 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: makhtar <makhtar@student.42.fr>            +#+  +:+       +#+         #
+#    By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/04 14:08:11 by makhtar           #+#    #+#              #
-#    Updated: 2021/10/07 13:53:28 by makhtar          ###   ########.fr        #
+#    Updated: 2022/06/20 22:52:45 by makhtar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
-
-AUTHOR = author
 
 SRCS	= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c \
 	  ft_isalpha.c ft_isascii.c ft_isdigit.c \
@@ -46,7 +44,6 @@ CFLAGS = -Wall -Wextra -Werror
 
 ${NAME} : 	${OBJS} ${INCLUDE}
 		ar -rcs ${NAME} ${OBJS}
-		cat ${AUTHOR}
 
 
 all: 		${NAME}

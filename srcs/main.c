@@ -52,24 +52,57 @@ int	check_map(char *str)
 void	init(char *str)
 {
 	int	fd;
-	// char	*tmp;
-	char	*buffer;
+	char	*tmp;
+	char	buffer[2];
+	char	*line;
+	char	*old;
 
 	fd = 0;
-	buffer = NULL;
+	// tmp = 0;
+	line = NULL;
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
 	{
 		error_print("ERROR: File Descriptor");
 		exit (1);
 	}
-	buffer = get_next_line(fd);
-	while (buffer)
+	// if (read (fd, buffer, 1))
+	// {
+	// 	buffer[1] = 0;
+	// 	tmp = buffer;
+	// 	if (!line)
+	// 		line = ft_strdup(tmp);
+	// 	ft_putstr_fd("Line: ", 2);
+	// 	ft_putendl_fd(line, 2);
+	// }
+	while (read (fd, buffer, 1) == 1)
 	{
-		printf("%s", buffer);
-		buffer = get_next_line(fd);
+		buffer[1] = 0;
+		tmp = buffer;
+		if (!line)
+			line = ft_strdup(tmp);
+		else
+		{
+			old = ft_strdup(line);
+			free (line);
+			line = ft_strjoin(old, tmp);
+			free (old);
+		}
 	}
+	// buffer = get_next_line(fd);
+	// while (buffer)
+	// {
+	// 	if (!tmp)
+	// 		tmp = ft_strdup(buffer);
+	// 	else
+	// 		tmp = ft_strjoin(tmp, buffer);
+	// 	free(buffer);
+	// 	buffer = get_next_line(fd);
+	// }
+	ft_putendl_fd(line, 2);
+	free(line);
 	printf("Completed reading\n");
+	close (fd);
 }
 
 int main(int argc, char **argv)

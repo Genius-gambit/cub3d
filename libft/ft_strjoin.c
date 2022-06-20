@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makhtar <makhtar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 15:23:43 by makhtar           #+#    #+#             */
-/*   Updated: 2021/10/04 14:07:07 by makhtar          ###   ########.fr       */
+/*   Updated: 2022/06/21 00:28:59 by makhtar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*dst;
+	// char	*tmp;
 	size_t	i;
 	size_t	j;
 
+	// tmp = (char *)s1;
 	if (s1 && s2)
 	{
 		dst = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
@@ -35,6 +37,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 			dst[i++] = s2[j++];
 		}
 		dst[i] = '\0';
+		// free(tmp);
 		return (dst);
 	}
 	return (0);
