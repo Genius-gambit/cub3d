@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:24:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/21 17:02:58 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/21 17:23:39 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ int	check_map(char *str)
 			return (0);
 		}
 		else
-			error_print("Map not valid");
+			err_return(3);
 		free(string);
 	}
 	else
-		error_print("Map not valid");
+		err_return(3);
 	return (1);
 }
 

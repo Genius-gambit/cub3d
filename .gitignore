@@ -5,3 +5,5 @@
 .vscode/*
 .vscode
 *.txt
+.DS_Store
+.dSYM

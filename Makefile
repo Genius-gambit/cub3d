@@ -6,17 +6,13 @@
 #    By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/21 16:36:51 by hawadh            #+#    #+#              #
-#    Updated: 2022/06/21 17:07:01 by hawadh           ###   ########.fr        #
+#    Updated: 2022/06/21 17:16:49 by hawadh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= cub3d
 
 LIBFT		= libft.a
-
-# LIBFT_DIR 	= ./libft
-
-#MLX			=
 
 SRCS		= ./srcs/main.c ./srcs/parse_file.c ./srcs/errors.c
 
@@ -39,6 +35,7 @@ clean:
 		${MAKE} clean -C ./libft
 
 fclean:	clean
+		${MAKE} fclean -C ./libft
 		rm -rf ${NAME}
 
 re: fclean all

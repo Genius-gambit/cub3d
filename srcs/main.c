@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:29:29 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/21 17:03:10 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/21 17:22:33 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,12 @@ static void	init(char *str, t_info *info)
 	map = NULL;
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
-	{
-		error_print("ERROR: File Descriptor");
-		exit (1);
-	}
+		err_return(0);
 	map = ft_reading(fd);
 	if (!map)
 	{
 		close (fd);
-		error_print("ERROR: Empty File");
-		exit (1);
+		err_return(1);
 	}
 	info->map = ft_strdup(map);
 	free(map);
@@ -60,6 +56,6 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	else
-		error_print("Error in arguments");
+		err_return(2);
 	return (0);
 }
