@@ -1,0 +1,7 @@
+*.a
+*.o
+*.out
+*.json
+.vscode/*
+.vscode
+*.txt
