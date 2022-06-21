@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:29:29 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/21 17:22:33 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/21 22:42:19 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,13 @@
 static void	init(char *str, t_info *info)
 {
 	int		fd;
-	char	*map;
 
-	fd = 0;
-	map = NULL;
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
 		err_return(0);
-	map = ft_reading(fd);
-	if (!map)
-	{
-		close (fd);
+	if (ft_reading(info, str, fd))
 		err_return(1);
-	}
-	info->map = ft_strdup(map);
-	free(map);
 	printf("Completed reading\n");
-	close (fd);
 }
 
 int	main(int argc, char **argv)

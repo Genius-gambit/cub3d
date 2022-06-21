@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:24:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/21 17:23:39 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/21 23:04:34 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 /**
 *	To check if the given map is a directory
+*!	We're not allowed to use stat function
+*!	We can simply check if first call to get_next_line();
+*!	return is null
 **/
-int	isdir(const char *fileName)
+static int	isdir(const char *file_name)
 {
 	struct stat	path;
 
-	memset(&path, 0, sizeof(struct stat));
-	stat(fileName, &path);
+	ft_memset(&path, 0, sizeof(struct stat));
+	stat(file_name, &path);
+	printf("here\n");
 	return (S_ISREG(path.st_mode));
 }
 
@@ -32,8 +36,6 @@ int	check_map(char *str)
 	char	*tmp;
 	char	*string;
 
-	tmp = NULL;
-	string = NULL;
 	if (isdir(str) && ft_strchr(str, '.'))
 	{
 		string = ft_strdup(ft_strchr(str, '.'));
@@ -53,31 +55,36 @@ int	check_map(char *str)
 	return (1);
 }
 
+static void	extract_data(t_data *data, int fd)
+{
+	int	i;
+
+	i = 0;
+	while (data->file[i])
+	{
+		data->file[i] = get_next_line(fd);
+		i++;
+	}
+}
+
 /**
 *	A function to read everything given the file
 *	descriptor and returns a line of char
 **/
-char	*ft_reading(int fd)
+int	ft_reading(t_info *info, char *str, int fd)
 {
-	char	*tmp;
-	char	buffer[2];
-	char	*line;
-	char	*old;
+	int		size;
 
-	line = NULL;
-	while (read (fd, buffer, 1) == 1)
-	{
-		buffer[1] = 0;
-		tmp = buffer;
-		if (!line)
-			line = ft_strdup(tmp);
-		else
-		{
-			old = ft_strdup(line);
-			free (line);
-			line = ft_strjoin(old, tmp);
-			free (old);
-		}
-	}
-	return (line);
+	size = get_size(fd);
+	if (size <= 0)
+		err_return(1);
+	fd = open(str, O_RDONLY);
+	if (fd == -1)
+		err_return(0);
+	info->data->file = (char **)ft_calloc(size + 1, sizeof(char *));
+	if (!info->data->file)
+		return (EXIT_FAILURE);
+	extract_data(info->data, fd);
+	close (fd);
+	return (EXIT_SUCCESS);
 }
