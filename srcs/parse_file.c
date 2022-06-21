@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:24:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/21 16:28:27 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/21 17:02:58 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	check_map(char *str)
 
 	tmp = NULL;
 	string = NULL;
-	if (isdir(str) && strchr(str, '.'))
+	if (isdir(str) && ft_strchr(str, '.'))
 	{
-		string = strdup(strchr(str, '.'));
+		string = ft_strdup(ft_strchr(str, '.'));
 		tmp = string;
 		++tmp;
 		if (!strcmp(tmp, "cub"))

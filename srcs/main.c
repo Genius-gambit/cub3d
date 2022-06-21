@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:29:29 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/21 16:29:30 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/21 17:03:10 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 *	when we update the scenario
 *	If the file is empty, exits the program
 **/
-void	init(char *str, t_info *info)
+static void	init(char *str, t_info *info)
 {
 	int		fd;
 	char	*map;

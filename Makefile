@@ -1,30 +1,46 @@
-NAME = cub3d
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/06/21 16:36:51 by hawadh            #+#    #+#              #
+#    Updated: 2022/06/21 17:07:01 by hawadh           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-GNL_DIR = ./get_next_line
+NAME		= cub3d
 
-LIBFT_DIR = ./libft
+LIBFT		= libft.a
 
-SRCS = srcs/main.c
+# LIBFT_DIR 	= ./libft
 
-OBJS = ${SRCS:.c=.o}
+#MLX			=
 
-CC = gcc
+SRCS		= ./srcs/main.c ./srcs/parse_file.c ./srcs/errors.c
 
-CFLAGS = -Wall -Werror -Wextra
+OBJS		= ${SRCS:.c=.o}
 
-${NAME}: ${OBJS}
-		${MAKE} -C ${LIBFT_DIR}
-		cp ${LIBFT_DIR}/libft.a ./
-		${CC} ${CFLAGS} ${OBJS} libft.a -o ${NAME}
+CC			= gcc -g3
+
+CFLAGS		= -Wall -Werror -Wextra
+
+${NAME}:	${OBJS}
+			${MAKE} -C ./libft
+			cp ./libft/${LIBFT} ./
+			${CC} ${CFLAGS} ${OBJS} ${LIBFT} -o ${NAME}
 
 all:	${NAME}
 
 clean:
 		rm -rf ${OBJS}
-		rm -rf libft.a
-		${MAKE} clean -C ${LIBFT_DIR}
+		rm -rf ${LIBFT}
+		${MAKE} clean -C ./libft
 
 fclean:	clean
 		rm -rf ${NAME}
 
 re: fclean all
+
+.PHONY : all clean re fclean

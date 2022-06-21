@@ -6,9 +6,11 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:27:11 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/21 16:27:14 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/21 16:41:58 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/cub.h"
 
 void	error_print(char *str)
 {
