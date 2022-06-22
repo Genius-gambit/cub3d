@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:29:29 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/21 22:42:19 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/22 17:07:34 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,33 +19,27 @@
 *	when we update the scenario
 *	If the file is empty, exits the program
 **/
-static void	init(char *str, t_info *info)
+static int	init(t_info *info)
 {
-	int		fd;
-
-	fd = open(str, O_RDONLY);
-	if (fd == -1)
-		err_return(0);
-	if (ft_reading(info, str, fd))
-		err_return(1);
-	printf("Completed reading\n");
+	info->mlx = mlx_init();
+	if (!info->mlx)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
 
 int	main(int argc, char **argv)
 {
 	t_info	info;
+	t_data	data;
 
+	info.data = &data;
 	if (argc == 2)
 	{
-		if (!check_map(argv[1]))
-		{
-			init(argv[1], &info);
-			free(info.map);
-			return (0);
-		}
-		return (1);
+		check_map(&info, argv[1]);
+		if (init(&info))
+			return (EXIT_FAILURE);
 	}
 	else
 		err_return(2);
-	return (0);
+	return (EXIT_SUCCESS);
 }

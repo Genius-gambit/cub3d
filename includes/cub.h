@@ -6,12 +6,14 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/21 22:50:07 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/22 18:19:35 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_H
 # define CUB_H
+# define TRUE 1
+# define FALSE 0
 
 # include <unistd.h>
 # include <fcntl.h>
@@ -20,6 +22,7 @@
 # include <stdlib.h>
 # include <sys/stat.h>
 # include "../libft/libft.h"
+# include "../minilibx_opengl/mlx.h"
 # include "../get_next_line/get_next_line.h"
 
 typedef struct s_data
@@ -29,7 +32,9 @@ typedef struct s_data
 
 typedef struct s_info
 {
-	char	*map;
+	void	*mlx;
+	char	**map;
+	char	**confg;
 	t_data	*data;
 }	t_info;
 
@@ -38,8 +43,8 @@ typedef struct s_info
 **/
 void	error_print(char *str);
 void	err_return(int status);
-int		ft_reading(t_info *info, char *str, int fd);
-int		check_map(char *str);
-int		get_size(int fd);
+void	check_map(t_info *info, char *str);
+int		get_size(char *str);
+int		clean_file(t_info *inf);
 
 #endif

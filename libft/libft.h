@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makhtar <makhtar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 17:50:04 by makhtar           #+#    #+#             */
-/*   Updated: 2021/10/07 13:17:48 by makhtar          ###   ########.fr       */
+/*   Updated: 2022/06/22 18:20:42 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# define TRUE 1
+# define FALSE 0
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -29,6 +31,7 @@ int		ft_isalpha(int c);
 int		ft_isprint(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
+int		ft_isspace(int c);
 int		ft_memcmp(const void *str1, const void *str2, size_t n);
 int		ft_strncmp(const char *haystack, const char *needle, size_t n);
 int		ft_tolower(int c);

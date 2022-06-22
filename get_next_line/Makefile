@@ -6,18 +6,18 @@
 #    By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 16:40:37 by hawadh            #+#    #+#              #
-#    Updated: 2022/06/21 22:48:52 by hawadh           ###   ########.fr        #
+#    Updated: 2022/06/22 16:49:14 by hawadh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	get_next_line.a
+NAME = get_next_line.a
 
-SRCS	=	get_next_line.c	\
-			get_next_line_utils.c
+SRCS =	get_next_line.c\
+		get_next_line_utils.c\
 
-CFLAGS	=	-c -Wall -Werror -Wextra 
+CFLAGS = -g3 -c -Wall -Werror -Wextra 
 
-OBJS	=	$(SRCS:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
 $(NAME) : $(OBJS)
 	gcc $(CFLAGS) $(SRCS)

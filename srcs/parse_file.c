@@ -6,85 +6,105 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:24:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/21 23:04:34 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/22 18:36:07 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-/**
-*	To check if the given map is a directory
-*!	We're not allowed to use stat function
-*!	We can simply check if first call to get_next_line();
-*!	return is null
-**/
-static int	isdir(const char *file_name)
+static char	**extract_file(char *str, int size)
 {
-	struct stat	path;
+	char	*temp;
+	char	**out;
+	int		i;
+	int		fd;
 
-	ft_memset(&path, 0, sizeof(struct stat));
-	stat(file_name, &path);
-	printf("here\n");
-	return (S_ISREG(path.st_mode));
-}
-
-/**
-*	Confirmation that the extension of the map is cub type
-**/
-int	check_map(char *str)
-{
-	char	*tmp;
-	char	*string;
-
-	if (isdir(str) && ft_strchr(str, '.'))
-	{
-		string = ft_strdup(ft_strchr(str, '.'));
-		tmp = string;
-		++tmp;
-		if (!strcmp(tmp, "cub"))
-		{
-			free(string);
-			return (0);
-		}
-		else
-			err_return(3);
-		free(string);
-	}
-	else
-		err_return(3);
-	return (1);
-}
-
-static void	extract_data(t_data *data, int fd)
-{
-	int	i;
-
+	fd = open(str, O_RDONLY);
+	if (fd == -1)
+		err_return(0);
+	out = (char **)ft_calloc(size + 1, sizeof(char *));
+	temp = ft_memset((char *)ft_calloc(1, sizeof(char)), 0, 1);
+	if (!temp || !out)
+		return (NULL);
 	i = 0;
-	while (data->file[i])
+	while (temp)
 	{
-		data->file[i] = get_next_line(fd);
+		free(temp);
+		temp = get_next_line(fd);
+		if (temp)
+			out[i] = ft_strdup(temp);
 		i++;
 	}
+	if (temp)
+		free(temp);
+	close(fd);
+	return (out);
 }
 
 /**
 *	A function to read everything given the file
 *	descriptor and returns a line of char
 **/
-int	ft_reading(t_info *info, char *str, int fd)
+static int	ft_reading(t_info *info, char *str)
 {
 	int		size;
+	char	**temp;
 
-	size = get_size(fd);
+	size = get_size(str);
 	if (size <= 0)
 		err_return(1);
-	fd = open(str, O_RDONLY);
-	if (fd == -1)
-		err_return(0);
 	info->data->file = (char **)ft_calloc(size + 1, sizeof(char *));
 	if (!info->data->file)
 		return (EXIT_FAILURE);
-	extract_data(info->data, fd);
-	close (fd);
+	temp = extract_file(str, size);
+	if (!temp)
+		return (EXIT_FAILURE);
+	if (clean_file(info, temp))
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
+}
+
+static int	compare_ext(char *str)
+{
+	char	*tmp;
+
+	tmp = str;
+	tmp = ft_strrchr(str, '.');
+	if (*tmp && !strcmp(tmp, ".cub"))
+		return (EXIT_SUCCESS);
+	return (EXIT_FAILURE);
+}
+
+/**
+*	To check if the given map is a directory
+**/
+static int	isdir(char *str)
+{
+	int		fd;
+	int		ret;
+	char	buf[1];
+
+	fd = open(str, O_RDONLY);
+	ret = read(fd, buf, 1);
+	if (ret == -1)
+		return (FALSE);
+	close(fd);
+	return (TRUE);
+}
+
+/**
+*	Confirmation that the extension of the map is cub type
+**/
+void	check_map(t_info *info, char *str)
+{
+	if (isdir(str) && ft_strchr(str, '.'))
+	{
+		if (compare_ext(str))
+			err_return(3);
+	}
+	else
+		err_return(3);
+	if (ft_reading(info, str))
+		err_return(1);
+	printf("Completed reading\n");
 }

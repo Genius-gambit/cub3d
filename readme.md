@@ -26,6 +26,8 @@
 ```
 ***NOTES:***
 
+***Each type of element can be set in any order in the file.***
+
 Writing Valgrind suppression file
 
 To Generate Suppression messages:
@@ -39,9 +41,9 @@ https://lodev.org/cgtutor/raycasting.html
 
 ```
 
-`#BUGS: #1`
+`#BUGS: NULL`
 
-1.	Segfaul in `isdir();` due `stat();` call
+1.	~~***HA:***	Segfaul in `get_next_line();` due to `ft_strchr();` in `libft`~~
 
 `#TODO:`
 
@@ -49,21 +51,28 @@ https://lodev.org/cgtutor/raycasting.html
 2.	***HA:***	Refactor `isdir();` and double check project for forbidden functions
 3.	***HA:***	Parse and store map in separate 2D array in `t_info **map`
 4.	***HA:***	Add `make vg` rule in Makefile for debugging
+5.	~~***HA:***	Debug segfault in `get_size();` due to~~
 
 `#CURRENT STATUS`
 
 `HA:`
-21 Jun 2022
+22 Jun 2022
 
-1. New files to split functions `parse_file.c`, `errors.c`, `parse_file.c`
-2. Added .gitignore
-3. Created new Function `err_return();` to exit status 1 with correct error message
-4. Added get_next_line(); and minilibx_opengl
-5. Added debugger files to run debugger
-6. Refactored function `ft_reading();` and, now static `init();`
-7. New functions `get_size();` to get number of lines in file in `utils_parse.c`
-8. New struct pointer in `t_info` called `t_data`
-9. New function static `extract_data();` to extract data from file and store in a 2D array
+1.	New files to split functions `parse_file.c`, `errors.c`, `parse_file.c`
+2.	Added .gitignore
+3.	Created new Function `err_return();` to exit status 1 with correct error message
+4.	Added get_next_line(); and minilibx_opengl
+5.	Added debugger files to run debugger
+6.	Refactored function `ft_reading();` and, now static `init();`
+7.	New functions `get_size();` to get number of lines in file in `utils_parse.c`
+8.	New struct pointer in `t_info` called `t_data`
+9.	New function static `extract_data();` to extract data from file and store in a 2D array
+10.	Added my `libft` function `ft_strchr();` to cub3d libft
+11.	Added new function `ft_ptrptrlen();` to our libft returns 2D array size
+12.	Added new function `ft_isspace();` to our libft, if ascii whitespace return `TRUE`
+13.	New function `clean_file();` in new file `utils_file.c` to clean file input
+14.	Helper functions for above `squash();` and `count_str_size();`. Squash removes all excess whitespaces in line and `count_str_size();` returns correct str size without excess white spaces
+15.
 
 
 `MA:`

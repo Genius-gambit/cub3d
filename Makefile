@@ -6,7 +6,7 @@
 #    By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/21 16:36:51 by hawadh            #+#    #+#              #
-#    Updated: 2022/06/21 22:57:25 by hawadh           ###   ########.fr        #
+#    Updated: 2022/06/22 18:21:33 by hawadh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,11 +21,13 @@ GNL			=	get_next_line.a
 GNLDIR		=	./get_next_line
 
 SRCS		=	./srcs/main.c ./srcs/parse_file.c ./srcs/errors.c \
-				./srcs/utils_parse.c
+				./srcs/utils_parse.c ./srcs/utils_file.c
 
 MLX			=	libmlx.a
 
 MLXDIR		=	./minilibx_opengl
+
+MLXFLG		=	./libmlx.a -framework OpenGL -framework Appkit
 
 OBJS		=	${SRCS:.c=.o}
 
@@ -40,7 +42,7 @@ ${NAME}:	${OBJS}
 			cp ${LIBFTDIR}/${LIBFT} ./
 			cp ${GNLDIR}/${GNL} ./
 			cp ${MLXDIR}/${MLX} ./
-			${CC} ${CFLAGS} ${OBJS} ${LIBFT} ${GNL} ${MLX} -o ${NAME}
+			${CC} ${CFLAGS} ${OBJS} ${LIBFT} ${GNL} ${MLXFLG} -o ${NAME} -Ofast
 
 all:	${NAME}
 

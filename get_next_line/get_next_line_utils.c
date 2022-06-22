@@ -6,12 +6,11 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 13:10:05 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/21 22:52:56 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/22 18:04:45 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "../libft/libft.h"
 
 char	*dup_to_new_line(char *s1)
 {

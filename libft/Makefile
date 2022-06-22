@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+         #
+#    By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/04 14:08:11 by makhtar           #+#    #+#              #
-#    Updated: 2022/06/20 22:52:45 by makhtar          ###   ########.fr        #
+#    Updated: 2022/06/22 18:22:08 by hawadh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS	= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c \
 	  ft_strchr.c ft_strdup.c ft_strlcat.c ft_strlcpy.c \
 	  ft_strlen.c ft_strmapi.c ft_strncmp.c \
 	  ft_strnstr.c ft_strrchr.c ft_strtrim.c \
-	  ft_substr.c ft_tolower.c ft_toupper.c
+	  ft_substr.c ft_tolower.c ft_toupper.c ft_isspace.c
 
 OBJS	= ${SRCS:.c=.o}
 
@@ -31,7 +31,7 @@ BONUS_S	= ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
 BONUS_O	= ${BONUS_S:.c=.o}
 
 
-CC = gcc
+CC = gcc -g3
 
 RM = rm -f
 
