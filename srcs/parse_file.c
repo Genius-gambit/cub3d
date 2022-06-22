@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:24:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/21 23:04:34 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/22 15:03:18 by makhtar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 static int	isdir(const char *file_name)
 {
 	struct stat	path;
+	
 
 	ft_memset(&path, 0, sizeof(struct stat));
 	stat(file_name, &path);
-	printf("here\n");
 	return (S_ISREG(path.st_mode));
 }
 
@@ -76,6 +76,7 @@ int	ft_reading(t_info *info, char *str, int fd)
 	int		size;
 
 	size = get_size(fd);
+	printf("trial\n");
 	if (size <= 0)
 		err_return(1);
 	fd = open(str, O_RDONLY);

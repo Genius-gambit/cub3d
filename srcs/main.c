@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:29:29 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/21 22:42:19 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/22 15:02:32 by makhtar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void	init(char *str, t_info *info)
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
 		err_return(0);
+	printf("here\n");
 	if (ft_reading(info, str, fd))
 		err_return(1);
 	printf("Completed reading\n");
