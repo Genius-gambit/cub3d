@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 17:50:04 by makhtar           #+#    #+#             */
-/*   Updated: 2022/06/22 18:20:42 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/22 19:38:00 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 size_t	ft_strlcat(char *dest, const char *src, size_t dstsize);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlen(const char *str);
+size_t	ft_ptrptrlen(char **str);
 
 char	*ft_strrchr(const char *str, int c);
 char	*ft_itoa(int n);

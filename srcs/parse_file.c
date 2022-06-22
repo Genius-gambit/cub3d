@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:24:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/22 18:36:07 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/22 19:23:01 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,6 @@ static int	ft_reading(t_info *info, char *str)
 	size = get_size(str);
 	if (size <= 0)
 		err_return(1);
-	info->data->file = (char **)ft_calloc(size + 1, sizeof(char *));
-	if (!info->data->file)
-		return (EXIT_FAILURE);
 	temp = extract_file(str, size);
 	if (!temp)
 		return (EXIT_FAILURE);
