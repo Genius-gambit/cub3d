@@ -35,6 +35,7 @@ To Generate Suppression messages:
 
 Valgrind:
 valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --suppressions=valgrind_filter.supp ./cub3d
+***Remember to add filename.cub at end***
 
 42Docs guide on raycasting:
 https://lodev.org/cgtutor/raycasting.html

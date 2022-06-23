@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 17:09:10 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/22 20:19:08 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/23 13:38:43 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,5 +137,4 @@ int	clean_file(t_info *inf, char **input)
 	if (store_data(inf->data, tmp))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
-
 }
