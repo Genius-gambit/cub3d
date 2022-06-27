@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:29:29 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/22 20:22:06 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/24 14:48:18 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,8 @@ int	main(int argc, char **argv)
 	}
 	else
 		err_return(2);
+	for (int i = 0; data.file[i] != NULL; i++)
+		printf("%s\n", data.file[i]);
+	printf("\n");
 	return (EXIT_SUCCESS);
 }

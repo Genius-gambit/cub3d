@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/22 20:05:35 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/27 18:44:36 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,15 @@ void	free_split(char **str);
 /**
 **	Parsing Functions
 **/
+size_t	get_act_size(char **input);
+char	*squash(char *input);
 void	error_print(char *str);
 void	err_return(int status);
 void	check_map(t_info *info, char *str);
+int		store_data(t_data *d, char **input);
+int		check_if_map(char *input);
+int		isdir(char *str);
 int		get_size(char *str);
-int		clean_file(t_info *inf, char **temp);
+int		compare_ext(char *str);
 
 #endif

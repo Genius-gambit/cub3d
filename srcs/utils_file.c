@@ -6,29 +6,16 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 17:09:10 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/23 13:38:43 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/27 19:04:12 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-static size_t	get_act_size(char **input)
-{
-	size_t	i;
-	size_t	count;
-
-	i = 0;
-	count = 0;
-	while (input[i])
-	{
-		if (ft_strncmp(input[i], "", ft_strlen(input[i])))
-			count++;
-		i++;
-	}
-	return (count);
-}
-
-static int	store_data(t_data *d, char **input)
+/**
+**	Only stores relevent lines in d->file
+**/
+int	store_data(t_data *d, char **input)
 {
 	int	i;
 	int	j;
@@ -63,7 +50,8 @@ static int	count_str_size(char *input)
 		if (temp == input)
 			while (*temp && ft_isspace(*temp))
 				temp++;
-		while (*temp && ft_isspace(*temp) && ft_isspace(*(temp + 1)))
+		while (*temp && *(temp + 1)
+			&& ft_isspace(*temp) && ft_isspace(*(temp + 1)))
 			temp++;
 		if (*temp && ft_isspace(*temp) && *temp != ' ')
 			temp++;
@@ -79,7 +67,7 @@ static int	count_str_size(char *input)
 /**
 **	Squashes lines by removing any excess whitespaces
 **/
-static char	*squash(char *input)
+char	*squash(char *input)
 {
 	char	*out;
 	char	*temp;
@@ -97,7 +85,8 @@ static char	*squash(char *input)
 		if (temp == input)
 			while (*temp && ft_isspace(*temp))
 				temp++;
-		while (*temp && ft_isspace(*temp) && ft_isspace(*(temp + 1)))
+		while (*temp && *(temp + 1)
+			&& ft_isspace(*temp) && ft_isspace(*(temp + 1)))
 			temp++;
 		if (*temp && ft_isspace(*temp) && *temp != ' ')
 			temp++;
@@ -107,34 +96,16 @@ static char	*squash(char *input)
 	return (out);
 }
 
-/**
-**	Cleans file contents from excess whitespaces by calling squash
-*	count	 < 7	stores data
-*	count	== 7	stop squash to avoid map
-**/
-int	clean_file(t_info *inf, char **input)
+int	check_if_map(char *input)
 {
-	char	**tmp;
-	int		count;
-	int		i;
+	char	*temp;
 
-	i = 0;
-	count = 0;
-	tmp = (char **)ft_calloc(ft_ptrptrlen(input) + 1, sizeof(char *));
-	if (!tmp)
-		return (EXIT_FAILURE);
-	while (input[i] && count < 7)
+	temp = input;
+	while (*temp)
 	{
-		tmp[i] = squash(input[i]);
-		if (!tmp[i])
-			return (EXIT_FAILURE);
-		if (ft_strncmp(tmp[i], "", ft_strlen(tmp[i])))
-			count++;
-		i++;
+		if (!ft_strchr("1", *temp) || ft_isspace(*temp))
+			return (FALSE);
+		temp++;
 	}
-	if (input)
-		free_split(input);
-	if (store_data(inf->data, tmp))
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+	return (TRUE);
 }

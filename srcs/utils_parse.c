@@ -6,12 +6,34 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 22:13:55 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/22 18:21:11 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/27 17:20:41 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
+/**
+**	Takes actual size of 2D array
+**/
+size_t	get_act_size(char **input)
+{
+	size_t	i;
+	size_t	count;
+
+	i = 0;
+	count = 0;
+	while (input[i])
+	{
+		if (ft_strncmp(input[i], "", ft_strlen(input[i])))
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+/**
+**	Gets initial size of file in Number of lines
+**/
 int	get_size(char *str)
 {
 	char	*temp;
@@ -33,4 +55,35 @@ int	get_size(char *str)
 		free(temp);
 	close(fd);
 	return (count);
+}
+
+/**
+*	To check if the given map is a directory
+**/
+int	isdir(char *str)
+{
+	int		fd;
+	int		ret;
+	char	buf[1];
+
+	fd = open(str, O_RDONLY);
+	ret = read(fd, buf, 1);
+	if (ret == -1)
+		return (FALSE);
+	close(fd);
+	return (TRUE);
+}
+
+/**
+**	Confirm Correct File extension
+**/
+int	compare_ext(char *str)
+{
+	char	*tmp;
+
+	tmp = str;
+	tmp = ft_strrchr(str, '.');
+	if (*tmp && !strcmp(tmp, ".cub"))
+		return (EXIT_SUCCESS);
+	return (EXIT_FAILURE);
 }

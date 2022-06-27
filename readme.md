@@ -48,12 +48,13 @@ https://lodev.org/cgtutor/raycasting.html
 
 `#TODO:`
 
-1.	~***HA:***	Incorprate `get_next_line();` in `ft_reading();`~
-2.	***HA:***	Refactor `isdir();` and double check project for forbidden functions
+1.	~~***HA:***	Incorprate `get_next_line();` in `ft_reading();`~~
+2.	~~***HA:***	Refactor `isdir();` and double check project for forbidden functions~~
 3.	***HA:***	Parse and store map in separate 2D array
 4.	***HA:***	Figure out how to separate map from configurations
 5.	***HA:***	Add `make vg` rule in Makefile for debugging
 6.	~~***HA:***	Debug segfault in `get_size();` due to~~
+7.	***HA:***	Double check space stripping in squash
 
 `#CURRENT STATUS`
 
@@ -76,5 +77,6 @@ https://lodev.org/cgtutor/raycasting.html
 14.	Helper functions for above `squash();` and `count_str_size();`. Squash removes all excess whitespaces in line and `count_str_size();` returns correct str size without excess white spaces
 15.	New function called `free_split();` to free 2D arrays in new file `memory_mngmnt.c`
 16.	Parsing Configurations almost complete, see `TODO #4`
+17.	Moved function `get_act_size();` to file `utils_parse.c`
 
 `MA:`

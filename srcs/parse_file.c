@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:24:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/22 19:23:01 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/27 19:03:45 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,36 @@ static char	**extract_file(char *str, int size)
 }
 
 /**
+**	Cleans file contents from excess whitespaces by calling squash
+*	count	 < 7	stores data
+*	count	== 7	stop squash to avoid map
+**/
+static int	clean_file(t_info *inf, char **input)
+{
+	char	**tmp;
+	int		count;
+	int		i;
+
+	i = 0;
+	count = 0;
+	tmp = (char **)ft_calloc(ft_ptrptrlen(input) + 1, sizeof(char *));
+	if (!tmp)
+		return (EXIT_FAILURE);
+	while (input[i] && !check_if_map(input[i]))
+	{
+		tmp[i] = squash(input[i]);
+		if (!tmp[i])
+			return (EXIT_FAILURE);
+		i++;
+	}
+	if (input)
+		free_split(input);
+	if (store_data(inf->data, tmp))
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
+
+/**
 *	A function to read everything given the file
 *	descriptor and returns a line of char
 **/
@@ -59,34 +89,6 @@ static int	ft_reading(t_info *info, char *str)
 	if (clean_file(info, temp))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
-}
-
-static int	compare_ext(char *str)
-{
-	char	*tmp;
-
-	tmp = str;
-	tmp = ft_strrchr(str, '.');
-	if (*tmp && !strcmp(tmp, ".cub"))
-		return (EXIT_SUCCESS);
-	return (EXIT_FAILURE);
-}
-
-/**
-*	To check if the given map is a directory
-**/
-static int	isdir(char *str)
-{
-	int		fd;
-	int		ret;
-	char	buf[1];
-
-	fd = open(str, O_RDONLY);
-	ret = read(fd, buf, 1);
-	if (ret == -1)
-		return (FALSE);
-	close(fd);
-	return (TRUE);
 }
 
 /**
