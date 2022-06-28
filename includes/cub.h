@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/27 18:44:36 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/28 16:23:23 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	free_split(char **str);
 **	Parsing Functions
 **/
 size_t	get_act_size(char **input);
+char	**clean_whitespace(char **input);
+char	**squash_lines(char **file, char **input);
 char	*squash(char *input);
 void	error_print(char *str);
 void	err_return(int status);

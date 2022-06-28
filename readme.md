@@ -42,9 +42,10 @@ https://lodev.org/cgtutor/raycasting.html
 
 ```
 
-`#BUGS: NULL`
+`#BUGS: #2`
 
 1.	~~***HA:***	Segfaul in `get_next_line();` due to `ft_strchr();` in `libft`~~
+2.	***HA:***	Function parses whole file, should stop at first line of map
 
 `#TODO:`
 

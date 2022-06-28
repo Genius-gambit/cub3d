@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 17:09:10 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/27 19:04:12 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/28 16:17:43 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,26 @@ char	*squash(char *input)
 	return (out);
 }
 
+char	**clean_whitespace(char **input)
+{
+	char	**temp;
+	size_t	i;
+
+	i = 0;
+	temp = (char **)ft_calloc(ft_ptrptrlen(input) + 1, sizeof(char *));
+	if (!temp)
+		return (NULL);
+	while (input[i])
+	{
+		temp[i] = ft_strrmc(input[i], '\t');
+		free(input[i]);
+		i++;
+	}
+	temp[i] = 0;
+	free(input);
+	return (temp);
+}
+
 int	check_if_map(char *input)
 {
 	char	*temp;
@@ -103,7 +123,7 @@ int	check_if_map(char *input)
 	temp = input;
 	while (*temp)
 	{
-		if (!ft_strchr("1", *temp) || ft_isspace(*temp))
+		if (!ft_strchr("1", *temp) && !ft_isspace(*temp))
 			return (FALSE);
 		temp++;
 	}

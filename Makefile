@@ -6,7 +6,7 @@
 #    By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/21 16:36:51 by hawadh            #+#    #+#              #
-#    Updated: 2022/06/24 14:43:17 by hawadh           ###   ########.fr        #
+#    Updated: 2022/06/28 16:24:03 by hawadh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ GNL			=	get_next_line.a
 GNLDIR		=	./get_next_line
 
 SRCS		=	./srcs/main.c ./srcs/parse_file.c ./srcs/errors.c \
-				./srcs/utils_parse.c ./srcs/utils_file.c ./srcs/memory_mngmnt.c
+				./srcs/utils_parse.c ./srcs/utils_file.c ./srcs/memory_mngmnt.c \
+				./srcs/utils_file_ext.c
 
 MLX			=	libmlx.a
 

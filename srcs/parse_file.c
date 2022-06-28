@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:24:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/27 19:03:45 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/28 16:22:57 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,24 +49,22 @@ static char	**extract_file(char *str, int size)
 static int	clean_file(t_info *inf, char **input)
 {
 	char	**tmp;
+	char	**file;
 	int		count;
 	int		i;
 
 	i = 0;
 	count = 0;
-	tmp = (char **)ft_calloc(ft_ptrptrlen(input) + 1, sizeof(char *));
+	tmp = clean_whitespace(input);
 	if (!tmp)
 		return (EXIT_FAILURE);
-	while (input[i] && !check_if_map(input[i]))
-	{
-		tmp[i] = squash(input[i]);
-		if (!tmp[i])
-			return (EXIT_FAILURE);
-		i++;
-	}
-	if (input)
-		free_split(input);
-	if (store_data(inf->data, tmp))
+	file = (char **)ft_calloc(ft_ptrptrlen(tmp) + 1, sizeof(char *));
+	if (!file)
+		return (EXIT_FAILURE);
+	file = squash_lines(file, tmp);
+	if (tmp)
+		free_split(tmp);
+	if (store_data(inf->data, file))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

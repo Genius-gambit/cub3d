@@ -6,7 +6,7 @@
 #    By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/04 14:08:11 by makhtar           #+#    #+#              #
-#    Updated: 2022/06/22 19:37:20 by hawadh           ###   ########.fr        #
+#    Updated: 2022/06/28 16:23:35 by hawadh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS	= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c \
 	  ft_strlen.c ft_strmapi.c ft_strncmp.c \
 	  ft_strnstr.c ft_strrchr.c ft_strtrim.c \
 	  ft_substr.c ft_tolower.c ft_toupper.c ft_isspace.c \
-	  ft_ptrptrlen.c
+	  ft_ptrptrlen.c ft_strrmc.c
 
 OBJS	= ${SRCS:.c=.o}
 
