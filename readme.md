@@ -45,22 +45,21 @@ https://lodev.org/cgtutor/raycasting.html
 `#BUGS: #2`
 
 1.	~~***HA:***	Segfaul in `get_next_line();` due to `ft_strchr();` in `libft`~~
-2.	***HA:***	Function parses whole file, should stop at first line of map
+2.	~~***HA:***	Function parses whole file, should stop at first line of map~~
 
 `#TODO:`
 
 1.	~~***HA:***	Incorprate `get_next_line();` in `ft_reading();`~~
 2.	~~***HA:***	Refactor `isdir();` and double check project for forbidden functions~~
-3.	***HA:***	Parse and store map in separate 2D array
-4.	***HA:***	Figure out how to separate map from configurations
+3.	***MA:***	Parse and store map in separate 2D array
+4.	~~***HA:***	Figure out how to separate map from configurations~~
 5.	***HA:***	Add `make vg` rule in Makefile for debugging
 6.	~~***HA:***	Debug segfault in `get_size();` due to~~
-7.	***HA:***	Double check space stripping in squash
+7.	~~***HA:***	Double check space stripping in squash~~
 
 `#CURRENT STATUS`
 
-`HA:`
-22 Jun 2022
+`HA:	30 Jun 2022`
 
 1.	New files to split functions `parse_file.c`, `errors.c`, `parse_file.c`
 2.	Added .gitignore
@@ -79,5 +78,7 @@ https://lodev.org/cgtutor/raycasting.html
 15.	New function called `free_split();` to free 2D arrays in new file `memory_mngmnt.c`
 16.	Parsing Configurations almost complete, see `TODO #4`
 17.	Moved function `get_act_size();` to file `utils_parse.c`
+18.	New file `utils_file_ext.c` with functions `**squash_lines();` and, new function, `check_line(); to only clean file up to last line not including map to be left for parsing.
+19.	Cleaning file complete.
 
 `MA:`

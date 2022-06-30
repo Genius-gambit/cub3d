@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 17:09:10 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/28 16:17:43 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/30 16:38:17 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	store_data(t_data *d, char **input)
 	while (input[i])
 	{
 		if (ft_strncmp(input[i], "", ft_strlen(input[i])))
-			d->file[j++] = ft_strdup(input[i]);
+			if (!check_line(input[i]))
+				d->file[j++] = ft_strdup(input[i]);
 		i++;
 	}
 	free_split(input);
@@ -98,22 +99,30 @@ char	*squash(char *input)
 
 char	**clean_whitespace(char **input)
 {
-	char	**temp;
+	char	**tmp;
+	char	*temp;
 	size_t	i;
 
 	i = 0;
-	temp = (char **)ft_calloc(ft_ptrptrlen(input) + 1, sizeof(char *));
-	if (!temp)
+	tmp = (char **)ft_calloc(ft_ptrptrlen(input) + 1, sizeof(char *));
+	if (!tmp)
 		return (NULL);
-	while (input[i])
+	while (input[i] && !check_if_map(input[i]))
 	{
-		temp[i] = ft_strrmc(input[i], '\t');
+		temp = ft_strrmc(input[i], '\t');
 		free(input[i]);
+		tmp[i] = ft_strrmc(temp, '\v');
+		free(temp);
 		i++;
 	}
-	temp[i] = 0;
+	while (input[i])
+	{
+		tmp[i] = ft_strdup(input[i]);
+		i++;
+	}
+	tmp[i] = 0;
 	free(input);
-	return (temp);
+	return (tmp);
 }
 
 int	check_if_map(char *input)
@@ -123,7 +132,7 @@ int	check_if_map(char *input)
 	temp = input;
 	while (*temp)
 	{
-		if (!ft_strchr("1", *temp) && !ft_isspace(*temp))
+		if (!ft_isdigit(*temp) && !ft_isspace(*temp))
 			return (FALSE);
 		temp++;
 	}

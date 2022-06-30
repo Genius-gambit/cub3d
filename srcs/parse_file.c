@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:24:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/28 16:22:57 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/30 16:02:52 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,7 @@ static int	clean_file(t_info *inf, char **input)
 {
 	char	**tmp;
 	char	**file;
-	int		count;
-	int		i;
 
-	i = 0;
-	count = 0;
 	tmp = clean_whitespace(input);
 	if (!tmp)
 		return (EXIT_FAILURE);

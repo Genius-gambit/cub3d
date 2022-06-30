@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/28 16:23:23 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/30 16:40:13 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ int		check_if_map(char *input);
 int		isdir(char *str);
 int		get_size(char *str);
 int		compare_ext(char *str);
+int		check_line(char *input);
 
 #endif
