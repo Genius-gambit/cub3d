@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:29:29 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/24 14:48:18 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/30 16:52:08 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 *	when we update the scenario
 *	If the file is empty, exits the program
 **/
-static int	init(t_info *info)
-{
-	info->mlx = mlx_init();
-	if (!info->mlx)
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
-}
+// static int	init(t_info *info)
+// {
+	// info->mlx = mlx_init();
+	// if (!info->mlx)
+	// 	return (EXIT_FAILURE);
+// 	return (EXIT_SUCCESS);
+// }
 
 int	main(int argc, char **argv)
 {
@@ -36,13 +36,14 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		check_map(&info, argv[1]);
-		if (init(&info))
-			return (EXIT_FAILURE);
+		// if (init(&info))
+		// 	return (EXIT_FAILURE);
 	}
 	else
 		err_return(2);
 	for (int i = 0; data.file[i] != NULL; i++)
 		printf("%s\n", data.file[i]);
 	printf("\n");
+	free_split(data.file);
 	return (EXIT_SUCCESS);
 }

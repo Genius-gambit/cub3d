@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:24:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/30 16:02:52 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/06/30 16:59:27 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	**extract_file(char *str, int size)
 	if (fd == -1)
 		err_return(0);
 	out = (char **)ft_calloc(size + 1, sizeof(char *));
-	temp = ft_memset((char *)ft_calloc(1, sizeof(char)), 0, 1);
+	temp = (char *)ft_calloc(1, sizeof(char));
 	if (!temp || !out)
 		return (NULL);
 	i = 0;
@@ -32,11 +32,9 @@ static char	**extract_file(char *str, int size)
 		free(temp);
 		temp = get_next_line(fd);
 		if (temp)
-			out[i] = ft_strdup(temp);
-		i++;
+			out[i++] = ft_strdup(temp);
 	}
-	if (temp)
-		free(temp);
+	free(temp);
 	close(fd);
 	return (out);
 }
