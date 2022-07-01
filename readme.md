@@ -26,8 +26,6 @@
 ```
 ***NOTES:***
 
-****** COMMENTED OUT MLX FROM Makefile && main.c FOR LEAKCHECKS *******
-
 ***Each type of element can be set in any order in the file.***
 
 To Generate Suppression messages:
@@ -86,5 +84,6 @@ https://lodev.org/cgtutor/raycasting.html
 20.	`make vg` rule added, see Makefile
 21.	Leak found and fixed in `clean_whitespaces();` was missing a pointer
 22.	Added new function to libft: `ft_strrmc();` removes `char c` from array
+23.	Uncomment of MLX related lines in Makefile, MLX now functional in Program
 
 `MA:`
