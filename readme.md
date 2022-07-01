@@ -42,7 +42,7 @@ https://lodev.org/cgtutor/raycasting.html
 
 ```
 
-`#BUGS: #2`
+`#BUGS: #NULL`
 
 1.	~~***HA:***	Segfaul in `get_next_line();` due to `ft_strchr();` in `libft`~~
 2.	~~***HA:***	Function parses whole file, should stop at first line of map~~
@@ -85,5 +85,6 @@ https://lodev.org/cgtutor/raycasting.html
 19.	Cleaning file complete.
 20.	`make vg` rule added, see Makefile
 21.	Leak found and fixed in `clean_whitespaces();` was missing a pointer
+22.	Added new function to libft: `ft_strrmc();` removes `char c` from array
 
 `MA:`

@@ -6,12 +6,15 @@
 /*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:24:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/01 09:50:40 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/01 09:59:27 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
+/**
+**	Reads and stores file contents using get_next_lines();
+**/
 static char	**extract_file(char *str, int size)
 {
 	char	*temp;
@@ -40,9 +43,10 @@ static char	**extract_file(char *str, int size)
 }
 
 /**
-**	Cleans file contents from excess whitespaces by calling squash
-*	count	 < 7	stores data
-*	count	== 7	stop squash to avoid map
+**	Cleans file contents from excess whitespaces and stores in 2D array
+*	clean_whitespaces();	Removes \t
+*	squash();				Removes excess ' '
+*	store_data();			Stores in 2D Array
 **/
 static int	clean_file(t_info *inf, char **input)
 {
@@ -66,8 +70,8 @@ static int	clean_file(t_info *inf, char **input)
 }
 
 /**
-*	A function to read everything given the file
-*	descriptor and returns a line of char
+**	Reads and extracts contents of file
+*	Size = size of 2d Array
 **/
 static int	ft_reading(t_info *info, char *str)
 {
@@ -86,7 +90,7 @@ static int	ft_reading(t_info *info, char *str)
 }
 
 /**
-*	Confirmation that the extension of the map is cub type
+**	Parses/Reads and checks file for validity
 **/
 void	check_map(t_info *info, char *str)
 {
