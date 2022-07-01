@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:24:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/30 16:59:27 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/01 09:50:40 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static int	clean_file(t_info *inf, char **input)
 	char	**file;
 
 	tmp = clean_whitespace(input);
+	if (input)
+		free_split(input);
 	if (!tmp)
 		return (EXIT_FAILURE);
 	file = (char **)ft_calloc(ft_ptrptrlen(tmp) + 1, sizeof(char *));

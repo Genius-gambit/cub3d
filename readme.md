@@ -46,7 +46,7 @@ https://lodev.org/cgtutor/raycasting.html
 
 1.	~~***HA:***	Segfaul in `get_next_line();` due to `ft_strchr();` in `libft`~~
 2.	~~***HA:***	Function parses whole file, should stop at first line of map~~
-3.	***HA:***	Leak in `extract_file();` line `#26`
+3.	~~***HA:***	Leak in `extract_file();` line `#26`~~
 
 `#TODO:`
 
@@ -57,10 +57,12 @@ https://lodev.org/cgtutor/raycasting.html
 5.	~~***HA:***	Add `make vg` rule in Makefile for debugging~~
 6.	~~***HA:***	Debug segfault in `get_size();` due to~~
 7.	~~***HA:***	Double check space stripping in squash~~
+8.	***HA:***	Study Raycasting
+9.	***HA:***	Discuss images to be used with **`MA`**
 
 `#CURRENT STATUS`
 
-`HA:	30 Jun 2022`
+`HA:	1 Jul 2022`
 
 1.	New files to split functions `parse_file.c`, `errors.c`, `parse_file.c`
 2.	Added .gitignore
@@ -82,5 +84,6 @@ https://lodev.org/cgtutor/raycasting.html
 18.	New file `utils_file_ext.c` with functions `**squash_lines();` and, new function, `check_line(); to only clean file up to last line not including map to be left for parsing.
 19.	Cleaning file complete.
 20.	`make vg` rule added, see Makefile
+21.	Leak found and fixed in `clean_whitespaces();` was missing a pointer
 
 `MA:`

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+         #
+#    By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/21 16:36:51 by hawadh            #+#    #+#              #
-#    Updated: 2022/06/30 16:56:16 by hawadh           ###   ########.fr        #
+#    Updated: 2022/07/01 09:49:49 by hawadh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ ${NAME}:	${OBJS}
 all:	${NAME}
 
 vg:		${NAME}
-		valgrind -s --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes ./cub3d file.cub
+		valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes ./cub3d file.cub
 
 clean:
 		rm -rf ${OBJS}
