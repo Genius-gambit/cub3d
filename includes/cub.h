@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/01 10:05:49 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/02 19:31:26 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_data
 typedef struct s_info
 {
 	void	*mlx;
+	void	*win;
 	char	**map;
 	char	**confg;
 	t_data	*data;
@@ -42,6 +43,7 @@ typedef struct s_info
 **	Memory Management
 **/
 void	free_split(char **str);
+void	free_data(t_info *info);
 
 /**
 **	Parsing Functions
@@ -59,5 +61,11 @@ int		isdir(char *str);
 int		get_size(char *str);
 int		compare_ext(char *str);
 int		check_line(char *input);
+
+/**
+**	Window Functions
+**/
+int		key_hook_manage(int hook_num, t_info *info);
+int		esc_win(t_info *info);
 
 #endif

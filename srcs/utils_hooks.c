@@ -1,45 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memory_mngmnt.c                                    :+:      :+:    :+:   */
+/*   utils_hooks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/22 20:02:35 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/02 23:25:30 by hawadh           ###   ########.fr       */
+/*   Created: 2022/07/02 19:28:36 by hawadh            #+#    #+#             */
+/*   Updated: 2022/07/02 19:38:38 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
 /**
-**	Frees all the Data
+**	To manage red (x) to close window
 **/
-void	free_data(t_info *info)
+int	esc_win(t_info *info)
 {
-	if (info->win)
-		mlx_destroy_window(info->mlx, info->win);
-	if (info->mlx)
-		free(info->mlx);
-	if (info->map)
-		free_split(info->map);
-	if (info->confg)
-		free_split(info->confg);
-	if (info->data->file)
-		free_split(info->data->file);
+	free_data(info);
+	exit(0);
+	return (EXIT_SUCCESS);
 }
 
 /**
-**	Frees 2D arrays
+**	To manage key hooks (presses)
 **/
-void	free_split(char **str)
+int	key_hook_manage(int hook_num, t_info *info)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		if (str[i])
-			free(str[i++]);
-	if (str)
-		free(str);
+	if (hook_num == 53)
+	{
+		esc_win(info);
+		exit(0);
+	}
+	return (EXIT_SUCCESS);
 }

@@ -85,5 +85,12 @@ https://lodev.org/cgtutor/raycasting.html
 21.	Leak found and fixed in `clean_whitespaces();` was missing a pointer
 22.	Added new function to libft: `ft_strrmc();` removes `char c` from array
 23.	Uncomment of MLX related lines in Makefile, MLX now functional in Program
+24.	`mlx_loop();` now called in function `init();`
+25.	Window now initialised and opening, by adding function calls `mlx_new_window();` in `main.c` function `init();`
+26.	Two new files, `window.c` for window functions and `utils_hooks.c` for key hook utilities
+27.	Calling `mlx_key_hook();` int `init();` that calls new function `key_hook_manage();` which currently only handles **ESC**
+28. New function `esc_win();` which calls `free_data();` and `exit(0);`, this function handles both `(x) and esc`
+29.	Calling `mlx_hook();` in `init();` to handle above `(x)`
+
 
 `MA:`
