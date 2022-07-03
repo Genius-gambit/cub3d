@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:24:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/01 16:04:29 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/03 14:33:18 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,9 @@ static int	ft_reading(t_info *info, char *str)
 **/
 void	check_map(t_info *info, char *str)
 {
+	int	i;
+
+	i = 0;
 	if (isdir(str) && ft_strchr(str, '.'))
 	{
 		if (compare_ext(str))
@@ -103,5 +106,8 @@ void	check_map(t_info *info, char *str)
 		err_return(3);
 	if (ft_reading(info, str))
 		err_return(1);
+	while (info->data->file[i])
+		printf("%s\n", info->data->file[i++]);
+	printf("\n");
 	printf("Completed reading\n");
 }

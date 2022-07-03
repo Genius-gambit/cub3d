@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/02 19:31:26 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/03 10:07:44 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,35 @@
 # include "../minilibx_opengl/mlx.h"
 # include "../get_next_line/get_next_line.h"
 
+typedef struct s_image
+{
+	char	*addr;
+	int		bitspix;
+	int		len;
+	int		end;
+}	t_img;
+
+typedef struct s_mouse
+{
+	int		*m_y;
+	int		*m_x;
+}	t_mouse;
+
 typedef struct s_data
 {
 	char	**file;
+	char	**map;
+	char	**confg;
 }	t_data;
 
 typedef struct s_info
 {
 	void	*mlx;
 	void	*win;
-	char	**map;
-	char	**confg;
+	void	*img;
 	t_data	*data;
+	t_mouse	*mouse;
+	t_img	*imag;
 }	t_info;
 
 /**
@@ -65,7 +82,14 @@ int		check_line(char *input);
 /**
 **	Window Functions
 **/
+int		init_window(t_info *info);
 int		key_hook_manage(int hook_num, t_info *info);
 int		esc_win(t_info *info);
+
+/**
+**	Drawing Functions
+**/
+void	draw_cursor(t_info *info);
+void	my_pixel_put(t_info *inf, int x, int y, int rgb);
 
 #endif

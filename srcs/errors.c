@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:27:11 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/01 10:02:22 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/03 09:08:15 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ void	err_return(int status)
 		error_print("ERROR: Arguments");
 	else if (status == 3)
 		error_print("ERROR: Map not valid");
+	else if (status == 4)
+		error_print("ERROR: Minilibx Failure");
 	exit (1);
 }

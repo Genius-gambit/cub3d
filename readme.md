@@ -57,6 +57,7 @@ https://lodev.org/cgtutor/raycasting.html
 7.	~~***HA:***	Double check space stripping in squash~~
 8.	***HA:***	Study Raycasting
 9.	***HA:***	Discuss images to be used with **`MA`**
+10.	***HA:***	Figure out correct drawing and following of mouse cursor
 
 `#CURRENT STATUS`
 
@@ -91,6 +92,12 @@ https://lodev.org/cgtutor/raycasting.html
 27.	Calling `mlx_key_hook();` int `init();` that calls new function `key_hook_manage();` which currently only handles **ESC**
 28. New function `esc_win();` which calls `free_data();` and `exit(0);`, this function handles both `(x) and esc`
 29.	Calling `mlx_hook();` in `init();` to handle above `(x)`
+30.	Two new functions in `window.c` to initialise and store window + image address, `init_window();` and `get_img_addr();`
+31.	New file `draw.c` contains 2 new functions `draw_cursor();` and `my_pixel_put();`
+32.	Function draw cursor calls `MLX` function `mlx_mouse_get_pos();` to get mouse position for cursor drawing ***WIP***
+33.	Updated `memory_mngmnt.c` with 3 new `free_struct_???();` functions one for each struct and struct members
+34.	Added error message `ERROR: Minilibx Failure` for any failure from minilibx functions
+35.	Added print loop in `check_map();` to print file contents after cleaning and parsing
 
 
 `MA:`
