@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 11:48:10 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/03 14:23:07 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/03 23:11:21 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int	init_window(t_info *info)
 	mlx_key_hook(info->win, key_hook_manage, info);
 	mlx_hook(info->win, 17, (1L << 17), esc_win, info);
 	get_img_addr(info);
-	draw_cursor(info);
+	init_mouse(info);
+	mlx_hook(info->win, 6, 6, draw_cursor, info);
 	mlx_put_image_to_window(info->mlx, info->win, info->img, 0, 0);
 	return (EXIT_SUCCESS);
 }

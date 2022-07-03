@@ -45,6 +45,7 @@ https://lodev.org/cgtutor/raycasting.html
 1.	~~***HA:***	Segfaul in `get_next_line();` due to `ft_strchr();` in `libft`~~
 2.	~~***HA:***	Function parses whole file, should stop at first line of map~~
 3.	~~***HA:***	Leak in `extract_file();` line `#26`~~
+4.	***HA:***	segfault when moving mouse in window in function `mlx_mouse_get_pos();` in function `draw_cursor();`
 
 `#TODO:`
 
@@ -98,6 +99,7 @@ https://lodev.org/cgtutor/raycasting.html
 33.	Updated `memory_mngmnt.c` with 3 new `free_struct_???();` functions one for each struct and struct members
 34.	Added error message `ERROR: Minilibx Failure` for any failure from minilibx functions
 35.	Added print loop in `check_map();` to print file contents after cleaning and parsing
+36.	Refactored `draw_cursor();` and new function `init_mouse();` in new file `mouse.c`
 
 
 `MA:`

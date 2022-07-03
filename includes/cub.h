@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/03 10:07:44 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/03 23:11:34 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,12 @@ void	free_data(t_info *info);
 **	Parsing Functions
 **/
 size_t	get_act_size(char **input);
-char	**clean_whitespace(char **input);
-char	**squash_lines(char **file, char **input);
-char	*squash(char *input);
 void	error_print(char *str);
 void	err_return(int status);
 void	check_map(t_info *info, char *str);
+char	**clean_whitespace(char **input);
+char	**squash_lines(char **file, char **input);
+char	*squash(char *input);
 int		store_data(t_data *d, char **input);
 int		check_if_map(char *input);
 int		isdir(char *str);
@@ -89,7 +89,13 @@ int		esc_win(t_info *info);
 /**
 **	Drawing Functions
 **/
-void	draw_cursor(t_info *info);
 void	my_pixel_put(t_info *inf, int x, int y, int rgb);
+int		draw_cursor(void *info);
+
+/**
+**	Hook Functions
+**/
+void	init_mouse(t_info *info);
+int		redraw_curs(void *info);
 
 #endif
