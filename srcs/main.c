@@ -6,7 +6,7 @@
 /*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:29:29 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/01 01:49:47 by makhtar          ###   ########.fr       */
+/*   Updated: 2022/07/04 14:47:42 by makhtar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,22 @@
 *	when we update the scenario
 *	If the file is empty, exits the program
 **/
-// static int	init(t_info *info)
-// {
-	// info->mlx = mlx_init();
-	// if (!info->mlx)
-	// 	return (EXIT_FAILURE);
-// 	return (EXIT_SUCCESS);
-// }
+static int	init(char *str, t_info *info)
+{
+	int		fd;
+
+	info->mlx = mlx_init();
+	if (!info->mlx)
+		return (EXIT_FAILURE);
+	fd = open(str, O_RDONLY);
+	if (fd == -1)
+		err_return(0);
+	printf("here\n");
+	if (ft_reading(info, str, fd))
+		err_return(1);
+	printf("Completed reading\n");
+	return (EXIT_SUCCESS);
+}
 
 int	main(int argc, char **argv)
 {
