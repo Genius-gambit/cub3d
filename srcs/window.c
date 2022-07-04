@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 11:48:10 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/03 23:11:21 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/04 14:53:34 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,10 @@ int	init_window(t_info *info)
 	info->win = mlx_new_window(info->mlx, 1920, 1080, "Cub3d");
 	if (!info->win)
 		return (EXIT_FAILURE);
-	mlx_key_hook(info->win, key_hook_manage, info);
-	mlx_hook(info->win, 17, (1L << 17), esc_win, info);
 	get_img_addr(info);
 	init_mouse(info);
-	mlx_hook(info->win, 6, 6, draw_cursor, info);
+	hook_management(info);
 	mlx_put_image_to_window(info->mlx, info->win, info->img, 0, 0);
+	mlx_loop(info->mlx);
 	return (EXIT_SUCCESS);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+         #
+#    By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/21 16:36:51 by hawadh            #+#    #+#              #
-#    Updated: 2022/07/03 23:06:01 by hawadh           ###   ########.fr        #
+#    Updated: 2022/07/04 14:35:19 by hawadh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ GNLDIR		=	./get_next_line
 SRCS		=	./srcs/main.c ./srcs/parse_file.c ./srcs/errors.c \
 				./srcs/utils_parse.c ./srcs/utils_file.c ./srcs/memory_mngmnt.c \
 				./srcs/utils_file_ext.c ./srcs/window.c ./srcs/utils_hooks.c \
-				./srcs/draw.c ./srcs/mouse.c
+				./srcs/draw.c ./srcs/mouse.c ./srcs/hooks.c
 
 MLX			=	libmlx.a
 

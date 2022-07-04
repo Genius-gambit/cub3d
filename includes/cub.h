@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/03 23:11:34 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/04 14:35:39 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,12 @@ int		esc_win(t_info *info);
 **	Drawing Functions
 **/
 void	my_pixel_put(t_info *inf, int x, int y, int rgb);
-int		draw_cursor(void *info);
+int		mouse_data(void *info);
 
 /**
 **	Hook Functions
 **/
+void	hook_management(t_info *info);
 void	init_mouse(t_info *info);
 int		redraw_curs(void *info);
 

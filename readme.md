@@ -51,7 +51,7 @@ https://lodev.org/cgtutor/raycasting.html
 
 1.	~~***HA:***	Incorprate `get_next_line();` in `ft_reading();`~~
 2.	~~***HA:***	Refactor `isdir();` and double check project for forbidden functions~~
-3.	***MA:***	Parse and store map in separate 2D array
+3.	~~***MA:***	Parse and store map in separate 2D array~~
 4.	~~***HA:***	Figure out how to separate map from configurations~~
 5.	~~***HA:***	Add `make vg` rule in Makefile for debugging~~
 6.	~~***HA:***	Debug segfault in `get_size();` due to~~
@@ -100,6 +100,8 @@ https://lodev.org/cgtutor/raycasting.html
 34.	Added error message `ERROR: Minilibx Failure` for any failure from minilibx functions
 35.	Added print loop in `check_map();` to print file contents after cleaning and parsing
 36.	Refactored `draw_cursor();` and new function `init_mouse();` in new file `mouse.c`
-
+37.	New file `hooks.c` to contain new function `hook_management();` to hold all `mlx_hook();` calls
+38.	Refactored `draw_cursor();` and new function `mouse_data();` calls draw_cursor();` from within `hook_management();`
+39.	`Moved mlx_loop();` to `window.c` called in function `init_window();`
 
 `MA:`

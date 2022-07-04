@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:29:29 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/03 14:31:14 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/04 14:28:04 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static int	init(t_info *info)
 		return (EXIT_FAILURE);
 	if (init_window(info))
 		return (EXIT_FAILURE);
-	mlx_loop(info->mlx);
 	return (EXIT_SUCCESS);
 }
 
