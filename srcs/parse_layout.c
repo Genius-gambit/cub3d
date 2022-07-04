@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   parse_layout.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:19:03 by makhtar           #+#    #+#             */
-/*   Updated: 2022/07/04 14:21:23 by makhtar          ###   ########.fr       */
+/*   Updated: 2022/07/04 21:18:23 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-/*
-With the order, parsing all layouts
-*/
+/**
+**	With the order, parsing all layouts
+**/
 int	parse_layout(char **line, int *index)
 {
 	int	i;
@@ -36,6 +36,9 @@ int	parse_layout(char **line, int *index)
 	return (EXIT_SUCCESS);
 }
 
+/**
+**	Calls parser for maps and config
+**/
 int	parse_arg(char **maps)
 {
 	int	index;

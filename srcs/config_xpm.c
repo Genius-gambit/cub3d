@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   config_xpm.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:17:51 by makhtar           #+#    #+#             */
-/*   Updated: 2022/07/04 14:22:20 by makhtar          ###   ########.fr       */
+/*   Updated: 2022/07/04 21:15:39 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
-/*
-A function to check for fds.
-Return value is 0 if there is no error
-Return value is 1 if there is an error
-*/
+
+/**
+**	A function to check for fds.
+*	Return value is 0 if there is no error
+*	Return value is 1 if there is an error
+**/
 static int	error_fds(char *str)
 {
 	(void)str;
@@ -36,11 +37,11 @@ static int	error_fds(char *str)
 	return (0);
 }
 
-/*
-Checking the extension for xpm files
-Return value is 0 for getting success
-Return value is 1 for getting fail
-*/
+/**
+**	Checking the extension for xpm files
+*	Return value is 0 for getting success
+*	Return value is 1 for getting fail
+**/
 int	check_xpm_ext(char *str)
 {
 	char	*tmp;
@@ -59,9 +60,9 @@ int	check_xpm_ext(char *str)
 	return (1);
 }
 
-/*
-Getting the string layout
-*/
+/**
+**	Getting the string layout
+**/
 char	*get_layouts(char *str)
 {
 	int		i;
@@ -85,9 +86,9 @@ char	*get_layouts(char *str)
 	return (tmp);
 }
 
-/*
-Parsing the layout for north, south, east, west with xpm files
-*/
+/**
+**	Parsing the layout for north, south, east, west with xpm files
+**/
 int	parse_config(char *str, const char *layout)
 {
 	int		i;
@@ -113,9 +114,9 @@ int	parse_config(char *str, const char *layout)
 	return (EXIT_FAILURE);
 }
 
-/*
-Parsing the layout for floor with xpm files
-*/
+/**
+**	Parsing the layout for floor with xpm files
+**/
 int	parse_config_rgb(char *str, const char *layout)
 {
 	int		i;

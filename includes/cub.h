@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/04 14:35:39 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/04 21:01:57 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct s_image
 
 typedef struct s_mouse
 {
-	int		*m_y;
-	int		*m_x;
+	int		y;
+	int		x;
 }	t_mouse;
 
 typedef struct s_data
@@ -53,7 +53,7 @@ typedef struct s_info
 	void	*img;
 	t_data	*data;
 	t_mouse	*mouse;
-	t_img	*imag;
+	t_img	*image;
 }	t_info;
 
 /**
@@ -95,13 +95,19 @@ int		esc_win(t_info *info);
 **	Drawing Functions
 **/
 void	my_pixel_put(t_info *inf, int x, int y, int rgb);
-int		mouse_data(void *info);
+void	draw_cursor(t_info *info);
+int		call_draw_cursor(void *info);
 
 /**
 **	Hook Functions
 **/
 void	hook_management(t_info *info);
-void	init_mouse(t_info *info);
-int		redraw_curs(void *info);
+
+/**
+**	Mouse Functions
+**/
+void	init_cursor(t_info *inf);
+int		init_mouse(t_info *info);
+int		mouse_move(int x, int y, t_info *info);
 
 #endif

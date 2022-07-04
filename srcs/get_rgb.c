@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   get_rgb.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 13:44:01 by makhtar           #+#    #+#             */
-/*   Updated: 2022/07/04 13:44:29 by makhtar          ###   ########.fr       */
+/*   Updated: 2022/07/04 21:14:28 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-/*
-Getting the int values in a string so it can execute atoi
-*/
+/**
+**	Getting the int values in a string so it can execute atoi
+**/
 static char	*dup_num(char *str)
 {
 	int		count;
@@ -41,10 +41,11 @@ static char	*dup_num(char *str)
 	return (tmp);
 }
 
-/*
-After checking the color of RGB,
-if it is successful, we store the color for floor or ceiling
-*/
+/**
+**	After checking the color of RGB,
+*	if		success store
+*	else	false
+**/
 static int	get_rgb(char *tmp, int *k, char *str, int i)
 {
 	int	ret;
@@ -59,9 +60,9 @@ static int	get_rgb(char *tmp, int *k, char *str, int i)
 	return (FALSE);
 }
 
-/*
-iterating through the index of numbers
-*/
+/**
+**	Iterating through the index of numbers
+**/
 static void	iterators(char *tmp, int *i)
 {
 	int	count;
@@ -74,9 +75,9 @@ static void	iterators(char *tmp, int *i)
 	}
 }
 
-/*
-Parse function of RGB colors
-*/
+/**
+**	Parse function of RGB colors
+**/
 int	check_rgb(char *str)
 {
 	int				i;
