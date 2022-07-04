@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:27:11 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/21 17:20:34 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/03 09:08:15 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
+/**
+**	Prints errors with colour codes
+**/
 void	error_print(char *str)
 {
 	write(2, "\033[1;91m", strlen("\033[1;91m"));
@@ -23,6 +26,8 @@ void	error_print(char *str)
 **	Print error message
 *	status == 0		File Descriptor 
 *	status == 1		Empty File
+*	status == 2		Invalid Arguments
+*	status == 3		Invalid Map
 **/
 void	err_return(int status)
 {
@@ -34,5 +39,7 @@ void	err_return(int status)
 		error_print("ERROR: Arguments");
 	else if (status == 3)
 		error_print("ERROR: Map not valid");
+	else if (status == 4)
+		error_print("ERROR: Minilibx Failure");
 	exit (1);
 }

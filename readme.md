@@ -26,8 +26,6 @@
 ```
 ***NOTES:***
 
-****** COMMENTED OUT MLX FROM Makefile && main.c FOR LEAKCHECKS *******
-
 ***Each type of element can be set in any order in the file.***
 
 To Generate Suppression messages:
@@ -42,25 +40,29 @@ https://lodev.org/cgtutor/raycasting.html
 
 ```
 
-`#BUGS: #2`
+`#BUGS: #NULL`
 
 1.	~~***HA:***	Segfaul in `get_next_line();` due to `ft_strchr();` in `libft`~~
 2.	~~***HA:***	Function parses whole file, should stop at first line of map~~
-3.	***HA:***	Leak in `extract_file();` line `#26`
+3.	~~***HA:***	Leak in `extract_file();` line `#26`~~
+4.	***HA:***	segfault when moving mouse in window in function `mlx_mouse_get_pos();` in function `draw_cursor();`
 
 `#TODO:`
 
 1.	~~***HA:***	Incorprate `get_next_line();` in `ft_reading();`~~
 2.	~~***HA:***	Refactor `isdir();` and double check project for forbidden functions~~
-3.	***MA:***	Parse and store map in separate 2D array
+3.	~~***MA:***	Parse and store map in separate 2D array~~
 4.	~~***HA:***	Figure out how to separate map from configurations~~
 5.	~~***HA:***	Add `make vg` rule in Makefile for debugging~~
 6.	~~***HA:***	Debug segfault in `get_size();` due to~~
 7.	~~***HA:***	Double check space stripping in squash~~
+8.	***HA:***	Study Raycasting
+9.	***HA:***	Discuss images to be used with **`MA`**
+10.	***HA:***	Figure out correct drawing and following of mouse cursor
 
 `#CURRENT STATUS`
 
-`HA:	30 Jun 2022`
+`HA:	1 Jul 2022`
 
 1.	New files to split functions `parse_file.c`, `errors.c`, `parse_file.c`
 2.	Added .gitignore
@@ -82,6 +84,25 @@ https://lodev.org/cgtutor/raycasting.html
 18.	New file `utils_file_ext.c` with functions `**squash_lines();` and, new function, `check_line(); to only clean file up to last line not including map to be left for parsing.
 19.	Cleaning file complete.
 20.	`make vg` rule added, see Makefile
+21.	Leak found and fixed in `clean_whitespaces();` was missing a pointer
+22.	Added new function to libft: `ft_strrmc();` removes `char c` from array
+23.	Uncomment of MLX related lines in Makefile, MLX now functional in Program
+24.	`mlx_loop();` now called in function `init();`
+25.	Window now initialised and opening, by adding function calls `mlx_new_window();` in `main.c` function `init();`
+26.	Two new files, `window.c` for window functions and `utils_hooks.c` for key hook utilities
+27.	Calling `mlx_key_hook();` int `init();` that calls new function `key_hook_manage();` which currently only handles **ESC**
+28. New function `esc_win();` which calls `free_data();` and `exit(0);`, this function handles both `(x) and esc`
+29.	Calling `mlx_hook();` in `init();` to handle above `(x)`
+30.	Two new functions in `window.c` to initialise and store window + image address, `init_window();` and `get_img_addr();`
+31.	New file `draw.c` contains 2 new functions `draw_cursor();` and `my_pixel_put();`
+32.	Function draw cursor calls `MLX` function `mlx_mouse_get_pos();` to get mouse position for cursor drawing ***WIP***
+33.	Updated `memory_mngmnt.c` with 3 new `free_struct_???();` functions one for each struct and struct members
+34.	Added error message `ERROR: Minilibx Failure` for any failure from minilibx functions
+35.	Added print loop in `check_map();` to print file contents after cleaning and parsing
+36.	Refactored `draw_cursor();` and new function `init_mouse();` in new file `mouse.c`
+37.	New file `hooks.c` to contain new function `hook_management();` to hold all `mlx_hook();` calls
+38.	Refactored `draw_cursor();` and new function `mouse_data();` calls draw_cursor();` from within `hook_management();`
+39.	`Moved mlx_loop();` to `window.c` called in function `init_window();`
 
 `MA:`
 

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 22:13:55 by hawadh            #+#    #+#             */
 /*   Updated: 2022/07/04 14:49:18 by makhtar          ###   ########.fr       */
@@ -58,7 +58,7 @@ int	get_size(char *str)
 }
 
 /**
-*	To check if the given map is a directory
+**	To check if the given file is a directory
 **/
 int	isdir(char *str)
 {

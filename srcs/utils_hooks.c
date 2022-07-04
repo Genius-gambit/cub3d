@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ptrptrlen.c                                     :+:      :+:    :+:   */
+/*   utils_hooks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/20 16:11:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/01 10:06:17 by hawadh           ###   ########.fr       */
+/*   Created: 2022/07/02 19:28:36 by hawadh            #+#    #+#             */
+/*   Updated: 2022/07/02 19:38:38 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/cub.h"
 
 /**
-**	Returns 2D array **ptr size
+**	To manage red (x) to close window
 **/
-size_t	ft_ptrptrlen(char **ptr)
+int	esc_win(t_info *info)
 {
-	size_t	count;
+	free_data(info);
+	exit(0);
+	return (EXIT_SUCCESS);
+}
 
-	count = 0;
-	while (ptr[count] != NULL)
-		count++;
-	return (count);
+/**
+**	To manage key hooks (presses)
+**/
+int	key_hook_manage(int hook_num, t_info *info)
+{
+	if (hook_num == 53)
+	{
+		esc_win(info);
+		exit(0);
+	}
+	return (EXIT_SUCCESS);
 }

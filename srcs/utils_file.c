@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 17:09:10 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/30 16:38:17 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/01 10:03:37 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,9 @@ char	*squash(char *input)
 	return (out);
 }
 
+/**
+**	Removes '\t' and '\v' from arrays
+**/
 char	**clean_whitespace(char **input)
 {
 	char	**tmp;
@@ -110,7 +113,6 @@ char	**clean_whitespace(char **input)
 	while (input[i] && !check_if_map(input[i]))
 	{
 		temp = ft_strrmc(input[i], '\t');
-		free(input[i]);
 		tmp[i] = ft_strrmc(temp, '\v');
 		free(temp);
 		i++;
@@ -121,10 +123,13 @@ char	**clean_whitespace(char **input)
 		i++;
 	}
 	tmp[i] = 0;
-	free(input);
 	return (tmp);
 }
 
+/**
+**	Checks if array is the first line of map
+*	is_digit && isspace
+**/
 int	check_if_map(char *input)
 {
 	char	*temp;

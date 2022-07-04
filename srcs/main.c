@@ -13,26 +13,15 @@
 #include "../includes/cub.h"
 
 /**
-*	Duplicating the map in a string in 
-*	If fd is an error, exits the program
-*	typedef struct which can help us in the program,
-*	when we update the scenario
-*	If the file is empty, exits the program
+**	Init's MLX and other variables
 **/
-static int	init(char *str, t_info *info)
+static int	init(t_info *info)
 {
-	int		fd;
-
 	info->mlx = mlx_init();
 	if (!info->mlx)
 		return (EXIT_FAILURE);
-	fd = open(str, O_RDONLY);
-	if (fd == -1)
-		err_return(0);
-	printf("here\n");
-	if (ft_reading(info, str, fd))
-		err_return(1);
-	printf("Completed reading\n");
+	if (init_window(info))
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
@@ -41,21 +30,19 @@ int	main(int argc, char **argv)
 	t_info	info;
 	t_data	data;
 
+	ft_memset(&info, 0, sizeof(t_info));
+	ft_memset(&data, 0, sizeof(t_data));
 	info.data = &data;
 	if (argc == 2)
 	{
 		check_map(&info, argv[1]);
-		// if (init(&info))
-		// 	return (EXIT_FAILURE);
+		if (init(&info))
+			return (EXIT_FAILURE);
 	}
 	else
 		err_return(2);
-	// parse_arg(data.file);
 	if (parse_arg(data.file))
 		return (EXIT_FAILURE);
-	// for (int i = 0; data.file[i] != NULL; i++)
-	// 	printf("%s\n", data.file[i]);
-	// printf("\n");
 	free_split(data.file);
 	return (EXIT_SUCCESS);
 }

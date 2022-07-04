@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ptrptrlen.c                                     :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/20 16:11:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/01 10:06:17 by hawadh           ###   ########.fr       */
+/*   Created: 2022/07/04 14:33:53 by hawadh            #+#    #+#             */
+/*   Updated: 2022/07/04 14:34:22 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/cub.h"
 
-/**
-**	Returns 2D array **ptr size
-**/
-size_t	ft_ptrptrlen(char **ptr)
+void	hook_management(t_info *info)
 {
-	size_t	count;
-
-	count = 0;
-	while (ptr[count] != NULL)
-		count++;
-	return (count);
+	mlx_key_hook(info->win, key_hook_manage, info);
+	mlx_hook(info->win, 17, (1L << 17), esc_win, info);
+	mlx_hook(info->win, 6, 6, mouse_data, info);
 }

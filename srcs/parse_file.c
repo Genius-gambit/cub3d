@@ -12,6 +12,9 @@
 
 #include "../includes/cub.h"
 
+/**
+**	Reads and stores file contents using get_next_lines();
+**/
 static char	**extract_file(char *str, int size)
 {
 	char	*temp;
@@ -40,9 +43,10 @@ static char	**extract_file(char *str, int size)
 }
 
 /**
-**	Cleans file contents from excess whitespaces by calling squash
-*	count	 < 7	stores data
-*	count	== 7	stop squash to avoid map
+**	Cleans file contents from excess whitespaces and stores in 2D array
+*	clean_whitespaces();	Removes \t
+*	squash();				Removes excess ' '
+*	store_data();			Stores in 2D Array
 **/
 static int	clean_file(t_info *inf, char **input)
 {
@@ -50,6 +54,8 @@ static int	clean_file(t_info *inf, char **input)
 	char	**file;
 
 	tmp = clean_whitespace(input);
+	if (input)
+		free_split(input);
 	if (!tmp)
 		return (EXIT_FAILURE);
 	file = (char **)ft_calloc(ft_ptrptrlen(tmp) + 1, sizeof(char *));
@@ -64,8 +70,8 @@ static int	clean_file(t_info *inf, char **input)
 }
 
 /**
-*	A function to read everything given the file
-*	descriptor and returns a line of char
+**	Reads and extracts contents of file
+*	Size = size of 2d Array
 **/
 static int	ft_reading(t_info *info, char *str)
 {
@@ -84,10 +90,13 @@ static int	ft_reading(t_info *info, char *str)
 }
 
 /**
-*	Confirmation that the extension of the map is cub type
+**	Parses/Reads and checks file for validity
 **/
 void	check_map(t_info *info, char *str)
 {
+	int	i;
+
+	i = 0;
 	if (isdir(str) && ft_strchr(str, '.'))
 	{
 		if (compare_ext(str))
@@ -97,5 +106,8 @@ void	check_map(t_info *info, char *str)
 		err_return(3);
 	if (ft_reading(info, str))
 		err_return(1);
+	while (info->data->file[i])
+		printf("%s\n", info->data->file[i++]);
+	printf("\n");
 	printf("Completed reading\n");
 }

@@ -6,7 +6,7 @@
 #    By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/21 16:36:51 by hawadh            #+#    #+#              #
-#    Updated: 2022/07/04 14:18:58 by makhtar          ###   ########.fr        #
+#    Updated: 2022/07/04 14:35:19 by hawadh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,14 +22,15 @@ GNLDIR		=	./get_next_line
 
 SRCS		=	./srcs/main.c ./srcs/parse_file.c ./srcs/errors.c \
 				./srcs/utils_parse.c ./srcs/utils_file.c ./srcs/memory_mngmnt.c \
-				./srcs/utils_file_ext.c srcs/parse_layout.c srcs/parse_map.c srcs/get_rgb.c \
-				srcs/config_xpm.c
+				./srcs/window.c ./srcs/utils_hooks.c ./srcs/draw.c ./srcs/mouse.c \
+        ./srcs/hooks.c ./srcs/utils_file_ext.c srcs/parse_layout.c \
+        ./srcs/parse_map.c ./srcs/get_rgb.c ./srcs/config_xpm.c
 
-# MLX			=	libmlx.a
+MLX			=	libmlx.a
 
-# MLXDIR		=	./minilibx_opengl
+MLXDIR		=	./minilibx_opengl
 
-# MLXFLG		=	./libmlx.a -framework OpenGL -framework Appkit
+MLXFLG		=	./libmlx.a -framework OpenGL -framework Appkit
 
 OBJS		=	${SRCS:.c=.o}
 
@@ -39,25 +40,25 @@ CFLAGS		=	-Wall -Werror -Wextra
 
 ${NAME}:	${OBJS}
 			${MAKE} -C ${GNLDIR}
-#			${MAKE} -C ${MLXDIR}
+			${MAKE} -C ${MLXDIR}
 			${MAKE} -C ${LIBFTDIR}
 			cp ${LIBFTDIR}/${LIBFT} ./
 			cp ${GNLDIR}/${GNL} ./
-#			cp ${MLXDIR}/${MLX} ./
-			${CC} ${CFLAGS} ${OBJS} ${LIBFT} ${GNL} -o ${NAME} -Ofast
+			cp ${MLXDIR}/${MLX} ./
+			${CC} ${CFLAGS} ${OBJS} ${LIBFT} ${GNL} ${MLXFLG} -o ${NAME} -Ofast
 
 all:	${NAME}
 
 vg:		${NAME}
-		valgrind -s --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes ./cub3d file.cub
+		valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes ./cub3d file.cub
 
 clean:
 		rm -rf ${OBJS}
 		rm -rf ${LIBFT}
 		rm -rf ${GNL}
-#		rm -rf ${MLX}
+		rm -rf ${MLX}
 		${MAKE} clean -C ${LIBFTDIR}
-#		${MAKE} clean -C ${MLXDIR}
+		${MAKE} clean -C ${MLXDIR}
 
 fclean:	clean
 		${MAKE} fclean -C ${LIBFTDIR}
