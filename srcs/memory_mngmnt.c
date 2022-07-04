@@ -3,41 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   memory_mngmnt.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 20:02:35 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/03 14:17:30 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/04 21:05:08 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-static void	free_struct_mouse(t_mouse *mouse)
+static void	free_struct_img(t_img *img)
 {
-	if (mouse->m_x)
-		free(mouse->m_x);
-	if (mouse->m_y)
-		free(mouse->m_y);
-	if (mouse)
-		free(mouse);
-}
-
-static void	free_struct_imag(t_img *imag)
-{
-	if (imag->addr)
-		free(imag->addr);
-	if (imag)
-		free(imag);
+	if (img->addr)
+	{
+		free(img->addr);
+		img->addr = NULL;
+	}
+	if (img)
+	{
+		free(img);
+		img = NULL;
+	}
 }
 
 static void	free_struct_data(t_data *data)
 {
 	if (data->map)
+	{
 		free_split(data->map);
+		data->map = NULL;
+	}
 	if (data->confg)
+	{
 		free_split(data->confg);
+		data->confg = NULL;
+	}
 	if (data->file)
+	{
 		free_split(data->file);
+		data->file = NULL;
+	}
 }
 
 /**
@@ -45,13 +50,17 @@ static void	free_struct_data(t_data *data)
 **/
 void	free_data(t_info *info)
 {
+	if (info->data)
+		free_struct_data(info->data);
+	if (info->image)
+		free_struct_img(info->image);
 	if (info->win)
 		mlx_destroy_window(info->mlx, info->win);
-	if (info->mlx)
-		free(info->mlx);
-	free_struct_data(info->data);
-	free_struct_imag(info->imag);
-	free_struct_mouse(info->mouse);
+	if (info->mouse)
+	{
+		free(info->mouse);
+		info->mouse = NULL;
+	}
 }
 
 /**

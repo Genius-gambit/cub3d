@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:27:11 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/03 09:08:15 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/04 21:14:45 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	error_print(char *str)
 *	status == 1		Empty File
 *	status == 2		Invalid Arguments
 *	status == 3		Invalid Map
+*	status == 4		Mlx Failure
 **/
 void	err_return(int status)
 {

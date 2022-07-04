@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:29:29 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/04 14:47:42 by makhtar          ###   ########.fr       */
+/*   Updated: 2022/07/04 20:43:40 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,18 @@ int	main(int argc, char **argv)
 	ft_memset(&info, 0, sizeof(t_info));
 	ft_memset(&data, 0, sizeof(t_data));
 	info.data = &data;
+	data.map = NULL;
 	if (argc == 2)
 	{
 		check_map(&info, argv[1]);
-		if (init(&info))
+		if (parse_arg(data.file) || init(&info))
+		{
+			free_data(&info);
 			return (EXIT_FAILURE);
+		}
 	}
 	else
 		err_return(2);
-	if (parse_arg(data.file))
-		return (EXIT_FAILURE);
-	free_split(data.file);
+	free_data(&info);
 	return (EXIT_SUCCESS);
 }

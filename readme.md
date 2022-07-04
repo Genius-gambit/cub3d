@@ -45,13 +45,14 @@ https://lodev.org/cgtutor/raycasting.html
 1.	~~***HA:***	Segfaul in `get_next_line();` due to `ft_strchr();` in `libft`~~
 2.	~~***HA:***	Function parses whole file, should stop at first line of map~~
 3.	~~***HA:***	Leak in `extract_file();` line `#26`~~
-4.	***HA:***	segfault when moving mouse in window in function `mlx_mouse_get_pos();` in function `draw_cursor();`
+4.	~~***HA:***	Segfault when moving mouse in window in function `mlx_mouse_get_pos();` in function `draw_cursor();`~~
+5.	~~***HA:***	Crosshair was not drawing~~
 
 `#TODO:`
 
 1.	~~***HA:***	Incorprate `get_next_line();` in `ft_reading();`~~
 2.	~~***HA:***	Refactor `isdir();` and double check project for forbidden functions~~
-3.	~~***MA:***	Parse and store map in separate 2D array~~
+3.	~~***MAK:***	Parse and store map in separate 2D array~~
 4.	~~***HA:***	Figure out how to separate map from configurations~~
 5.	~~***HA:***	Add `make vg` rule in Makefile for debugging~~
 6.	~~***HA:***	Debug segfault in `get_size();` due to~~
@@ -59,10 +60,13 @@ https://lodev.org/cgtutor/raycasting.html
 8.	***HA:***	Study Raycasting
 9.	***HA:***	Discuss images to be used with **`MA`**
 10.	***HA:***	Figure out correct drawing and following of mouse cursor
+11.	***MAK:***	Take xpm files and read it to check if the file reading is working perfectly or not.
+12.	***MAK:***	Declare a new structure to fetch the info and place it in the main root of the structure which will work on every aspect of the program.
+13.	***MAK:***	Time for raycasting math to solve.
 
 `#CURRENT STATUS`
 
-`HA:	1 Jul 2022`
+`HA:	4 Jul 2022`
 
 1.	New files to split functions `parse_file.c`, `errors.c`, `parse_file.c`
 2.	Added .gitignore
@@ -101,16 +105,13 @@ https://lodev.org/cgtutor/raycasting.html
 35.	Added print loop in `check_map();` to print file contents after cleaning and parsing
 36.	Refactored `draw_cursor();` and new function `init_mouse();` in new file `mouse.c`
 37.	New file `hooks.c` to contain new function `hook_management();` to hold all `mlx_hook();` calls
-38.	Refactored `draw_cursor();` and new function `mouse_data();` calls draw_cursor();` from within `hook_management();`
-39.	`Moved mlx_loop();` to `window.c` called in function `init_window();`
+38.	Refactored `draw_cursor();` and new function `mouse_move();` calls `init_cursor();` from within `hook_management();`
+39.	Moved `mlx_loop();` to `window.c` called in function `init_window();`
+40.	Refactored `init_cursor();` now draws half cursor in centre of screen
 
-`MA:`
+`MAK:	4 July 2022`
 
 1. Parsing for different types of layout is finished. Memory leaks, and norms are done.
 2. For better reference please read the comments to know what is the structure for parser.
 3. Changed char to const char in ft_strcmp.
 
-`TODO:`
-1. Take xpm files and read it to check if the file reading is working perfectly or not.
-2. Declare a new structure to fetch the info and place it in the main root of the structure which will work on every aspect of the program.
-3. Time for raycasting math to solve.
