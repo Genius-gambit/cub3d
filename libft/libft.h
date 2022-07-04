@@ -6,7 +6,7 @@
 /*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 17:50:04 by makhtar           #+#    #+#             */
-/*   Updated: 2022/07/01 01:15:28 by makhtar          ###   ########.fr       */
+/*   Updated: 2022/07/04 13:38:04 by makhtar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		ft_strncmp(const char *haystack, const char *needle, size_t n);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 int		ft_memcmp(const void *str1, const void *str2, size_t n);
-int		ft_strcmp(char *s1, char *s2);
+int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t len);
 int		ft_lstsize(t_list *lst);
 
