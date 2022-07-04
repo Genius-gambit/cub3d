@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
 /*   Updated: 2022/07/04 14:35:39 by hawadh           ###   ########.fr       */
@@ -78,6 +78,11 @@ int		isdir(char *str);
 int		get_size(char *str);
 int		compare_ext(char *str);
 int		check_line(char *input);
+int		check_rgb(char *str);
+int		parse_config(char *str, const char *layout);
+int		parse_config_rgb(char *str, const char *layout);
+int		parse_map(char **str, int index);
+int		parse_arg(char **map);
 
 /**
 **	Window Functions

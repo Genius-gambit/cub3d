@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:29:29 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/04 14:28:04 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/04 14:47:42 by makhtar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	main(int argc, char **argv)
 	}
 	else
 		err_return(2);
+	if (parse_arg(data.file))
+		return (EXIT_FAILURE);
 	free_split(data.file);
 	return (EXIT_SUCCESS);
 }

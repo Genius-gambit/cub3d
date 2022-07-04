@@ -105,3 +105,12 @@ https://lodev.org/cgtutor/raycasting.html
 39.	`Moved mlx_loop();` to `window.c` called in function `init_window();`
 
 `MA:`
+
+1. Parsing for different types of layout is finished. Memory leaks, and norms are done.
+2. For better reference please read the comments to know what is the structure for parser.
+3. Changed char to const char in ft_strcmp.
+
+`TODO:`
+1. Take xpm files and read it to check if the file reading is working perfectly or not.
+2. Declare a new structure to fetch the info and place it in the main root of the structure which will work on every aspect of the program.
+3. Time for raycasting math to solve.

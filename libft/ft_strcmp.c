@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/22 18:14:48 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/01 01:19:49 by makhtar          ###   ########.fr       */
+/*   Created: 2022/07/04 13:42:18 by makhtar           #+#    #+#             */
+/*   Updated: 2022/07/04 13:42:19 by makhtar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/**
-**	Returns TRUE if ascii white space 
-**/
-int	ft_isspace(int c)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	if ((c >= 9 && c <= 13) || c == 32)
-		return (c);
-	return (FALSE);
+	while (*s1 && *s2 && (*s1 == *s2))
+	{
+		s1++;
+		s2++;
+	}
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
