@@ -59,10 +59,11 @@ https://lodev.org/cgtutor/raycasting.html
 7.	~~***HA:***	Double check space stripping in squash~~
 8.	~~***MAK:***	Declare a new structure to fetch the info and place it in the main root of the structure which will work on every aspect of the program.~~
 9.	***HA:***	Study Raycasting
-10.	***HA:***	Discuss images to be used with **`MA`**
-11.	***HA:***	Figure out correct drawing and following of mouse cursor
+10.	~~***HA:***	Discuss images to be used with **`MA`**~~
+11.	~~***HA:***	Figure out correct drawing and following of mouse cursor~~
 12.	***MAK:***	Take xpm files and read it to check if the file reading is working perfectly or not.
 13.	***MAK:***	Time for raycasting math to solve.
+14.	***HA:***	Draw interior of minimap
 
 `#CURRENT STATUS`
 
@@ -108,14 +109,19 @@ https://lodev.org/cgtutor/raycasting.html
 38.	Refactored `draw_cursor();` and new function `mouse_move();` calls `init_cursor();` from within `hook_management();`
 39.	Moved `mlx_loop();` to `window.c` called in function `init_window();`
 40.	Refactored `init_cursor();` now draws half cursor in centre of screen
+41.	New file `rgb.c` with new function `rgb();` to calculate colours for roof and ceiling.
+42. Three new functions in new file `utils_draw.c` to draw roof and ceiling colours `draw_ceiling();` and `draw_floor();` called from function `ceiling_floor();`
+43.	New function `draw_map();` called in `init_window();` in `draw.c` to draw currently contains `ceiling_floor();`  -> to draw ceiling and floor, and `init_cursor();` -> to redraw cursor
+44.	New file `mini_map.c` contains 3 functions to draw minimap border and interior see TODO #14, functions named `draw_minimap(); mini_bottom_top(); mini_interior();`
+45.	Minimap drawn in top left corner, Missing interior
 
 `MAK:	4 July 2022`
 
-1. Parsing for different types of layout is finished. Memory leaks, and norms are done.
-2. For better reference please read the comments to know what is the structure for parser.
-3. Changed char to const char in ft_strcmp.
-4. Updated crosshair with green line and minimal size of the crosshair.
-5. Updated parsing function to fetch the values based on the requirements like path to different xpm files, colours
-	given based on RGB combination for floor and ceilings.
+1.	Parsing for different types of layout is finished. Memory leaks, and norms are done.
+2.	For better reference please read the comments to know what is the structure for parser.
+3.	Changed char to const char in ft_strcmp.
+4.	Updated crosshair with green line and minimal size of the crosshair.
+5.	Updated parsing function to fetch the values based on the requirements like path to different xpm files, colours given based on RGB combination for floor and ceilings.
+6.	Updated Crosshair
 
 
