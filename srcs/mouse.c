@@ -3,14 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 23:05:19 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/04 21:11:02 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/05 16:54:20 by makhtar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+void	crosshair_handler(t_info *inf)
+{
+	int	i;
+	int	x;
+	int	y;
+
+	i = -20;
+	x = 960;
+	y = 540;
+	while (i <= -3)
+	{
+		my_pixel_put(inf, x, y + i, 0x0000FF00);
+		i++;
+	}
+	i = -20;
+	while (i <= -3)
+	{
+		my_pixel_put(inf, x + i, y, 0x0000FF00);
+		i++;
+	}
+}
 
 /**
 **	Inits and draws crosshair
@@ -21,20 +43,21 @@ void	init_cursor(t_info *inf)
 	int	x;
 	int	y;
 
-	i = 0;
+	i = 3;
 	x = 960;
 	y = 540;
-	while (i < 30)
+	while (i < 20)
 	{
-		my_pixel_put(inf, x + i, y, 0x00FFFFFF);
+		my_pixel_put(inf, x + i, y, 0x0000FF00);
 		i++;
 	}
-	i = 0;
-	while (i < 30)
+	i = 3;
+	while (i < 20)
 	{
-		my_pixel_put(inf, x, y + i, 0x00FFFFFF);
+		my_pixel_put(inf, x, y + i, 0x0000FF00);
 		i++;
 	}
+	crosshair_handler(inf);
 }
 
 /**

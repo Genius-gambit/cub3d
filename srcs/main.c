@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:29:29 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/04 20:43:40 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/05 10:19:07 by makhtar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		check_map(&info, argv[1]);
-		if (parse_arg(data.file) || init(&info))
+		if (parse_arg(data.file, &info) || init(&info))
 		{
 			free_data(&info);
 			return (EXIT_FAILURE);

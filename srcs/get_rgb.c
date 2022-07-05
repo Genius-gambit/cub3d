@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_rgb.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 13:44:01 by makhtar           #+#    #+#             */
-/*   Updated: 2022/07/04 21:14:28 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/05 10:58:17 by makhtar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void	iterators(char *tmp, int *i)
 /**
 **	Parse function of RGB colors
 **/
-int	check_rgb(char *str)
+int	check_rgb(char *str, const char *layout, t_info *info)
 {
 	int				i;
 	char			*tmp;
@@ -93,6 +93,7 @@ int	check_rgb(char *str)
 		{
 			tmp = dup_num(&str[i]);
 			iterators(tmp, &i);
+			fetch_rgb(tmp, info, layout);
 			if (tmp && tmp[0] && ft_isdigit(tmp[0]) && get_rgb(tmp, &k, str, i))
 				return (EXIT_FAILURE);
 			while ((str[i] != '\0' && ft_isspace(str[i]))

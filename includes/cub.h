@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/04 21:01:57 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/05 10:58:47 by makhtar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,31 @@ typedef struct s_mouse
 	int		x;
 }	t_mouse;
 
+typedef struct s_floor
+{
+	unsigned int	red;
+	unsigned int	green;
+	unsigned int	blue;
+}	t_floor;
+
+typedef struct s_ceil
+{
+	unsigned int	red;
+	unsigned int	green;
+	unsigned int	blue;
+}	t_ceil;
+
 typedef struct s_data
 {
 	char	**file;
 	char	**map;
+	char	*north_xpm;
+	char	*south_xpm;
+	char	*east_xpm;
+	char	*west_xpm;
 	char	**confg;
+	t_floor	floor;
+	t_ceil	ceil;
 }	t_data;
 
 typedef struct s_info
@@ -78,11 +98,12 @@ int		isdir(char *str);
 int		get_size(char *str);
 int		compare_ext(char *str);
 int		check_line(char *input);
-int		check_rgb(char *str);
-int		parse_config(char *str, const char *layout);
-int		parse_config_rgb(char *str, const char *layout);
+void	fetch_rgb(char *str, t_info *info, const char *layout);
+int		check_rgb(char *str, const char *layout, t_info *info);
+int		parse_config(char *str, const char *layout, t_info *info);
+int		parse_config_rgb(char *str, const char *layout, t_info *info);
 int		parse_map(char **str, int index);
-int		parse_arg(char **map);
+int		parse_arg(char **maps, t_info *info);
 
 /**
 **	Window Functions

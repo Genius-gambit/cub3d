@@ -61,7 +61,7 @@ https://lodev.org/cgtutor/raycasting.html
 9.	***HA:***	Discuss images to be used with **`MA`**
 10.	***HA:***	Figure out correct drawing and following of mouse cursor
 11.	***MAK:***	Take xpm files and read it to check if the file reading is working perfectly or not.
-12.	***MAK:***	Declare a new structure to fetch the info and place it in the main root of the structure which will work on every aspect of the program.
+12.	~~***MAK:***	Declare a new structure to fetch the info and place it in the main root of the structure which will work on every aspect of the program.
 13.	***MAK:***	Time for raycasting math to solve.
 
 `#CURRENT STATUS`
@@ -114,4 +114,8 @@ https://lodev.org/cgtutor/raycasting.html
 1. Parsing for different types of layout is finished. Memory leaks, and norms are done.
 2. For better reference please read the comments to know what is the structure for parser.
 3. Changed char to const char in ft_strcmp.
+4. Updated crosshair with green line and minimal size of the crosshair.
+5. Updated parsing function to fetch the values based on the requirements like path to different xpm files, colours
+	given based on RGB combination for floor and ceilings.
+
 

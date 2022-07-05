@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config_xpm.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:17:51 by makhtar           #+#    #+#             */
-/*   Updated: 2022/07/04 21:15:39 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/05 11:14:11 by makhtar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,30 @@
 *	Return value is 0 if there is no error
 *	Return value is 1 if there is an error
 **/
-static int	error_fds(char *str)
+static int	error_fds(char *str, t_info *info, const char *layout)
 {
-	(void)str;
-	// int		fd;
-	// int		ret;
-	// char	buf[2];
+	/*int		fd;
+	int		ret;
+	char	buf[2];
 
-	// fd = open(str, O_RDONLY);
-	// if (fd == -1)
-	// 	return (1);
-	// ret = read(fd, buf, 1);
-	// if (ret == -1)
-	// {
-	// 	close(fd);
-	// 	return (1);
-	// }
-	// close(fd);
+	fd = open(str, O_RDONLY);
+	if (fd == -1)
+		return (1);
+	ret = read(fd, buf, 1);
+	if (ret == -1)
+	{
+		close(fd);
+		return (1);
+	}
+	close(fd);*/
+	if (!ft_strcmp(layout, "NO"))
+		info->data->north_xpm = ft_strdup(str);
+	else if (!ft_strcmp(layout, "SO"))
+		info->data->south_xpm = ft_strdup(str);
+	else if (!ft_strcmp(layout, "EA"))
+		info->data->east_xpm = ft_strdup(str);
+	else if (!ft_strcmp(layout, "WE"))
+		info->data->west_xpm = ft_strdup(str);
 	return (0);
 }
 
@@ -42,7 +49,7 @@ static int	error_fds(char *str)
 *	Return value is 0 for getting success
 *	Return value is 1 for getting fail
 **/
-int	check_xpm_ext(char *str)
+int	check_xpm_ext(char *str, const char *layout, t_info *info)
 {
 	char	*tmp;
 
@@ -52,7 +59,7 @@ int	check_xpm_ext(char *str)
 		tmp = ft_strrchr(str, '.');
 		if (!ft_strcmp(tmp, ".xpm"))
 		{
-			if (error_fds(str))
+			if (error_fds(str, info, layout))
 				return (1);
 			return (0);
 		}
@@ -89,7 +96,7 @@ char	*get_layouts(char *str)
 /**
 **	Parsing the layout for north, south, east, west with xpm files
 **/
-int	parse_config(char *str, const char *layout)
+int	parse_config(char *str, const char *layout, t_info *info)
 {
 	int		i;
 	char	*tmp;
@@ -104,7 +111,7 @@ int	parse_config(char *str, const char *layout)
 	{
 		while (ft_isspace(str[i]))
 			i++;
-		if (!check_xpm_ext(&str[i]))
+		if (!check_xpm_ext(&str[i], tmp, info))
 		{
 			free (tmp);
 			return (EXIT_SUCCESS);
@@ -117,7 +124,7 @@ int	parse_config(char *str, const char *layout)
 /**
 **	Parsing the layout for floor with xpm files
 **/
-int	parse_config_rgb(char *str, const char *layout)
+int	parse_config_rgb(char *str, const char *layout, t_info *info)
 {
 	int		i;
 	char	*tmp;
@@ -132,7 +139,7 @@ int	parse_config_rgb(char *str, const char *layout)
 	{
 		while (str[i] && ft_isspace(str[i]))
 			i++;
-		if (str && !check_rgb(&str[i]))
+		if (str && !check_rgb(&str[i], layout, info))
 		{
 			free(tmp);
 			return (EXIT_SUCCESS);
