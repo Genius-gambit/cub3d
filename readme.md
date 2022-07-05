@@ -64,6 +64,7 @@ https://lodev.org/cgtutor/raycasting.html
 12.	***MAK:***	Take xpm files and read it to check if the file reading is working perfectly or not.
 13.	***MAK:***	Time for raycasting math to solve.
 14.	***HA:***	Draw interior of minimap
+15.	***HA:***	Figure out hook management for hook_num 46, see comments in `utils_hooks.c`
 
 `#CURRENT STATUS`
 
@@ -114,6 +115,7 @@ https://lodev.org/cgtutor/raycasting.html
 43.	New function `draw_map();` called in `init_window();` in `draw.c` to draw currently contains `ceiling_floor();`  -> to draw ceiling and floor, and `init_cursor();` -> to redraw cursor
 44.	New file `mini_map.c` contains 3 functions to draw minimap border and interior see TODO #14, functions named `draw_minimap(); mini_bottom_top(); mini_interior();`
 45.	Minimap drawn in top left corner, Missing interior
+46.	Downloaded some xpm images and added window control flags to MLX library
 
 `MAK:	4 July 2022`
 

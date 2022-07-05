@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/05 19:44:14 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/05 21:48:36 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_image
 
 typedef struct s_mouse
 {
+	int		flag;
 	int		y;
 	int		x;
 }	t_mouse;

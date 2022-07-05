@@ -79,7 +79,6 @@ int get_mouse_button(NSEventType eventtype)
   return (self);
 }
 
-
 - (void) setEvent:(int)event andFunc:(func_t)func andParam:(void *)param
 {
   event_funct[event] = func;
@@ -344,7 +343,8 @@ int get_mouse_button(NSEventType eventtype)
 
   if ((self = [super initWithFrame:rect pixelFormat:pixFmt]) != nil)
     {
-      NSUInteger windowStyle = NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable;
+      NSUInteger windowStyle = NSWindowStyleMaskTitled | NSWindowStyleMaskClosable
+      | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable | NSWindowStyleMaskFullScreen;
 
       win = [[NSWindowEvent alloc] initWithContentRect:rect
 				   styleMask:windowStyle
