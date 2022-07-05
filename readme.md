@@ -57,7 +57,7 @@ https://lodev.org/cgtutor/raycasting.html
 5.	~~***HA:***	Add `make vg` rule in Makefile for debugging~~
 6.	~~***HA:***	Debug segfault in `get_size();` due to~~
 7.	~~***HA:***	Double check space stripping in squash~~
-8.	~~***MAK:***	Declare a new structure to fetch the info and place it in the main root of the structure which will work on every aspect of the program.
+8.	~~***MAK:***	Declare a new structure to fetch the info and place it in the main root of the structure which will work on every aspect of the program.~~
 9.	***HA:***	Study Raycasting
 10.	***HA:***	Discuss images to be used with **`MA`**
 11.	***HA:***	Figure out correct drawing and following of mouse cursor
