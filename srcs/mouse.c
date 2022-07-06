@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 23:05:19 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/05 21:52:25 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/06 21:34:13 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,13 @@ void	init_cursor(t_info *inf)
 
 /**
 **	Mouse event trigger manager
-*	TODO:	Add condition for hook_num == 46
+*	mouse->flag == 0;		Hide and reposition mouse
+*	mouse->flag == 1;		Show and release mouse
 **/
 int	mouse_move(int x, int y, t_info *info)
 {
 	mlx_mouse_get_pos(info->win, &x, &y);
-	if (x >= 0 && x <= 1920 && y >= 0 && y <= 1080)
+	if (info->mouse->flag == 0)
 	{
 		init_cursor(info);
 		mlx_mouse_move(info->win, x, 540);

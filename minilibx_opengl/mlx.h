@@ -146,4 +146,9 @@ int	mlx_do_key_autorepeatoff(void *mlx_ptr);
 int	mlx_do_key_autorepeaton(void *mlx_ptr);
 int	mlx_do_sync(void *mlx_ptr);
 
+/*
+**	MLX String put taken from older mlx library 
+*/
+int	mlx_string_put(void *mlx_ptr, void *win_ptr, int x, int y, int color, char *string);
+
 #endif /* MLX_H */
