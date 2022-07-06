@@ -125,6 +125,7 @@ https://lodev.org/cgtutor/raycasting.html
 50.	New function `check_tabs();` called in `squash_lines();` replaces all tabs to 4 spaces within the `map` only in file `utils_file_ext.c`
 51.	New function to mimic `ft_strlen();` but adds +4 to the count for each tab found
 52.	Bug #6 Fixed, was due invalid write due to incorrect calculation in `get_tab_size();`
+53.	Added `xpm_images/` file with sample xpm images to discuss
 
 `MAK:	4 July 2022`
 
