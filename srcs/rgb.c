@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   rgb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 14:33:53 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/05 21:52:28 by hawadh           ###   ########.fr       */
+/*   Created: 2022/07/05 17:29:28 by hawadh            #+#    #+#             */
+/*   Updated: 2022/07/05 18:18:36 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
 /**
-**	Manages Key and Mouse hook events
+**	Calculates colour based on status
+*	status == 0;	ceiling colour
+*	status == 1;	floor colour
 **/
-void	hook_management(t_info *info)
+size_t	rgb(t_data *data, int status)
 {
-	mlx_key_hook(info->win, key_hook_manage, info);
-	mlx_hook(info->win, 17, (1L << 17), esc_win, info);
-	mlx_hook(info->win, 6, (1L << 6), mouse_move, info);
+	size_t	rgb;
+
+	rgb = 0x00FFFFFF;
+	if (status == 0)
+	{
+		rgb = (data->ceil.red + 1) * (data->ceil.green + 1)
+			* (data->ceil.blue + 1);
+	}
+	if (status == 1)
+	{
+		rgb = (data->floor.red + 1) * (data->floor.green + 1)
+			* (data->floor.blue + 1);
+	}
+	return (rgb);
 }
