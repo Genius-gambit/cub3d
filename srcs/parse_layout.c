@@ -3,19 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   parse_layout.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:19:03 by makhtar           #+#    #+#             */
-/*   Updated: 2022/07/05 16:56:34 by makhtar          ###   ########.fr       */
+/*   Updated: 2022/07/07 18:08:25 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
 /**
+**	Counts number of lines of config
+**/
+static size_t	confg_count(char **file)
+{
+	size_t	count;
+
+	count = 0;
+	while (file[count] && !check_if_map(file[count]))
+		count++;
+	return (count);
+}
+
+/**
+**	Stores config of file in data->confg
+*	Confg is first line before map
+*	Which includes N, S, E, W and C, F
+**/
+static int	store_confg_map(t_data *data)
+{
+	size_t	i;
+	size_t	j;
+	size_t	len;
+
+	i = -1;
+	j = 0;
+	len = confg_count(data->file);
+	data->confg = (char **)ft_calloc(len + 1, sizeof(char *));
+	data->map = (char **)ft_calloc((ft_ptrptrlen(data->file)
+				- len) + 1, sizeof(char *));
+	if (!data->confg || !data->map)
+		return (EXIT_FAILURE);
+	while (data->file[i] && ++i < len)
+		data->confg[i] = ft_strdup(data->file[i]);
+	while (data->file[i])
+		data->map[j++] = ft_strdup(data->file[i++]);
+	return (EXIT_SUCCESS);
+}
+
+/**
 **	With the order, parsing all layouts
 **/
-int	parse_layout(char **line, int *index, t_info *info)
+static int	parse_layout(char **line, int *index, t_info *info)
 {
 	int	i;
 
@@ -58,15 +97,7 @@ int	parse_arg(char **maps, t_info *info)
 	info->data->floor.red, info->data->floor.green, info->data->floor.blue);
 	printf("Ceil: Red: %d, Green: %d, Blue: %d\n", info->data->ceil.red, \
 	info->data->ceil.green, info->data->ceil.blue);
+	if (store_confg_map(info->data))
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
-
-/*
-** Printing info for the layout and the colours for floor and ceilings
-**	printf("North Path: %s\n", info->data->north_xpm);
-**	printf("South Path: %s\n", info->data->south_xpm);
-**	printf("East Path: %s\n", info->data->east_xpm);
-**	printf("West Path: %s\n", info->data->west_xpm);
-*/
-/*
-*/

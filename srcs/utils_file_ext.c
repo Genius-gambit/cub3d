@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 16:18:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/06 21:05:37 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/07 17:57:30 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,13 @@ static char	*check_tabs(char *input)
 			if (input[i] == '\t')
 				while (j < k + 4)
 					temp[j++] = ' ';
-			else
+			else if (input[i] != '\n')
 				temp[j++] = input[i];
 			i++;
 		}
 	}
 	if (!temp)
-		temp = ft_strdup(input);
+		temp = ft_substr(input, 0, ft_strlen(input) - 1);
 	return (temp);
 }
 

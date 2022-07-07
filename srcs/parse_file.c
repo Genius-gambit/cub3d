@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:24:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/06 21:35:03 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/07 17:54:39 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,6 @@ void	check_map(t_info *info, char *str)
 	if (ft_reading(info, str))
 		err_return(1);
 	while (info->data->file[i])
-	{
-		if (ft_strchr(info->data->file[i], '\n'))
-			printf("file:	%s", info->data->file[i++]);
-		else
-			printf("file:	%s\n", info->data->file[i++]);
-	}
+		printf("file:	%s\n", info->data->file[i++]);
 	printf("Reading/Cleaning Complete\n");
 }

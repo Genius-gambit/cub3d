@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/05 21:48:36 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/07 18:08:30 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,12 @@ typedef struct s_data
 {
 	char	**file;
 	char	**map;
+	char	**confg;
 	char	*north_xpm;
 	char	*south_xpm;
 	char	*east_xpm;
 	char	*west_xpm;
-	char	**confg;
+	char	*pause;
 	t_floor	floor;
 	t_ceil	ceil;
 }	t_data;
@@ -90,6 +91,7 @@ size_t	get_act_size(char **input);
 void	error_print(char *str);
 void	err_return(int status);
 void	check_map(t_info *info, char *str);
+void	fetch_rgb(char *str, t_info *info, const char *layout);
 char	**clean_whitespace(char **input);
 char	**squash_lines(char **file, char **input);
 char	*squash(char *input);
@@ -99,7 +101,6 @@ int		isdir(char *str);
 int		get_size(char *str);
 int		compare_ext(char *str);
 int		check_line(char *input);
-void	fetch_rgb(char *str, t_info *info, const char *layout);
 int		check_rgb(char *str, const char *layout, t_info *info);
 int		parse_config(char *str, const char *layout, t_info *info);
 int		parse_config_rgb(char *str, const char *layout, t_info *info);

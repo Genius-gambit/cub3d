@@ -6,11 +6,26 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 11:48:10 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/05 19:48:09 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/07 15:44:10 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+/**
+*	TODO:	Load all xpm images through this function
+**/
+static int	init_xpm(t_info *info)
+{
+	int	x;
+	int	y;
+
+	info->data->pause = mlx_xpm_file_to_image(info->mlx,
+			"./xpm_images/pause.xpm", &x, &y);
+	if (!info->data->pause)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
 
 /**
 **	Calls image data address to draw into img
@@ -44,6 +59,8 @@ int	init_window(t_info *info)
 		return (EXIT_FAILURE);
 	get_img_addr(info);
 	init_mouse(info);
+	if (init_xpm(info))
+		err_return(5);
 	hook_management(info);
 	draw_map(info);
 	mlx_put_image_to_window(info->mlx, info->win, info->img, 0, 0);

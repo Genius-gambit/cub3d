@@ -53,7 +53,7 @@ https://lodev.org/cgtutor/raycasting.html
 
 1.	~~***HA:***	Incorprate `get_next_line();` in `ft_reading();`~~
 2.	~~***HA:***	Refactor `isdir();` and double check project for forbidden functions~~
-3.	~~***MAK:***	Parse and store map in separate 2D array~~
+3.	~~***HA:***	Parse and store map and config in separate 2D array for each~~
 4.	~~***HA:***	Figure out how to separate map from configurations~~
 5.	~~***HA:***	Add `make vg` rule in Makefile for debugging~~
 6.	~~***HA:***	Debug segfault in `get_size();` due to~~
@@ -67,7 +67,7 @@ https://lodev.org/cgtutor/raycasting.html
 14.	***HA:***	Draw interior of minimap
 15.	~~***HA:***	Figure out hook management for hook_num 46, see comments in `utils_hooks.c`~~
 16.	***HA:***	Figure out what is the hook num that detects clicking on window edges
-17.	***HA:***	Figure out XPM image for pause in center of screen
+17.	***HA:***	Figure out XPM image for pause in center of screen and implement removal
 
 `#CURRENT STATUS`
 
@@ -126,6 +126,10 @@ https://lodev.org/cgtutor/raycasting.html
 51.	New function to mimic `ft_strlen();` but adds +4 to the count for each tab found
 52.	Bug #6 Fixed, was due invalid write due to incorrect calculation in `get_tab_size();`
 53.	Added `xpm_images/` file with sample xpm images to discuss
+54.	New Function `init_xpm();` to init and store all xpm images placed in `window.c`
+55.	New function in `parse_layout.c` called `store_confg_map();` to store `**config` & `**map` of `data->file`
+56.	New function `config_count();` to count number of lines for `data->confg` & `data->map` in `parse_layout();`
+57.	Added Loading and implementation fo Pause Message on hitting `'m' hook number 64` in `key_hook_manage();`, yet to implement removal of Pause Message
 
 `MAK:	4 July 2022`
 
