@@ -47,6 +47,7 @@ https://lodev.org/cgtutor/raycasting.html
 3.	~~***HA:***	Leak in `extract_file();` line `#26`~~
 4.	~~***HA:***	Segfault when moving mouse in window in function `mlx_mouse_get_pos();` in function `draw_cursor();`~~
 5.	~~***HA:***	Crosshair was not drawing~~
+6.	~~***HA:***	Map printed with extra spaces~~
 
 `#TODO:`
 
@@ -64,7 +65,9 @@ https://lodev.org/cgtutor/raycasting.html
 12.	***MAK:***	Take xpm files and read it to check if the file reading is working perfectly or not.
 13.	***MAK:***	Time for raycasting math to solve.
 14.	***HA:***	Draw interior of minimap
-15.	***HA:***	Figure out hook management for hook_num 46, see comments in `utils_hooks.c`
+15.	~~***HA:***	Figure out hook management for hook_num 46, see comments in `utils_hooks.c`~~
+16.	***HA:***	Figure out what is the hook num that detects clicking on window edges
+17.	***HA:***	Figure out XPM image for pause in center of screen
 
 `#CURRENT STATUS`
 
@@ -116,6 +119,13 @@ https://lodev.org/cgtutor/raycasting.html
 44.	New file `mini_map.c` contains 3 functions to draw minimap border and interior see TODO #14, functions named `draw_minimap(); mini_bottom_top(); mini_interior();`
 45.	Minimap drawn in top left corner, Missing interior
 46.	Downloaded some xpm images and added window control flags to MLX library
+47.	Removed fullscreen flag from `mlx_new_window.m` flag is `NSWindowStyleMaskFullScreen;`
+48.	Buttom `m` on keyboard stops mouse capture and releases mouse
+49.	Added `mlx_string_put();` function from old `MLX` to current `MLX` library, and updated `mlx.h`
+50.	New function `check_tabs();` called in `squash_lines();` replaces all tabs to 4 spaces within the `map` only in file `utils_file_ext.c`
+51.	New function to mimic `ft_strlen();` but adds +4 to the count for each tab found
+52.	Bug #6 Fixed, was due invalid write due to incorrect calculation in `get_tab_size();`
+53.	Added `xpm_images/` file with sample xpm images to discuss
 
 `MAK:	4 July 2022`
 
