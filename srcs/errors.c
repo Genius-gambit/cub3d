@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:27:11 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/04 21:14:45 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/07 19:26:18 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	error_print(char *str)
 *	status == 3		Invalid Map
 *	status == 4		Mlx Failure
 **/
-void	err_return(int status)
+void	err_return(int status, t_info *info)
 {
 	if (status == 0)
 		error_print("ERROR: File Descriptor");
@@ -42,5 +42,8 @@ void	err_return(int status)
 		error_print("ERROR: Map not valid");
 	else if (status == 4)
 		error_print("ERROR: Minilibx Failure");
+	else if (status == 5)
+		error_print("ERROR: XPM Load Image Failure");
+	free_data(info);
 	exit (1);
 }

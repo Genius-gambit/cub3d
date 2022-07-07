@@ -6,7 +6,7 @@
 #    By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/21 16:36:51 by hawadh            #+#    #+#              #
-#    Updated: 2022/07/07 17:31:04 by hawadh           ###   ########.fr        #
+#    Updated: 2022/07/07 20:13:38 by hawadh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCS		=	./srcs/main.c ./srcs/parse_file.c ./srcs/errors.c \
 				./srcs/mouse.c ./srcs/hooks.c ./srcs/utils_file_ext.c \
 				./srcs/parse_layout.c ./srcs/parse_map.c ./srcs/get_rgb.c \
 				./srcs/config_xpm.c ./srcs/place_rgb.c ./srcs/rgb.c \
-				./srcs/utils_draw.c ./srcs/mini_map.c ./srcs/utils_parse_ext.c
+				./srcs/utils_draw.c ./srcs/mini_map.c ./srcs/utils_xpm.c
 
 
 MLX			=	libmlx.a

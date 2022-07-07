@@ -1,7 +1,7 @@
-NO path_to_the_north_texture.xpm
-SO    path_to_the_south_texture.xpm
-WE    		path_to_the_west_texture.xpm   
-EA path_to_the_east_texture.xpm
+NO ./imgs/cobble.xpm
+SO ./imgs/mossy_bricks.xpm
+WE ./imgs/mossy_cobble.xpm   
+EA ./imgs/purplestone.xpm
 
 F 176,216,230
 C 53,228,234

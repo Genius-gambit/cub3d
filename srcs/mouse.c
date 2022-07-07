@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 23:05:19 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/06 21:34:13 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/07 19:24:14 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	init_mouse(t_info *info)
 	if (!info->mouse)
 	{
 		free_data(info);
-		err_return(4);
+		err_return(4, info);
 	}
 	info->mouse->flag = 0;
 	init_cursor(info);

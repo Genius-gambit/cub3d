@@ -48,6 +48,7 @@ https://lodev.org/cgtutor/raycasting.html
 4.	~~***HA:***	Segfault when moving mouse in window in function `mlx_mouse_get_pos();` in function `draw_cursor();`~~
 5.	~~***HA:***	Crosshair was not drawing~~
 6.	~~***HA:***	Map printed with extra spaces~~
+7.	~~***HA:***	Memory leak in `parse_layout();` in my function `store_confg_map();` line `#47`~~
 
 `#TODO:`
 
@@ -127,9 +128,17 @@ https://lodev.org/cgtutor/raycasting.html
 52.	Bug #6 Fixed, was due invalid write due to incorrect calculation in `get_tab_size();`
 53.	Added `xpm_images/` file with sample xpm images to discuss
 54.	New Function `init_xpm();` to init and store all xpm images placed in `window.c`
-55.	New function in `parse_layout.c` called `store_confg_map();` to store `**config` & `**map` of `data->file`
-56.	New function `config_count();` to count number of lines for `data->confg` & `data->map` in `parse_layout();`
+55.	New function in `parse_layout.c` called `store_map();` & `**map` of `data->file`
+56.	New function `confg_count();` to count number of lines for `data->confg` & `data->map` in `parse_layout();`
 57.	Added Loading and implementation fo Pause Message on hitting `'m' hook number 64` in `key_hook_manage();`, yet to implement removal of Pause Message
+58.	Fixed leak in `store_map();` line 47, due starting iteration at `i = -1;` solution was to increment `i` before check `data->file[i]` in `while (++i < len && data->file[i])`
+59.	Deleted unnecessary file `utils_parse_ext.c`
+60.	Moved function call `parse_arg();` to function `check_map();` as clean-up of `main.c`
+61.	Added error message `status == 5` in `errors.c` for XPM Image loading failure
+62.	Added parameter `t_info *info` to function prototype `void err_return(int status, t_info *info);` and sending in `t_info *info` to all occuring function calls to free any allocated data within the structure in case of any error returns before exit
+63.	New function `store_confg_map();` which stores the map and the confg in their respective 2D Arrays
+64.	New File `utils_xpm.c` to hold all xpm related functions
+65.	Renamed `xpm_images/` to `imgs/`
 
 `MAK:	4 July 2022`
 

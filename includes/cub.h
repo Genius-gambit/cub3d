@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/07 18:08:30 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/07 21:35:57 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	free_data(t_info *info);
 **/
 size_t	get_act_size(char **input);
 void	error_print(char *str);
-void	err_return(int status);
+void	err_return(int status, t_info *info);
 void	check_map(t_info *info, char *str);
 void	fetch_rgb(char *str, t_info *info, const char *layout);
 char	**clean_whitespace(char **input);
@@ -98,7 +98,7 @@ char	*squash(char *input);
 int		store_data(t_data *d, char **input);
 int		check_if_map(char *input);
 int		isdir(char *str);
-int		get_size(char *str);
+int		get_size(t_info *info, char *str);
 int		compare_ext(char *str);
 int		check_line(char *input);
 int		check_rgb(char *str, const char *layout, t_info *info);
@@ -123,6 +123,11 @@ void	draw_map(t_info *info);
 void	ceiling_floor(t_info *info);
 void	draw_minimap(t_info *info);
 int		call_draw_cursor(void *info);
+
+/**
+**	XPM Functions 
+**/
+int		open_xpm(t_info *inf, t_data *d);
 
 /**
 **	RGB Functions

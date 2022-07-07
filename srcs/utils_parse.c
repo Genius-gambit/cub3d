@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@Student.42Abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 22:13:55 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/04 14:49:18 by makhtar          ###   ########.fr       */
+/*   Updated: 2022/07/07 19:30:32 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ size_t	get_act_size(char **input)
 /**
 **	Gets initial size of file in Number of lines
 **/
-int	get_size(char *str)
+int	get_size(t_info *info, char *str)
 {
 	char	*temp;
 	size_t	count;
@@ -42,7 +42,7 @@ int	get_size(char *str)
 
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
-		err_return(0);
+		err_return(0, info);
 	count = 0;
 	temp = ft_memset((char *)ft_calloc(1, sizeof(char)), 0, 1);
 	while (temp)

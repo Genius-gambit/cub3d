@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 11:48:10 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/07 15:44:10 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/07 21:52:32 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 /**
 *	TODO:	Load all xpm images through this function
 **/
-static int	init_xpm(t_info *info)
+static int	init_xpm(t_info *info, t_data *data)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 
-	info->data->pause = mlx_xpm_file_to_image(info->mlx,
-			"./xpm_images/pause.xpm", &x, &y);
-	if (!info->data->pause)
+	data->pause = mlx_xpm_file_to_image(info->mlx, "./imgs/pause.xpm", &x, &y);
+	if (!data->pause)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
@@ -40,12 +39,12 @@ static void	get_img_addr(t_info *inf)
 	if (!inf->image)
 	{
 		free_data(inf);
-		err_return(4);
+		err_return(4, inf);
 	}
 	image->addr = mlx_get_data_addr(inf->img, &image->bitspix,
 			&image->len, &image->end);
 	if (!image->addr)
-		err_return(4);
+		err_return(4, inf);
 }
 
 /**
@@ -59,8 +58,8 @@ int	init_window(t_info *info)
 		return (EXIT_FAILURE);
 	get_img_addr(info);
 	init_mouse(info);
-	if (init_xpm(info))
-		err_return(5);
+	if (init_xpm(info, info->data))
+		err_return(5, info);
 	hook_management(info);
 	draw_map(info);
 	mlx_put_image_to_window(info->mlx, info->win, info->img, 0, 0);

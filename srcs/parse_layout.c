@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:19:03 by makhtar           #+#    #+#             */
-/*   Updated: 2022/07/07 18:08:25 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/07 21:54:38 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,21 @@ static int	store_confg_map(t_data *data)
 	size_t	i;
 	size_t	j;
 	size_t	len;
+	size_t	ptr_len;
 
-	i = -1;
+	i = 0;
 	j = 0;
 	len = confg_count(data->file);
+	ptr_len = ft_ptrptrlen(data->file) - len;
 	data->confg = (char **)ft_calloc(len + 1, sizeof(char *));
-	data->map = (char **)ft_calloc((ft_ptrptrlen(data->file)
-				- len) + 1, sizeof(char *));
+	data->map = (char **)ft_calloc(ptr_len + 1, sizeof(char *));
 	if (!data->confg || !data->map)
 		return (EXIT_FAILURE);
-	while (data->file[i] && ++i < len)
+	while (data->file[i] && i < len)
+	{
 		data->confg[i] = ft_strdup(data->file[i]);
+		i++;
+	}
 	while (data->file[i])
 		data->map[j++] = ft_strdup(data->file[i++]);
 	return (EXIT_SUCCESS);
@@ -93,11 +97,11 @@ int	parse_arg(char **maps, t_info *info)
 		ft_putendl_fd("Invalid Floor or Ceiling", 2);
 		return (EXIT_FAILURE);
 	}
-	printf("Floor: Red: %d, Green: %d, Blue: %d\n", \
+	if (store_confg_map(info->data))
+		return (EXIT_FAILURE);
+	printf("\nFloor: Red: %d, Green: %d, Blue: %d\n", \
 	info->data->floor.red, info->data->floor.green, info->data->floor.blue);
 	printf("Ceil: Red: %d, Green: %d, Blue: %d\n", info->data->ceil.red, \
 	info->data->ceil.green, info->data->ceil.blue);
-	if (store_confg_map(info->data))
-		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
