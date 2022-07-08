@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:24:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/07 19:31:45 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/08 13:47:13 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,6 @@ void	check_map(t_info *info, char *str)
 	if (parse_arg(info->data->file, info))
 		err_return(3, info);
 	printf("\n");
-	while (info->data->confg[i])
-		printf("Confg	:	%s\n", info->data->confg[i++]);
-	printf("\n");
-	i = 0;
 	while (info->data->map[i])
 		printf("Map	:	%s\n", info->data->map[i++]);
 	printf("\n");

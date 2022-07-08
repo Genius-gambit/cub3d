@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:28:36 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/07 18:07:35 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/08 16:30:36 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	key_hook_manage(int hook_num, t_info *info)
 		if (info->mouse->flag == 0)
 		{
 			mlx_put_image_to_window(info->mlx, info->win, \
-			info->data->pause, 700, 300);
+			info->data->pause, 550, 250);
 			mlx_mouse_show();
 			info->mouse->flag = 1;
 		}

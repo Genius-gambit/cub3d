@@ -6,54 +6,39 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 19:43:20 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/05 19:47:41 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/08 17:17:11 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
 /**
-**	Draws minimap interior
-*	TODO:	Draw miniature version of file map
+**	Custom Pixel Put for Minimap
 **/
-static void	mini_interior(t_info *info)
+static void	mini_pixel_put(t_mini *mini, int x, int y, int rgb)
 {
-	int	x;
-	int	y;
+	char	*draw;
 
-	y = 21;
-	while (y < 180)
-	{
-		x = 21;
-		while (x < 255)
-			my_pixel_put(info, x++, y, 0x00606060);
-		y++;
-	}
+	draw = mini->addr + (y * mini->len + x * (mini->bitspix / 8));
+	*(unsigned int *)draw = rgb;
 }
 
 /**
-**	Draws far borders of minimap
-*	Status 0	draws far y border
-*	Status 1	draws far x border
+**	Draws minimap interior
+*	TODO:	Draw miniature version of file map
 **/
-static void	mini_bottom_top(t_info *info, int status)
+static void	mini_interior(t_mini *mini)
 {
 	int	x;
 	int	y;
 
-	if (status == 0)
+	y = 3;
+	while (y < 182)
 	{
-		x = 255;
-		y = 20;
-		while (y < 180)
-			my_pixel_put(info, x, y++, 0x000000);
-	}
-	if (status == 1)
-	{
-		x = 20;
-		y = 180;
-		while (x < 255)
-			my_pixel_put(info, x++, y, 0x000000);
+		x = 3;
+		while (x < 257)
+			mini_pixel_put(mini, x++, y, 0x00606060);
+		y++;
 	}
 }
 
@@ -61,26 +46,29 @@ static void	mini_bottom_top(t_info *info, int status)
 **	Draws closer borders and calls function to draw
 **	Outer borders. Calls to draw minimap interior
 **/
-void	draw_minimap(t_info *info)
+void	draw_minimap(t_mini *mini)
 {
-	int	x;
-	int	y;
+	mini_interior(mini);
+}
 
-	x = 20;
-	y = 20;
-	while (y < 180)
+/**
+**	Initialises struct mini and creates new image for
+**	mini-map
+**/
+void	init_minimap(t_info *info)
+{
+	t_mini	*mini;
+
+	mini = (t_mini *)ft_calloc(1, sizeof(t_mini));
+	info->mini = mini;
+	info->mini_map = mlx_new_image(info->mlx, 260, 185);
+	if (!info->mini_map)
 	{
-		x = 20;
-		if (y > 20)
-			my_pixel_put(info, x, y, 0x00000000);
-		if (y == 20)
-			while (x < 255)
-				my_pixel_put(info, x++, y, 0x00000000);
-		if (y != 20)
-			my_pixel_put(info, x, y, 0x000000);
-		y++;
+		free_data(info);
+		err_return(4, info);
 	}
-	mini_bottom_top(info, 0);
-	mini_bottom_top(info, 1);
-	mini_interior(info);
+	mini->addr = mlx_get_data_addr(info->mini_map, &mini->bitspix,
+			&mini->len, &mini->end);
+	if (!mini->addr)
+		err_return(4, info);
 }

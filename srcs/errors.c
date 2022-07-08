@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:27:11 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/07 19:26:18 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/08 16:19:48 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,26 @@ void	error_print(char *str)
 *	status == 1		Empty File
 *	status == 2		Invalid Arguments
 *	status == 3		Invalid Map
-*	status == 4		Mlx Failure
+*	status == 4		Mlx Failed
+*	status == 5		XPM Load failed
+*	status == 6		Layout failed XPM and C and F
 **/
 void	err_return(int status, t_info *info)
 {
 	if (status == 0)
-		error_print("ERROR: File Descriptor");
+		error_print("[0]:	ERROR: File Descriptor");
 	else if (status == 1)
-		error_print("ERROR: Empty File");
+		error_print("[1]:	ERROR: Empty File");
 	else if (status == 2)
-		error_print("ERROR: Arguments");
+		error_print("[2]:	ERROR: Arguments");
 	else if (status == 3)
-		error_print("ERROR: Map not valid");
+		error_print("[3]:	ERROR: Map not valid");
 	else if (status == 4)
-		error_print("ERROR: Minilibx Failure");
+		error_print("[4]:	ERROR: Minilibx Failure");
 	else if (status == 5)
-		error_print("ERROR: XPM Load Image Failure");
+		error_print("[5]:	ERROR: XPM Load Image Failure");
+	else if (status == 6)
+		error_print("[6]:	ERROR: Invalid Layout");
 	free_data(info);
 	exit (1);
 }

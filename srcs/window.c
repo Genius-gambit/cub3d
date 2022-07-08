@@ -6,22 +6,27 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 11:48:10 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/07 21:52:32 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/08 17:16:27 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
 /**
+**	Inits data->config and calls open_xpm();
+**	to open and store xpm images
 *	TODO:	Load all xpm images through this function
 **/
 static int	init_xpm(t_info *info, t_data *data)
 {
-	int		x;
-	int		y;
+	size_t	len;
 
-	data->pause = mlx_xpm_file_to_image(info->mlx, "./imgs/pause.xpm", &x, &y);
-	if (!data->pause)
+	len = confg_count(data->file);
+	if (!data->confg)
+		data->confg = (char **)ft_calloc(len + 1, sizeof(char *));
+	if (!data->confg)
+		return (EXIT_FAILURE);
+	if (open_xpm(info, data, len))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
@@ -58,11 +63,13 @@ int	init_window(t_info *info)
 		return (EXIT_FAILURE);
 	get_img_addr(info);
 	init_mouse(info);
+	init_minimap(info);
 	if (init_xpm(info, info->data))
 		err_return(5, info);
 	hook_management(info);
 	draw_map(info);
 	mlx_put_image_to_window(info->mlx, info->win, info->img, 0, 0);
+	mlx_put_image_to_window(info->mlx, info->win, info->mini_map, 20, 20);
 	mlx_loop(info->mlx);
 	return (EXIT_SUCCESS);
 }

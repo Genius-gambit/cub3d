@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 09:28:29 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/07 21:54:55 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/08 15:38:12 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void	my_pixel_put(t_info *inf, int x, int y, int rgb)
 void	draw_map(t_info *info)
 {
 	ceiling_floor(info);
+	draw_minimap(info->mini);
 	init_cursor(info);
-	draw_minimap(info);
 }

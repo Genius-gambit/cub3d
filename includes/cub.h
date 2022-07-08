@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/07 21:35:57 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/08 17:07:02 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,20 @@
 # include "../minilibx_opengl/mlx.h"
 # include "../get_next_line/get_next_line.h"
 
+/**
+**	Minimap image address
+**/
+typedef struct s_minimap
+{
+	char	*addr;
+	int		bitspix;
+	int		len;
+	int		end;
+}	t_mini;
+
+/**
+**	Main window image address
+**/
 typedef struct s_image
 {
 	char	*addr;
@@ -33,6 +47,9 @@ typedef struct s_image
 	int		end;
 }	t_img;
 
+/**
+**	Mouse Data
+**/
 typedef struct s_mouse
 {
 	int		flag;
@@ -40,6 +57,9 @@ typedef struct s_mouse
 	int		x;
 }	t_mouse;
 
+/**
+**	Floor RGB
+**/
 typedef struct s_floor
 {
 	unsigned int	red;
@@ -47,6 +67,9 @@ typedef struct s_floor
 	unsigned int	blue;
 }	t_floor;
 
+/**
+**	Ceiling RGB
+**/
 typedef struct s_ceil
 {
 	unsigned int	red;
@@ -54,6 +77,19 @@ typedef struct s_ceil
 	unsigned int	blue;
 }	t_ceil;
 
+/**
+**	File Map layout and data
+*	file		file contents
+*	map			map contents
+*	confg		Below config during mlx_xpm_file_to_image();
+*	NO			north_xpm;
+*	SO			south_xpm
+*	WE			west_xpm;
+*	EA			East_xpm;
+*	pause		Pause image
+*	floor		RGB of floor
+*	ceiling		RGB of ceiling
+**/
 typedef struct s_data
 {
 	char	**file;
@@ -68,14 +104,25 @@ typedef struct s_data
 	t_ceil	ceil;
 }	t_data;
 
+/**
+**	Main Struct with all info including struct Pointers
+*	minilibx	*mlx
+*	window		*window
+*	image		*img		
+*	data		struct
+*	mouse		struct
+*	minimap		struct
+**/
 typedef struct s_info
 {
 	void	*mlx;
 	void	*win;
 	void	*img;
+	void	*mini_map;
 	t_data	*data;
 	t_mouse	*mouse;
 	t_img	*image;
+	t_mini	*mini;
 }	t_info;
 
 /**
@@ -88,6 +135,7 @@ void	free_data(t_info *info);
 **	Parsing Functions
 **/
 size_t	get_act_size(char **input);
+size_t	confg_count(char **file);
 void	error_print(char *str);
 void	err_return(int status, t_info *info);
 void	check_map(t_info *info, char *str);
@@ -121,13 +169,18 @@ void	my_pixel_put(t_info *inf, int x, int y, int rgb);
 void	draw_cursor(t_info *info);
 void	draw_map(t_info *info);
 void	ceiling_floor(t_info *info);
-void	draw_minimap(t_info *info);
+void	draw_minimap(t_mini *mini);
 int		call_draw_cursor(void *info);
+
+/**
+**	Mini-map functions
+**/
+void	init_minimap(t_info *info);
 
 /**
 **	XPM Functions 
 **/
-int		open_xpm(t_info *inf, t_data *d);
+int		open_xpm(t_info *inf, t_data *d, size_t len);
 
 /**
 **	RGB Functions
