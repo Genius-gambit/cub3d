@@ -145,7 +145,8 @@ https://lodev.org/cgtutor/raycasting.html
 73.	New file `utils_xpm.c` with function `opem_xpm();` uses `mlx_xpm_file_to_image();` to open all xpm images and store in `data->confg` called in `init_xpm();`
 74.	Added `&& i < len` line `#39` in `open_xpm();` to fix `bug #9`
 75.	Added new function  `free_struct_mini();` in `memory_mngmnt.c` to free struct `t_mini` and it's contents
-
+76.	New File `utils_mini_map.c`
+77.	New Struct `s_player` to save all player related data, also new function, `draw_player_walls();` to extract player position and future drawing of minimap in `mini_interior();` with 2 functions `find_player_array();` for Y and `find_player_index();` for X while also extracting Perspective
 
 `MAK:	4 July 2022`
 

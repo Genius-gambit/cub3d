@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/08 17:07:02 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/08 21:19:53 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,19 @@
 # include "../libft/libft.h"
 # include "../minilibx_opengl/mlx.h"
 # include "../get_next_line/get_next_line.h"
+
+/**
+**	Player Structure
+*	view	Orientation, N,S,W,E
+*	y_pos	Position on Y
+*	x_pos	Position on X
+**/
+typedef struct s_player
+{
+	char	view;
+	int		y_pos;
+	int		x_pos;
+}	t_player;
 
 /**
 **	Minimap image address
@@ -52,9 +65,9 @@ typedef struct s_image
 **/
 typedef struct s_mouse
 {
-	int		flag;
-	int		y;
-	int		x;
+	int	flag;
+	int	y;
+	int	x;
 }	t_mouse;
 
 /**
@@ -115,14 +128,15 @@ typedef struct s_data
 **/
 typedef struct s_info
 {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	void	*mini_map;
-	t_data	*data;
-	t_mouse	*mouse;
-	t_img	*image;
-	t_mini	*mini;
+	void		*mlx;
+	void		*win;
+	void		*img;
+	void		*mini_map;
+	t_data		*data;
+	t_mouse		*mouse;
+	t_img		*image;
+	t_mini		*mini;
+	t_player	*player;
 }	t_info;
 
 /**
@@ -169,13 +183,16 @@ void	my_pixel_put(t_info *inf, int x, int y, int rgb);
 void	draw_cursor(t_info *info);
 void	draw_map(t_info *info);
 void	ceiling_floor(t_info *info);
-void	draw_minimap(t_mini *mini);
+void	draw_minimap(t_info *info, t_mini *mini);
 int		call_draw_cursor(void *info);
 
 /**
 **	Mini-map functions
 **/
 void	init_minimap(t_info *info);
+void	mini_pixel_put(t_mini *mini, int x, int y, int rgb);
+void	draw_walls_player(t_info *info, t_mini *mini);
+float	calc_iteration(float x);
 
 /**
 **	XPM Functions 
