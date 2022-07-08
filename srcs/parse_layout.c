@@ -3,19 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   parse_layout.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:19:03 by makhtar           #+#    #+#             */
-/*   Updated: 2022/07/05 16:56:34 by makhtar          ###   ########.fr       */
+/*   Updated: 2022/07/08 13:46:56 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
 /**
+**	Counts number of lines of config
+**/
+size_t	confg_count(char **file)
+{
+	size_t	count;
+
+	count = 0;
+	while (file[count] && !check_if_map(file[count]))
+		count++;
+	return (count);
+}
+
+/**
+**	Stores config of file in data->confg
+*	Confg is first line before map
+*	Which includes N, S, E, W and C, F
+**/
+static int	store_map(t_data *data)
+{
+	size_t	i;
+	size_t	j;
+	size_t	len;
+	size_t	ptr_len;
+
+	j = 0;
+	len = confg_count(data->file);
+	ptr_len = ft_ptrptrlen(data->file) - len;
+	data->map = (char **)ft_calloc(ptr_len + 1, sizeof(char *));
+	if (!data->map)
+		return (EXIT_FAILURE);
+	i = len;
+	while (data->file[i])
+		data->map[j++] = ft_strdup(data->file[i++]);
+	return (EXIT_SUCCESS);
+}
+
+/**
 **	With the order, parsing all layouts
 **/
-int	parse_layout(char **line, int *index, t_info *info)
+static int	parse_layout(char **line, int *index, t_info *info)
 {
 	int	i;
 
@@ -36,6 +73,15 @@ int	parse_layout(char **line, int *index, t_info *info)
 	return (EXIT_SUCCESS);
 }
 
+static void	print_xpm(t_data *d)
+{
+	printf("\n");
+	printf("NO	:	%s\n", d->north_xpm);
+	printf("SO	:	%s\n", d->south_xpm);
+	printf("WE	:	%s\n", d->west_xpm);
+	printf("EA	:	%s\n", d->east_xpm);
+}
+
 /**
 **	Calls parser for maps and config
 **/
@@ -45,28 +91,15 @@ int	parse_arg(char **maps, t_info *info)
 
 	index = 0;
 	if (parse_layout(maps, &index, info))
-	{
-		ft_putendl_fd("Invalid Layout", 2);
-		return (EXIT_FAILURE);
-	}
+		err_return(6, info);
 	if (parse_map(maps, index))
-	{
-		ft_putendl_fd("Invalid Floor or Ceiling", 2);
+		err_return(3, info);
+	if (store_map(info->data))
 		return (EXIT_FAILURE);
-	}
-	printf("Floor: Red: %d, Green: %d, Blue: %d\n", \
+	print_xpm(info->data);
+	printf("\nF	:	R: %d,	G: %d,	B: %d\n", \
 	info->data->floor.red, info->data->floor.green, info->data->floor.blue);
-	printf("Ceil: Red: %d, Green: %d, Blue: %d\n", info->data->ceil.red, \
+	printf("C	:	R: %d,	G: %d,	B: %d\n", info->data->ceil.red, \
 	info->data->ceil.green, info->data->ceil.blue);
 	return (EXIT_SUCCESS);
 }
-
-/*
-** Printing info for the layout and the colours for floor and ceilings
-**	printf("North Path: %s\n", info->data->north_xpm);
-**	printf("South Path: %s\n", info->data->south_xpm);
-**	printf("East Path: %s\n", info->data->east_xpm);
-**	printf("West Path: %s\n", info->data->west_xpm);
-*/
-/*
-*/

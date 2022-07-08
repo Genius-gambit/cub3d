@@ -26,21 +26,14 @@
 ```
 ***NOTES:***
 
-***Each type of element can be set in any order in the file.***
-
-To Generate Suppression messages:
---gen-suppressions=yes
-
-Valgrind:
-valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --suppressions=valgrind_filter.supp ./cub3d
-***Remember to add filename.cub at end***
+------ Added new test.cub with valid map and configurations ------
 
 42Docs guide on raycasting:
 https://lodev.org/cgtutor/raycasting.html
 
 ```
 
-`#BUGS: #NULL`
+`#BUGS: #8, #10`
 
 1.	~~***HA:***	Segfaul in `get_next_line();` due to `ft_strchr();` in `libft`~~
 2.	~~***HA:***	Function parses whole file, should stop at first line of map~~
@@ -48,12 +41,16 @@ https://lodev.org/cgtutor/raycasting.html
 4.	~~***HA:***	Segfault when moving mouse in window in function `mlx_mouse_get_pos();` in function `draw_cursor();`~~
 5.	~~***HA:***	Crosshair was not drawing~~
 6.	~~***HA:***	Map printed with extra spaces~~
+7.	~~***HA:***	Memory leak in `parse_layout();` in my function `store_confg_map();` line `#47`~~
+8.	***MAK:***	Parser returning invalid map on checking walls if any `0` is present, `line #13` in file.cub
+9.	~~***HA:***	xpm file opening failing~~
+10.	***HA:***	On full screen, pause causes window to turn red if window resized to full screen
 
 `#TODO:`
 
 1.	~~***HA:***	Incorprate `get_next_line();` in `ft_reading();`~~
 2.	~~***HA:***	Refactor `isdir();` and double check project for forbidden functions~~
-3.	~~***MAK:***	Parse and store map in separate 2D array~~
+3.	~~***HA:***	Parse and store map and config in separate 2D array for each~~
 4.	~~***HA:***	Figure out how to separate map from configurations~~
 5.	~~***HA:***	Add `make vg` rule in Makefile for debugging~~
 6.	~~***HA:***	Debug segfault in `get_size();` due to~~
@@ -67,7 +64,7 @@ https://lodev.org/cgtutor/raycasting.html
 14.	***HA:***	Draw interior of minimap
 15.	~~***HA:***	Figure out hook management for hook_num 46, see comments in `utils_hooks.c`~~
 16.	***HA:***	Figure out what is the hook num that detects clicking on window edges
-17.	***HA:***	Figure out XPM image for pause in center of screen
+17.	***HA:***	Figure out XPM image for pause in center of screen and implement removal
 
 `#CURRENT STATUS`
 
@@ -126,6 +123,29 @@ https://lodev.org/cgtutor/raycasting.html
 51.	New function to mimic `ft_strlen();` but adds +4 to the count for each tab found
 52.	Bug #6 Fixed, was due invalid write due to incorrect calculation in `get_tab_size();`
 53.	Added `xpm_images/` file with sample xpm images to discuss
+54.	New Function `init_xpm();` to init and store all xpm images placed in `window.c`
+55.	New function in `parse_layout.c` called `store_map();` & `**map` of `data->file`
+56.	New function `confg_count();` to count number of lines for `data->confg` & `data->map` in `parse_layout();`
+57.	Added Loading and implementation fo Pause Message on hitting `'m' hook number 64` in `key_hook_manage();`, yet to implement removal of Pause Message
+58.	Fixed leak in `store_map();` line 47, due starting iteration at `i = -1;` solution was to increment `i` before check `data->file[i]` in `while (++i < len && data->file[i])`
+59.	Deleted unnecessary file `utils_parse_ext.c`
+60.	Moved function call `parse_arg();` to function `check_map();` as clean-up of `main.c`
+61.	Added error message `status == 5` in `errors.c` for XPM Image loading failure
+62.	Added parameter `t_info *info` to function prototype `void err_return(int status, t_info *info);` and sending in `t_info *info` to all occuring function calls to free any allocated data within the structure in case of any error returns before exit
+63.	New function `store_confg_map();` which stores the map and the confg in their respective 2D Arrays
+64.	New File `utils_xpm.c` to hold all xpm related functions
+65.	Renamed `xpm_images/` to `imgs/`
+66.	New Function `init_minimap();` called in `init_window();` inits memory for `t_mini` structure to be used for initialising a new image for minimap and calling `mlx_get_data_addr();` to place image in main window for faster redrawing of minimap
+67.	Due to above, `draw_minimap();` completely refactored now only 1 function called within `mini_interior();` to draw interior
+68.	New Custom `pixel_put();` function for mini map called `mini_pixel_put();` uses `t_mini *mini` as struct pointer
+69.	Added new error message and status to `err_return();`, and removed print of `d->confg` from `check_map();`
+70.	New function prints layout content in `parse_layout();` called `print_xpm();`
+71.	Refactored `check_tabs();` and `squash_lines();` to reduce number of lines and fix extra removal of character from `check_tabs();`, `squash_lines();` now has 2 additional `else if` statements
+72.	Changed position of `PAUSE` image in window within function `key_hook_manage();` line `#44`
+73.	New file `utils_xpm.c` with function `opem_xpm();` uses `mlx_xpm_file_to_image();` to open all xpm images and store in `data->confg` called in `init_xpm();`
+74.	Added `&& i < len` line `#39` in `open_xpm();` to fix `bug #9`
+75.	Added new function  `free_struct_mini();` in `memory_mngmnt.c` to free struct `t_mini` and it's contents
+
 
 `MAK:	4 July 2022`
 

@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:24:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/06 21:35:03 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/08 13:47:13 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
 **	Reads and stores file contents using get_next_lines();
 **/
-static char	**extract_file(char *str, int size)
+static char	**extract_file(t_info *info, char *str, int size)
 {
 	char	*temp;
 	char	**out;
@@ -24,7 +24,7 @@ static char	**extract_file(char *str, int size)
 
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
-		err_return(0);
+		err_return(0, info);
 	out = (char **)ft_calloc(size + 1, sizeof(char *));
 	temp = (char *)ft_calloc(1, sizeof(char));
 	if (!temp || !out)
@@ -78,10 +78,10 @@ static int	ft_reading(t_info *info, char *str)
 	int		size;
 	char	**temp;
 
-	size = get_size(str);
+	size = get_size(info, str);
 	if (size <= 0)
-		err_return(1);
-	temp = extract_file(str, size);
+		err_return(1, info);
+	temp = extract_file(info, str, size);
 	if (!temp)
 		return (EXIT_FAILURE);
 	if (clean_file(info, temp))
@@ -100,18 +100,17 @@ void	check_map(t_info *info, char *str)
 	if (isdir(str) && ft_strchr(str, '.'))
 	{
 		if (compare_ext(str))
-			err_return(3);
+			err_return(3, info);
 	}
 	else
-		err_return(3);
+		err_return(3, info);
 	if (ft_reading(info, str))
-		err_return(1);
-	while (info->data->file[i])
-	{
-		if (ft_strchr(info->data->file[i], '\n'))
-			printf("file:	%s", info->data->file[i++]);
-		else
-			printf("file:	%s\n", info->data->file[i++]);
-	}
-	printf("Reading/Cleaning Complete\n");
+		err_return(1, info);
+	if (parse_arg(info->data->file, info))
+		err_return(3, info);
+	printf("\n");
+	while (info->data->map[i])
+		printf("Map	:	%s\n", info->data->map[i++]);
+	printf("\n");
+	printf("Reading/Cleaning and Parsing Complete\n");
 }

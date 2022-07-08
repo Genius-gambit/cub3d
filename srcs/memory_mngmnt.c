@@ -6,11 +6,25 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 20:02:35 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/04 21:05:08 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/08 17:11:40 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+static void	free_struct_mini(t_mini *mini)
+{
+	if (mini->addr)
+	{
+		free(mini->addr);
+		mini->addr = NULL;
+	}
+	if (mini)
+	{
+		free(mini);
+		mini = NULL;
+	}
+}
 
 static void	free_struct_img(t_img *img)
 {
@@ -56,6 +70,8 @@ void	free_data(t_info *info)
 		free_struct_img(info->image);
 	if (info->win)
 		mlx_destroy_window(info->mlx, info->win);
+	if (info->mini)
+		free_struct_mini(info->mini);
 	if (info->mouse)
 	{
 		free(info->mouse);

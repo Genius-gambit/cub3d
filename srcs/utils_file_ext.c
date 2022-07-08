@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 16:18:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/06 21:05:37 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/08 16:29:35 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,25 +62,18 @@ static char	*check_tabs(char *input)
 	int		j;
 	int		k;
 
-	i = 0;
+	i = -1;
 	j = 0;
-	temp = NULL;
-	if (input && ft_strchr(input, '\t'))
+	temp = (char *)ft_calloc(get_tab_size(input) + 1, sizeof(char));
+	while (++i > 0 && input[i])
 	{
-		temp = (char *)ft_calloc(get_tab_size(input) + 1, sizeof(char));
-		while (input[i])
-		{
-			k = j;
-			if (input[i] == '\t')
-				while (j < k + 4)
-					temp[j++] = ' ';
-			else
-				temp[j++] = input[i];
-			i++;
-		}
+		k = j;
+		if (input[i] == '\t')
+			while (j < k + 4)
+				temp[j++] = ' ';
+		else if (input[i] != '\n')
+			temp[j++] = input[i];
 	}
-	if (!temp)
-		temp = ft_strdup(input);
 	return (temp);
 }
 
@@ -100,8 +93,12 @@ char	**squash_lines(char **file, char **input)
 	{
 		if (!check_if_map(input[i]))
 			file[i] = squash(input[i]);
-		else
+		else if (ft_strchr(input[i], '\t'))
 			file[i] = check_tabs(input[i]);
+		else if (ft_strchr(input[i], '\n'))
+			file[i] = ft_substr(input[i], 0, ft_strlen(input[i]) - 1);
+		else
+			file[i] = ft_strdup(input[i]);
 		i++;
 	}
 	return (file);
