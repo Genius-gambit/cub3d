@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 19:43:20 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/08 17:17:11 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/08 18:28:35 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
 **	Custom Pixel Put for Minimap
 **/
-static void	mini_pixel_put(t_mini *mini, int x, int y, int rgb)
+void	mini_pixel_put(t_mini *mini, int x, int y, int rgb)
 {
 	char	*draw;
 
@@ -27,7 +27,7 @@ static void	mini_pixel_put(t_mini *mini, int x, int y, int rgb)
 **	Draws minimap interior
 *	TODO:	Draw miniature version of file map
 **/
-static void	mini_interior(t_mini *mini)
+static void	mini_interior(t_info *info, t_mini *mini)
 {
 	int	x;
 	int	y;
@@ -40,15 +40,16 @@ static void	mini_interior(t_mini *mini)
 			mini_pixel_put(mini, x++, y, 0x00606060);
 		y++;
 	}
+	draw_walls_player(info, mini);
 }
 
 /**
 **	Draws closer borders and calls function to draw
 **	Outer borders. Calls to draw minimap interior
 **/
-void	draw_minimap(t_mini *mini)
+void	draw_minimap(t_info *info, t_mini *mini)
 {
-	mini_interior(mini);
+	mini_interior(info, mini);
 }
 
 /**

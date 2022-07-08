@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:27:11 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/08 16:19:48 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/08 21:18:17 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	error_print(char *str)
 *	status == 4		Mlx Failed
 *	status == 5		XPM Load failed
 *	status == 6		Layout failed XPM and C and F
+*	status == 7		Malloc Failure
 **/
 void	err_return(int status, t_info *info)
 {
@@ -48,6 +49,8 @@ void	err_return(int status, t_info *info)
 		error_print("[5]:	ERROR: XPM Load Image Failure");
 	else if (status == 6)
 		error_print("[6]:	ERROR: Invalid Layout");
+	else if (status == 7)
+		error_print("[7]:	ERROR: Malloc Failure");
 	free_data(info);
 	exit (1);
 }

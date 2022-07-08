@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 18:06:53 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/05 19:48:09 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/08 21:19:50 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,6 @@ static void	draw_floor(t_info *info)
 **/
 void	ceiling_floor(t_info *info)
 {
-	int	limit;
-
-	limit = 540;
-	while (limit >= 0)
-	{
-		draw_ceiling(info);
-		limit--;
-	}
-	limit = 1080;
-	while (limit > 540)
-	{
-		draw_floor(info);
-		limit--;
-	}
+	draw_ceiling(info);
+	draw_floor(info);
 }
