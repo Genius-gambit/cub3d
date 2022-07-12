@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 16:18:58 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/08 16:29:35 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/12 15:03:13 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ static char	*check_tabs(char *input)
 	int		j;
 	int		k;
 
-	i = -1;
+	i = 0;
 	j = 0;
 	temp = (char *)ft_calloc(get_tab_size(input) + 1, sizeof(char));
-	while (++i > 0 && input[i])
+	while (input[i])
 	{
 		k = j;
 		if (input[i] == '\t')
@@ -73,6 +73,7 @@ static char	*check_tabs(char *input)
 				temp[j++] = ' ';
 		else if (input[i] != '\n')
 			temp[j++] = input[i];
+		i++;
 	}
 	return (temp);
 }

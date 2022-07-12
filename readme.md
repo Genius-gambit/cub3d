@@ -34,6 +34,7 @@ https://lodev.org/cgtutor/raycasting.html
 8.	***MAK:***	Parser returning invalid map on checking walls if any `0` is present, `line #13` in file.cub
 9.	~~***HA:***	xpm file opening failing~~
 10.	***HA:***	On full screen, pause causes window to turn red if window resized to full screen
+11.	~~***HA:***	Parser function `check_tabs();` had issue with iteration (Did I write this late night?) where `i = -1` and `while (++i > 0)`~~
 
 `#TODO:`
 
@@ -136,6 +137,9 @@ https://lodev.org/cgtutor/raycasting.html
 75.	Added new function  `free_struct_mini();` in `memory_mngmnt.c` to free struct `t_mini` and it's contents
 76.	New File `utils_mini_map.c`
 77.	New Struct `s_player` to save all player related data, also new function, `draw_player_walls();` to extract player position and future drawing of minimap in `mini_interior();` with 2 functions `find_player_array();` for Y and `find_player_index();` for X while also extracting Perspective
+78.	Bug fix `#11`
+79.	New function added to `libft` `ft_ismapicon();` to detect if character in string is a valid map character, now called in `check_if_map();`
+80.	New Approved map walls xpm images
 
 `MAK:	4 July 2022`
 

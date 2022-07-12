@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+         #
+#    By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/04 14:08:11 by makhtar           #+#    #+#              #
-#    Updated: 2022/07/01 01:16:08 by makhtar          ###   ########.fr        #
+#    Updated: 2022/07/12 14:59:17 by hawadh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS	= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c \
 	  ft_strlen.c ft_strmapi.c ft_strncmp.c \
 	  ft_strnstr.c ft_strrchr.c ft_strtrim.c \
 	  ft_substr.c ft_tolower.c ft_toupper.c ft_isspace.c \
-	  ft_ptrptrlen.c ft_strrmc.c ft_strcmp.c
+	  ft_ptrptrlen.c ft_strrmc.c ft_strcmp.c ft_ismapicon.c
 
 OBJS	= ${SRCS:.c=.o}
 
