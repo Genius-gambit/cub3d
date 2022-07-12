@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/08 21:19:53 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/12 23:47:31 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CUB_H
 # define TRUE 1
 # define FALSE 0
+# define WIDTH 1920
+# define HEIGHT 1080
 
 # include <unistd.h>
 # include <fcntl.h>
@@ -37,6 +39,17 @@ typedef struct s_player
 	int		y_pos;
 	int		x_pos;
 }	t_player;
+
+typedef struct s_xpm
+{
+	void	*img;
+	char	*addr;
+	int		bitspix;
+	int		len;
+	int		end;
+	int		wi;
+	int		hi;
+}	t_xpm;
 
 /**
 **	Minimap image address
@@ -113,6 +126,7 @@ typedef struct s_data
 	char	*east_xpm;
 	char	*west_xpm;
 	char	*pause;
+	t_xpm	*xpm;
 	t_floor	floor;
 	t_ceil	ceil;
 }	t_data;
@@ -184,20 +198,23 @@ void	draw_cursor(t_info *info);
 void	draw_map(t_info *info);
 void	ceiling_floor(t_info *info);
 void	draw_minimap(t_info *info, t_mini *mini);
-int		call_draw_cursor(void *info);
+
+/**
+**	player struct functions
+**/
+
+void	init_player(t_info *info);
 
 /**
 **	Mini-map functions
 **/
 void	init_minimap(t_info *info);
 void	mini_pixel_put(t_mini *mini, int x, int y, int rgb);
-void	draw_walls_player(t_info *info, t_mini *mini);
-float	calc_iteration(float x);
 
 /**
 **	XPM Functions 
 **/
-int		open_xpm(t_info *inf, t_data *d, size_t len);
+int		init_xpm(t_info *info, t_data *data);
 
 /**
 **	RGB Functions

@@ -140,6 +140,10 @@ https://lodev.org/cgtutor/raycasting.html
 78.	Bug fix `#11`
 79.	New function added to `libft` `ft_ismapicon();` to detect if character in string is a valid map character, now called in `check_if_map();`
 80.	New Approved map walls xpm images
+81.	Implemented Colour bit Masking, and renamed file `utils_mini_map.c` into `player.c` and renamed function `draw_walls_player();` to `init_player`
+82.	New function in `window.c` called `init_all();`, calls all `init?????();` functions before drawing and pushing to window`
+83.	Refactored `open_xpm();` and new function `get_xpm_addr();` to extract addresses of each xpm file for later use in merging with main image
+84.	Added `# define WIDTH 1920` and `# define HEIGHT 1080` in `cub.h` and then spent the last 3 hours wondering why the window wouldn't open because I had uninitialised variables in the window height and width...
 
 `MAK:	4 July 2022`
 

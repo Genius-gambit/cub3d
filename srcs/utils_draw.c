@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 18:06:53 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/08 21:19:50 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/12 18:12:59 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,6 @@ static void	draw_floor(t_info *info)
 
 /**
 **	Loops for drawing Ceiling and Floor
-*	Decrementing:
-*	limit = 540;	To stop ceiling halfway
-*	limit = 1080;	To stop floor halfway
 **/
 void	ceiling_floor(t_info *info)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config_xpm.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makhtar <makhtar@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:17:51 by makhtar           #+#    #+#             */
-/*   Updated: 2022/07/05 11:14:11 by makhtar          ###   ########.fr       */
+/*   Updated: 2022/07/12 21:07:52 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,17 @@
 *	Return value is 0 if there is no error
 *	Return value is 1 if there is an error
 **/
-static int	error_fds(char *str, t_info *info, const char *layout)
+static int	xpm_store(char *str, t_info *info, const char *layout)
 {
-	/*int		fd;
-	int		ret;
-	char	buf[2];
-
-	fd = open(str, O_RDONLY);
-	if (fd == -1)
-		return (1);
-	ret = read(fd, buf, 1);
-	if (ret == -1)
-	{
-		close(fd);
-		return (1);
-	}
-	close(fd);*/
 	if (!ft_strcmp(layout, "NO"))
-		info->data->north_xpm = ft_strdup(str);
+		info->data->confg[0] = ft_strdup(str);
 	else if (!ft_strcmp(layout, "SO"))
-		info->data->south_xpm = ft_strdup(str);
-	else if (!ft_strcmp(layout, "EA"))
-		info->data->east_xpm = ft_strdup(str);
+		info->data->confg[1] = ft_strdup(str);
 	else if (!ft_strcmp(layout, "WE"))
-		info->data->west_xpm = ft_strdup(str);
-	return (0);
+		info->data->confg[2] = ft_strdup(str);
+	else if (!ft_strcmp(layout, "EA"))
+		info->data->confg[3] = ft_strdup(str);
+	return (EXIT_SUCCESS);
 }
 
 /**
@@ -59,7 +45,7 @@ int	check_xpm_ext(char *str, const char *layout, t_info *info)
 		tmp = ft_strrchr(str, '.');
 		if (!ft_strcmp(tmp, ".xpm"))
 		{
-			if (error_fds(str, info, layout))
+			if (xpm_store(str, info, layout))
 				return (1);
 			return (0);
 		}
