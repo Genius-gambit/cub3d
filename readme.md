@@ -46,10 +46,10 @@ https://lodev.org/cgtutor/raycasting.html
 6.	~~***HA:***	Debug segfault in `get_size();` due to~~
 7.	~~***HA:***	Double check space stripping in squash~~
 8.	~~***MAK:***	Declare a new structure to fetch the info and place it in the main root of the structure which will work on every aspect of the program.~~
-9.	***HA:***	Study Raycasting
+9.	~~***HA:***	Study Raycasting~~
 10.	~~***HA:***	Discuss images to be used with **`MA`**~~
 11.	~~***HA:***	Figure out correct drawing and following of mouse cursor~~
-12.	***MAK:***	Take xpm files and read it to check if the file reading is working perfectly or not.
+12.	~~***MAK:***	Take xpm files and read it to check if the file reading is working perfectly or not.~~
 13.	***MAK:***	Time for raycasting math to solve.
 14.	***HA:***	Draw interior of minimap
 15.	~~***HA:***	Figure out hook management for hook_num 46, see comments in `utils_hooks.c`~~
@@ -143,7 +143,10 @@ https://lodev.org/cgtutor/raycasting.html
 81.	Implemented Colour bit Masking, and renamed file `utils_mini_map.c` into `player.c` and renamed function `draw_walls_player();` to `init_player`
 82.	New function in `window.c` called `init_all();`, calls all `init?????();` functions before drawing and pushing to window`
 83.	Refactored `open_xpm();` and new function `get_xpm_addr();` to extract addresses of each xpm file for later use in merging with main image
-84.	Added `# define WIDTH 1920` and `# define HEIGHT 1080` in `cub.h` and then spent the last 3 hours wondering why the window wouldn't open because I had uninitialised variables in the window height and width...
+84.	Added `# define WIDTH 1920` and `# define HEIGHT 1080` in `cub.h`
+85.	New Struct `s_xpm` in array to contain all image data, with new Enum to contain `NO`, `SO`, `WE`, `EA`
+86.	Added free for `data->xpm` struct in `memory_mngmnt.c` and moved `free_split();` to new `utils_memory_mngmnt.c`
+87.	Two new Functions in `draw.c` called `place_xpm();` and `add_xpm();`; Function `place_xpm();` to determine initial player orientation, and `add_xpm();` draws the image to main image address
 
 `MAK:	4 July 2022`
 

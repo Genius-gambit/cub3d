@@ -3,7 +3,7 @@ SO ./imgs/southWall.xpm
 WE ./imgs/westWall.xpm
 EA ./imgs/eastWall.xpm
 
-F 127,127,127
+F 100,100,100
 C 53,180,220
 
 	 111

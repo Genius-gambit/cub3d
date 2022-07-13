@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/12 23:47:31 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/13 18:17:05 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,21 @@
 # include "../libft/libft.h"
 # include "../minilibx_opengl/mlx.h"
 # include "../get_next_line/get_next_line.h"
+
+/**
+**	ENUM for Compass perspective of Player
+*	NO	0	NORTH
+*	SO	1	SOUTH
+*	WE	2	WEST
+*	EA	3	EAST
+**/
+typedef enum e_compass
+{
+	NO,
+	SO,
+	WE,
+	EA,
+}	t_pers;
 
 /**
 **	Player Structure
@@ -108,10 +123,6 @@ typedef struct s_ceil
 *	file		file contents
 *	map			map contents
 *	confg		Below config during mlx_xpm_file_to_image();
-*	NO			north_xpm;
-*	SO			south_xpm
-*	WE			west_xpm;
-*	EA			East_xpm;
 *	pause		Pause image
 *	floor		RGB of floor
 *	ceiling		RGB of ceiling
@@ -121,10 +132,6 @@ typedef struct s_data
 	char	**file;
 	char	**map;
 	char	**confg;
-	char	*north_xpm;
-	char	*south_xpm;
-	char	*east_xpm;
-	char	*west_xpm;
 	char	*pause;
 	t_xpm	*xpm;
 	t_floor	floor;

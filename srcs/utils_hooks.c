@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:28:36 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/12 18:26:55 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/13 19:26:25 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ int	key_hook_manage(int hook_num, t_info *info)
 			info->mouse->flag = 1;
 		}
 		else if (info->mouse->flag == 1)
+		{
 			info->mouse->flag = 0;
+			// mlx_clear_window(info->mlx, info->win);
+		}
 	}
 	return (EXIT_SUCCESS);
 }

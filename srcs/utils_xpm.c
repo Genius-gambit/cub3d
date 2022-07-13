@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:06:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/12 23:47:42 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/13 18:18:07 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@ static void	get_xpm_addr(t_info *info, t_xpm *xpm, char *xpm_str)
 		err_return(5, info);
 	xpm->addr = mlx_get_data_addr(xpm->img, &xpm->bitspix,
 			&xpm->len, &xpm->end);
+	if (!xpm->addr)
+		err_return(4, info);
 }
 
 /**
 **	Opens xpm layout images and stores them within
-*	data->confg		NO, SO, WE, EA
+*	data->confg		[0] == NO, [1] == SO, [2] == WE, [3] == EA
 *	data->pause		Fixed image ./imgs/pause.xpm
 **/
 static int	open_xpm(t_info *info, t_data *data, size_t len)
@@ -39,7 +41,7 @@ static int	open_xpm(t_info *info, t_data *data, size_t len)
 	data->xpm = (t_xpm *)ft_calloc(4, sizeof(t_xpm));
 	while (i < len)
 	{
-		if (i <= 3)
+		if (i < 4)
 			get_xpm_addr(info, &data->xpm[i], data->confg[i]);
 		if (i > 3)
 			data->confg[i] = ft_strdup(data->file[i]);
