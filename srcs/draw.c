@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 09:28:29 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/13 19:28:46 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/13 21:19:38 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,23 @@ static void	add_xpm(t_info *info, t_xpm *xpm)
 {
 	int	y;
 	int	x;
-	int	limit_x;
-	int	limit_y;
+	int	xpm_y;
+	int	xpm_x;
 
-	x = 540;
 	y = 200;
-	limit_x = x + xpm->wi;
-	limit_y = y + xpm->hi;
-	while (y < limit_y)
+	xpm_y = 0;
+	while (xpm_y < xpm->hi)
 	{
 		x = 640;
-		while (x < limit_x)
+		xpm_x = 0;
+		while (xpm_x < xpm->wi)
 		{
-			info->image->addr[x + 4 * (WIDTH * y)]
-				= xpm->addr[x + 4 * (64 * y)];
+			info->image->addr[(x * 4) + 4 * (WIDTH * y)]
+				= xpm->addr[(xpm_x * 4) + 4 * (xpm->wi * xpm_y)];
+			xpm_x++;
 			x++;
 		}
+		xpm_y++;
 		y++;
 	}
 }

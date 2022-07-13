@@ -35,6 +35,8 @@ https://lodev.org/cgtutor/raycasting.html
 9.	~~***HA:***	xpm file opening failing~~
 10.	***HA:***	On full screen, pause causes window to turn red if window resized to full screen
 11.	~~***HA:***	Parser function `check_tabs();` had issue with iteration (Did I write this late night?) where `i = -1` and `while (++i > 0)`~~
+12.	***HA:***	in `add_xpm();` image not placing in correct colours or alpha
+13.	***HA:***	Map not redrawing on clearing window when hitting pause button a second time
 
 `#TODO:`
 
@@ -53,12 +55,12 @@ https://lodev.org/cgtutor/raycasting.html
 13.	***MAK:***	Time for raycasting math to solve.
 14.	***HA:***	Draw interior of minimap
 15.	~~***HA:***	Figure out hook management for hook_num 46, see comments in `utils_hooks.c`~~
-16.	***HA:***	Figure out what is the hook num that detects clicking on window edges
+16.	***HA:***	Figure out what is the event that detects clicking on window edges
 17.	***HA:***	Figure out XPM image for pause in center of screen and implement removal
 
 `#CURRENT STATUS`
 
-`HA:	4 Jul 2022`
+`HA:	13 Jul 2022`
 
 1.	New files to split functions `parse_file.c`, `errors.c`, `parse_file.c`
 2.	Added .gitignore
@@ -147,6 +149,9 @@ https://lodev.org/cgtutor/raycasting.html
 85.	New Struct `s_xpm` in array to contain all image data, with new Enum to contain `NO`, `SO`, `WE`, `EA`
 86.	Added free for `data->xpm` struct in `memory_mngmnt.c` and moved `free_split();` to new `utils_memory_mngmnt.c`
 87.	Two new Functions in `draw.c` called `place_xpm();` and `add_xpm();`; Function `place_xpm();` to determine initial player orientation, and `add_xpm();` draws the image to main image address
+88.	New Pause button `'p' == hook_num 35`
+89.	Implemented correct method of adding xpm address to img
+90.	Added `mlx_clear_window();` for pause removal. See bug #13
 
 `MAK:	4 July 2022`
 

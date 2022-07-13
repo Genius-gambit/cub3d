@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:28:36 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/13 19:26:25 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/13 21:19:37 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	esc_win(t_info *info)
 /**
 **	To manage key hooks (presses)
 *	hook_num == 53			ESC
-*	hook_num == 46			'm' (release mouse)
+*	hook_num == 35			'p' (release mouse)
 *	mouse->flag == 0;		Hide and reposition mouse
 *	mouse->flag == 1;		Show and release mouse
 **/
@@ -36,7 +36,7 @@ int	key_hook_manage(int hook_num, t_info *info)
 		esc_win(info);
 		exit(0);
 	}
-	if (hook_num == 46)
+	if (hook_num == 35)
 	{
 		if (info->mouse->flag == 0)
 		{
@@ -48,7 +48,7 @@ int	key_hook_manage(int hook_num, t_info *info)
 		else if (info->mouse->flag == 1)
 		{
 			info->mouse->flag = 0;
-			// mlx_clear_window(info->mlx, info->win);
+			mlx_clear_window(info->mlx, info->win);
 		}
 	}
 	return (EXIT_SUCCESS);
