@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/13 18:17:05 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/14 21:11:03 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_xpm
 	int		end;
 	int		wi;
 	int		hi;
+	int		divisible;
 }	t_xpm;
 
 /**
@@ -93,9 +94,9 @@ typedef struct s_image
 **/
 typedef struct s_mouse
 {
-	int	flag;
-	int	y;
-	int	x;
+	int		flag;
+	int		y;
+	int		x;
 }	t_mouse;
 
 /**

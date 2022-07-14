@@ -22,7 +22,7 @@ https://lodev.org/cgtutor/raycasting.html
 
 ```
 
-`#BUGS: #8, #10`
+`#BUGS: #10, #12`
 
 1.	~~***HA:***	Segfaul in `get_next_line();` due to `ft_strchr();` in `libft`~~
 2.	~~***HA:***	Function parses whole file, should stop at first line of map~~
@@ -31,12 +31,12 @@ https://lodev.org/cgtutor/raycasting.html
 5.	~~***HA:***	Crosshair was not drawing~~
 6.	~~***HA:***	Map printed with extra spaces~~
 7.	~~***HA:***	Memory leak in `parse_layout();` in my function `store_confg_map();` line `#47`~~
-8.	***MAK:***	Parser returning invalid map on checking walls if any `0` is present, `line #13` in file.cub
+8.	~~***MAK:***	Parser returning invalid map on checking walls if any `0` is present, `line #13` in file.cub~~
 9.	~~***HA:***	xpm file opening failing~~
 10.	***HA:***	On full screen, pause causes window to turn red if window resized to full screen
 11.	~~***HA:***	Parser function `check_tabs();` had issue with iteration (Did I write this late night?) where `i = -1` and `while (++i > 0)`~~
-12.	***HA:***	in `add_xpm();` image not placing in correct colours or alpha
-13.	***HA:***	Map not redrawing on clearing window when hitting pause button a second time
+12.	***HA:***	in `add_xpm();` image not placing in only Blue
+13.	~~***HA:***	Map not redrawing on clearing window when hitting pause button a second time~~
 
 `#TODO:`
 
@@ -152,6 +152,9 @@ https://lodev.org/cgtutor/raycasting.html
 88.	New Pause button `'p' == hook_num 35`
 89.	Implemented correct method of adding xpm address to img
 90.	Added `mlx_clear_window();` for pause removal. See bug #13
+91.	New Variable `xpm->divisible` to determine size of walls
+92.	New function to hold Pause code `handle_pause();` located in `utils_hooks.c`
+93.	Refactored `add_xpm();` with correct iteration of image `char *`, still not drawing correctly
 
 `MAK:	4 July 2022`
 
