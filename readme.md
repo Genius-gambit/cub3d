@@ -56,7 +56,7 @@ https://lodev.org/cgtutor/raycasting.html
 14.	***HA:***	Draw interior of minimap
 15.	~~***HA:***	Figure out hook management for hook_num 46, see comments in `utils_hooks.c`~~
 16.	***HA:***	Figure out what is the event that detects clicking on window edges
-17.	***HA:***	Figure out XPM image for pause in center of screen and implement removal
+17.	~~***HA:***	Figure out XPM image for pause in center of screen and implement removal~~
 
 `#CURRENT STATUS`
 
@@ -155,6 +155,7 @@ https://lodev.org/cgtutor/raycasting.html
 91.	New Variable `xpm->divisible` to determine size of walls
 92.	New function to hold Pause code `handle_pause();` located in `utils_hooks.c`
 93.	Refactored `add_xpm();` with correct iteration of image `char *`, still not drawing correctly
+94.	Started mini map drawing, see `mini_map.c` and file `utils_mini_math.c` renamed to `utils_minimap.c`
 
 `MAK:	4 July 2022`
 

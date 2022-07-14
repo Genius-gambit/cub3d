@@ -6,7 +6,7 @@
 #    By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/21 16:36:51 by hawadh            #+#    #+#              #
-#    Updated: 2022/07/13 13:43:49 by hawadh           ###   ########.fr        #
+#    Updated: 2022/07/14 21:32:50 by hawadh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,7 @@ SRCS		=	./srcs/main.c ./srcs/parse_file.c ./srcs/errors.c \
 				./srcs/parse_layout.c ./srcs/parse_map.c ./srcs/get_rgb.c \
 				./srcs/config_xpm.c ./srcs/place_rgb.c ./srcs/rgb.c \
 				./srcs/utils_draw.c ./srcs/mini_map.c ./srcs/utils_xpm.c \
-				./srcs/player.c ./srcs/utils_mini_math.c \
-				./srcs/utils_memory_mngmnt.c
+				./srcs/player.c ./srcs/utils_minimap.c ./srcs/utils_memory_mngmnt.c
 
 
 MLX			=	libmlx.a

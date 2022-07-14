@@ -1,7 +1,7 @@
-NO ./imgs/northWall.xpm
-SO ./imgs/southWall.xpm
-WE ./imgs/westWall.xpm
-EA ./imgs/eastWall.xpm
+NO ../imgs/northWall.xpm
+SO ../imgs/southWall.xpm
+WE ../imgs/westWall.xpm
+EA ../imgs/eastWall.xpm
 
 F 100,100,100
 C 53,180,220
