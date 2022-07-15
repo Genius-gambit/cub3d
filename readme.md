@@ -57,6 +57,7 @@ https://lodev.org/cgtutor/raycasting.html
 15.	~~***HA:***	Figure out hook management for hook_num 46, see comments in `utils_hooks.c`~~
 16.	***HA:***	Figure out what is the event that detects clicking on window edges
 17.	~~***HA:***	Figure out XPM image for pause in center of screen and implement removal~~
+18.	***HA:***	Correctly implement # 13
 
 `#CURRENT STATUS`
 
@@ -162,6 +163,7 @@ https://lodev.org/cgtutor/raycasting.html
 98.	Changed size of minimap image from `260x185` to `185x185` and moved function `mini_interior();` to `utils_minimap.c`
 99.	Added new `# define MINI_SCALE 29` for minimap scaling and new variable `data->gun`
 100. New Wall images Implemented
+101. Attempting new algorithm in `mini_interior();` WIP
 
 `MAK:	4 July 2022`
 

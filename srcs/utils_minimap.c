@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 19:44:52 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/15 19:39:33 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/15 19:51:11 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
 **	Draws walls on minimap
 **/
-/* static  */void	draw_mini_walls(t_mini *mini, int x, int y, int rgb)
+static void	draw_mini_walls(t_mini *mini, int x, int y, int rgb)
 {
 	int	y_one;
 	int	x_one;
@@ -89,27 +89,40 @@ static void	draw_square(t_mini *mini, int x, int y, int rgb)
 **/
 void	mini_interior(t_info *info, t_mini *mini)
 {
-	// int	y;
-	// int	x;
-	// int	i;
-	// int	j;
-	(void)info;
+	int	y;
+	int	x;
+	int	i;
+	int	j;
+
 	draw_mini_player(mini, 85, 85, 0x003D8758);
 	draw_square(mini, 78, 78, 0x00FFFFFF);
-	// i = info->player->y_pos;
-	// y = 108;
-	// while (info->data->map[i])
-	// {
-	// 	j = info->player->x_pos;
-	// 	x = 108;
-	// 	while (info->data->map[i][j])
-	// 	{
-	// 		if (info->data->map[i][j] == '1')
-				// draw_mini_walls(mini, x, y, 0x00000000);
-	// 		j++;
-	// 		x += MINI_SCALE;
-	// 	}
-	// 	i++;
-	// 	y += MINI_SCALE;
-	// }
+	i = info->player->y_pos;
+	y = 108;
+	while (info->data->map[i])
+	{
+		j = info->player->x_pos;
+		x = 108;
+		while (info->data->map[i][j])
+		{
+			j--;
+			x -= MINI_SCALE;
+		}
+		i++;
+		y -= MINI_SCALE;
+	}
+	i = 0;
+	while (info->data->map[i])
+	{
+		j = 0;
+		while (info->data->map[i][j])
+		{
+			if (x > 3 && x < 182 && y > 3 && y < 182)
+				if (info->data->map[i][j] == '1')
+					draw_mini_walls(mini, x, y, 0x00000000);
+			x += MINI_SCALE;
+			j++;
+		}
+		y += MINI_SCALE;
+		i++;
+	}
 }
