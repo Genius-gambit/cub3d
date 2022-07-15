@@ -22,7 +22,7 @@ https://lodev.org/cgtutor/raycasting.html
 
 ```
 
-`#BUGS: #10, #12`
+`#BUGS: NULL`
 
 1.	~~***HA:***	Segfaul in `get_next_line();` due to `ft_strchr();` in `libft`~~
 2.	~~***HA:***	Function parses whole file, should stop at first line of map~~
@@ -33,9 +33,9 @@ https://lodev.org/cgtutor/raycasting.html
 7.	~~***HA:***	Memory leak in `parse_layout();` in my function `store_confg_map();` line `#47`~~
 8.	~~***MAK:***	Parser returning invalid map on checking walls if any `0` is present, `line #13` in file.cub~~
 9.	~~***HA:***	xpm file opening failing~~
-10.	***HA:***	On full screen, pause causes window to turn red if window resized to full screen
+10.	~~***HA:***	On full screen, pause causes window to turn red if window resized to full screen~~
 11.	~~***HA:***	Parser function `check_tabs();` had issue with iteration (Did I write this late night?) where `i = -1` and `while (++i > 0)`~~
-12.	***HA:***	in `add_xpm();` image not placing in only Blue
+12.	~~***HA:***	in `add_xpm();` image not placing in only Blue~~
 13.	~~***HA:***	Map not redrawing on clearing window when hitting pause button a second time~~
 
 `#TODO:`
@@ -156,6 +156,12 @@ https://lodev.org/cgtutor/raycasting.html
 92.	New function to hold Pause code `handle_pause();` located in `utils_hooks.c`
 93.	Refactored `add_xpm();` with correct iteration of image `char *`, still not drawing correctly
 94.	Started mini map drawing, see `mini_map.c` and file `utils_mini_math.c` renamed to `utils_minimap.c`
+95.	New XPM image implemented `Ak47.xpm` for weapon, and new images for `NO SO WE EA`
+96.	Buf #12 FIXED, now correctly implementing copying of image pixels with colours to main image window via `char *`, also added `wi - 4` && `hi - 4` to avoid invalid read within images
+97.	Currently working on and implementing of drawing interior contents of minimap, with 2 new functions, `draw_mini_player();` which draws player in centre of minimap (Currently white square also drawn around to figure out scaling) and `draw_mini_walls();` to attempt to draw walls in respective positions in the minimap.
+98.	Changed size of minimap image from `260x185` to `185x185` and moved function `mini_interior();` to `utils_minimap.c`
+99.	Added new `# define MINI_SCALE 29` for minimap scaling and new variable `data->gun`
+100. New Wall images Implemented
 
 `MAK:	4 July 2022`
 

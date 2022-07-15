@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 19:43:20 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/14 22:54:02 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/15 19:25:50 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,56 +23,6 @@ void	mini_pixel_put(t_mini *mini, int x, int y, int rgb)
 	*(unsigned int *)draw = rgb;
 }
 
-// static void	draw_mini_walls(t_mini *mini, int x, int y)
-// {
-// 	int	x_one;
-// 	int	y_one;
-
-// 	y_one = y * 5;
-// 	while (y < y_one)
-// 	{
-// 		if (x == 0)
-// 			x = 1;
-// 		x_one = x * 5;
-// 		while (x < x_one)
-// 		{
-// 			if (y < 182 && y > 3 && x < 257 && x > 3)
-// 				mini_pixel_put(mini, x, y, 0x00F0F0F0);
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// }
-
-/**
-**	Draws minimap interior
-*	TODO:	Draw miniature version of file map
-**/
-static void	mini_interior(t_info *info, t_mini *mini)
-{
-	int	i;
-	int	j;
-	int	x;
-	int	y;
-
-	i = 0;
-	y = 0;
-	(void)mini;
-	while (info->data->map[i])
-	{
-		j = 0;
-		x = 0;
-		while (info->data->map[i][j])
-		{
-			// if (info->data->map[i][j] == '1')
-			// 	draw_mini_walls(mini, x++, y);
-			j++;
-		}
-		i++;
-		y++;
-	}
-}
-
 /**
 **	Draws closer borders and calls function to draw
 **	Outer borders. Calls to draw minimap interior
@@ -87,8 +37,13 @@ void	draw_minimap(t_info *info, t_mini *mini)
 	while (y < 182)
 	{
 		x = 3;
-		while (x < 257)
-			mini_pixel_put(mini, x++, y, 0x00606060);
+		while (x < 182)
+		{
+			while (x > 85 && x < 101 && y > 85 && y < 101)
+				x++;
+			mini_pixel_put(mini, x, y, 0x00606060);
+			x++;
+		}
 		y++;
 	}
 	mini_interior(info, mini);
@@ -104,7 +59,7 @@ void	init_minimap(t_info *info)
 
 	mini = (t_mini *)ft_calloc(1, sizeof(t_mini));
 	info->mini = mini;
-	info->mini_map = mlx_new_image(info->mlx, 260, 185);
+	info->mini_map = mlx_new_image(info->mlx, 185, 185);
 	if (!info->mini_map)
 	{
 		free_data(info);

@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 11:48:10 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/12 23:47:49 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/15 15:27:03 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ int	init_window(t_info *info)
 	hook_management(info);
 	draw_map(info);
 	mlx_put_image_to_window(info->mlx, info->win, info->img, 0, 0);
-	mlx_put_image_to_window(info->mlx, info->win, info->mini_map, 20, 20);
+	mlx_put_image_to_window(info->mlx, info->win, info->data->gun, 840, 520);
+	mlx_put_image_to_window(info->mlx, info->win, info->mini_map, 30, 30);
 	mlx_loop(info->mlx);
 	return (EXIT_SUCCESS);
 }

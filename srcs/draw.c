@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 09:28:29 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/14 22:45:07 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/15 19:29:50 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,22 @@ static void	add_xpm(t_info *info, t_xpm *xpm, int x, int y)
 	int	x_reset;
 	int	xpm_y;
 	int	xpm_x;
+	int	i;
 
 	xpm_y = 0;
-	while (xpm_y < xpm->hi / xpm->divisible)
+	while (xpm_y < xpm->hi - 4)
 	{
 		x_reset = x;
 		xpm_x = 0;
-		while (xpm_x < xpm->wi / xpm->divisible)
+		while (xpm_x < xpm->wi - 4)
 		{
-			info->image->addr[(x_reset * 4) + 4 * (WIDTH * y)]
-				= xpm->addr[(xpm_x * 4) + 4 * (xpm->wi * xpm_y)];
+			i = 0;
+			while (i < 4)
+			{
+				info->image->addr[((x_reset * 4) + 4 * (WIDTH * y)) + i]
+					= xpm->addr[((xpm_x * 4) + 4 * (xpm->wi * xpm_y)) + i];
+				i++;
+			}
 			xpm_x++;
 			x_reset++;
 		}
@@ -53,7 +59,7 @@ static void	add_xpm(t_info *info, t_xpm *xpm, int x, int y)
 /**
 **	Calls xpm struct based on player orientation at start
 **/
-static void	place_xpm(t_info *info, t_data *data)
+/* static  */void	place_xpm(t_info *info, t_data *data)
 {
 	int	y;
 	int	x;
@@ -78,7 +84,7 @@ static void	place_xpm(t_info *info, t_data *data)
 void	draw_map(t_info *info)
 {
 	ceiling_floor(info);
-	place_xpm(info, info->data);
+	// place_xpm(info, info->data);
 	draw_minimap(info, info->mini);
 	init_cursor(info);
 }

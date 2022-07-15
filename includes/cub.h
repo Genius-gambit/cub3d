@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/14 21:11:03 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/15 19:26:41 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define FALSE 0
 # define WIDTH 1920
 # define HEIGHT 1080
+# define MINI_SCALE 29
 
 # include <unistd.h>
 # include <fcntl.h>
@@ -134,6 +135,7 @@ typedef struct s_data
 	char	**map;
 	char	**confg;
 	char	*pause;
+	char	*gun;
 	t_xpm	*xpm;
 	t_floor	floor;
 	t_ceil	ceil;
@@ -217,6 +219,7 @@ void	init_player(t_info *info);
 **	Mini-map functions
 **/
 void	init_minimap(t_info *info);
+void	mini_interior(t_info *info, t_mini *mini);
 void	mini_pixel_put(t_mini *mini, int x, int y, int rgb);
 
 /**

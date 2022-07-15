@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:06:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/14 22:52:49 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/15 16:31:39 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@ static int	open_xpm(t_info *info, t_data *data, size_t len)
 			data->confg[i] = ft_strdup(data->file[i]);
 		i++;
 	}
-	data->pause = mlx_xpm_file_to_image(info->mlx, "../imgs/pause.xpm", &x, &y);
-	if (!data->pause)
+	data->gun = mlx_xpm_file_to_image(info->mlx, "./imgs/Ak47.xpm", &x, &y);
+	data->pause = mlx_xpm_file_to_image(info->mlx, "./imgs/pause.xpm", &x, &y);
+	if (!data->pause || !data->gun)
 		err_return(5, info);
 	return (EXIT_SUCCESS);
 }

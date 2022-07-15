@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:28:36 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/14 20:04:59 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/15 15:52:51 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static void	handle_pause(t_info *inf)
 		mlx_clear_window(inf->mlx, inf->win);
 		draw_map(inf);
 		mlx_put_image_to_window(inf->mlx, inf->win, inf->img, 0, 0);
-		mlx_put_image_to_window(inf->mlx, inf->win, inf->mini_map, 20, 20);
+		mlx_put_image_to_window(inf->mlx, inf->win, inf->data->gun, 840, 520);
+		mlx_put_image_to_window(inf->mlx, inf->win, inf->mini_map, 30, 30);
 	}
 }
 
