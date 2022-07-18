@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 09:28:29 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/15 19:29:50 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/18 22:09:00 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	add_xpm(t_info *info, t_xpm *xpm, int x, int y)
 /**
 **	Calls xpm struct based on player orientation at start
 **/
-/* static  */void	place_xpm(t_info *info, t_data *data)
+static void	place_xpm(t_info *info, t_data *data)
 {
 	int	y;
 	int	x;
@@ -84,7 +84,7 @@ static void	add_xpm(t_info *info, t_xpm *xpm, int x, int y)
 void	draw_map(t_info *info)
 {
 	ceiling_floor(info);
-	// place_xpm(info, info->data);
+	place_xpm(info, info->data);
 	draw_minimap(info, info->mini);
 	init_cursor(info);
 }

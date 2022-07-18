@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 13:41:18 by makhtar           #+#    #+#             */
-/*   Updated: 2022/07/04 18:24:10 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/18 21:00:14 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static int	valid_key(int c)
 		return ('S');
 	else if (c == 'E')
 		return ('E');
+	else if (c == 'M')
+		return ('M');
 	return (FALSE);
 }
 

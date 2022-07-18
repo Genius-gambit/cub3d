@@ -15,14 +15,12 @@
 ```
 ***NOTES:***
 
-TEST
-
 42Docs guide on raycasting:
 https://lodev.org/cgtutor/raycasting.html
 
 ```
 
-`#BUGS: NULL`
+`#BUGS: #15`
 
 1.	~~***HA:***	Segfaul in `get_next_line();` due to `ft_strchr();` in `libft`~~
 2.	~~***HA:***	Function parses whole file, should stop at first line of map~~
@@ -37,6 +35,8 @@ https://lodev.org/cgtutor/raycasting.html
 11.	~~***HA:***	Parser function `check_tabs();` had issue with iteration (Did I write this late night?) where `i = -1` and `while (++i > 0)`~~
 12.	~~***HA:***	in `add_xpm();` image not placing in only Blue~~
 13.	~~***HA:***	Map not redrawing on clearing window when hitting pause button a second time~~
+14.	~~***HA:***	Minimap skipping areas and not drawing in walls~~
+15. ***HA:***	Minimap not drawing walls when player is closer to left side of array
 
 `#TODO:`
 
@@ -52,16 +52,17 @@ https://lodev.org/cgtutor/raycasting.html
 10.	~~***HA:***	Discuss images to be used with **`MA`**~~
 11.	~~***HA:***	Figure out correct drawing and following of mouse cursor~~
 12.	~~***MAK:***	Take xpm files and read it to check if the file reading is working perfectly or not.~~
-13.	***MAK:***	Time for raycasting math to solve.
-14.	***HA:***	Draw interior of minimap
+13.	~~***MAK:***	Time for raycasting math to solve.~~
+14.	~~***HA:***	Draw interior of minimap~~
 15.	~~***HA:***	Figure out hook management for hook_num 46, see comments in `utils_hooks.c`~~
 16.	***HA:***	Figure out what is the event that detects clicking on window edges
 17.	~~***HA:***	Figure out XPM image for pause in center of screen and implement removal~~
-18.	***HA:***	Correctly implement # 13
+18.	~~***HA:***	Correctly implement # 14~~
+19.	***HA:***	Fix minimap drawing to draw when player is closer to left side of array coords, possibly due coords calculation making coords negative and invalid read
 
 `#CURRENT STATUS`
 
-`HA:	13 Jul 2022`
+`HA:	18 Jul 2022`
 
 1.	New files to split functions `parse_file.c`, `errors.c`, `parse_file.c`
 2.	Added .gitignore
@@ -164,6 +165,12 @@ https://lodev.org/cgtutor/raycasting.html
 99.	Added new `# define MINI_SCALE 29` for minimap scaling and new variable `data->gun`
 100. New Wall images Implemented
 101. Attempting new algorithm in `mini_interior();` WIP
+102. Removed `TRUE FALSE` from `cub.h` since it already exists in `libft.h`
+103. Minimap fully functional, refactored `mini_intrior();` and 2 new functions `draw_mini_enemy();` and temporary function `draw_square();` for scaling testing confirmation
+104. Moved function `draw_mini_player();` and `draw_square();`
+105. Added acceptable character in `valid_key();` in `parse_map.c` character `'m'` for enemies, `line #32 -> #33`
+106. Refactored scaling and sizes of mini-map drawing to fit player and map exact centre in minimap
+107. Swapped `EA` and `NO` walls images
 
 `MAK:	4 July 2022`
 

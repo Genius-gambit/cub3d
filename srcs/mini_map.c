@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 19:43:20 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/15 19:25:50 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/18 22:12:01 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,52 @@ void	mini_pixel_put(t_mini *mini, int x, int y, int rgb)
 }
 
 /**
+**	Draws Player at centre of minimap 
+**/
+static void	draw_mini_player(t_mini *mini, int x, int y, int rgb)
+{
+	int	x_reset;
+
+	while (y < 102)
+	{
+		x_reset = x;
+		while (x_reset < 102)
+		{
+			if (y == 85 || y == 101)
+				mini_pixel_put(mini, x_reset, y, 0x000E5227);
+			else if (x_reset == 85 || x_reset == 101)
+				mini_pixel_put(mini, x_reset, y, 0x000E5227);
+			else
+				mini_pixel_put(mini, x_reset, y, rgb);
+			x_reset++;
+		}
+		y++;
+	}
+}
+
+/**
+*!	TEMP FUNCTION 
+**/
+static void	draw_square(t_mini *mini, int x, int y, int rgb)
+{
+	int	x_reset;
+
+	while (y < 109)
+	{
+		x_reset = x;
+		while (x_reset < 109)
+		{
+			if (y == 78 || y == 108)
+				mini_pixel_put(mini, x_reset, y, rgb);
+			else if (x_reset == 78 || x_reset == 108)
+				mini_pixel_put(mini, x_reset, y, rgb);
+			x_reset++;
+		}
+		y++;
+	}
+}
+
+/**
 **	Draws closer borders and calls function to draw
 **	Outer borders. Calls to draw minimap interior
 **/
@@ -32,20 +78,21 @@ void	draw_minimap(t_info *info, t_mini *mini)
 	int	x;
 	int	y;
 
-	(void)info;
 	y = 3;
-	while (y < 182)
+	while (y < 183)
 	{
 		x = 3;
-		while (x < 182)
+		while (x < 183)
 		{
-			while (x > 85 && x < 101 && y > 85 && y < 101)
+			while (x > 85 && x < 102 && y > 85 && y < 102)
 				x++;
-			mini_pixel_put(mini, x, y, 0x00606060);
+			mini_pixel_put(mini, x, y, rgb(info->data, 1));
 			x++;
 		}
 		y++;
 	}
+	draw_mini_player(mini, 85, 85, 0x003D8758);
+	draw_square(mini, 78, 78, 0x00FFFFFF);
 	mini_interior(info, mini);
 }
 
@@ -59,7 +106,7 @@ void	init_minimap(t_info *info)
 
 	mini = (t_mini *)ft_calloc(1, sizeof(t_mini));
 	info->mini = mini;
-	info->mini_map = mlx_new_image(info->mlx, 185, 185);
+	info->mini_map = mlx_new_image(info->mlx, 186, 186);
 	if (!info->mini_map)
 	{
 		free_data(info);

@@ -6,78 +6,65 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 19:44:52 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/15 19:51:11 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/18 22:08:31 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
 /**
+**	Draws minimap Enemy symbol
+**/
+static void	draw_mini_enemy(t_mini *mini, int x, int y, int rgb)
+{
+	int	y_lmt;
+	int	y_brdr;
+	int	x_lmt;
+	int	x_rst;
+
+	y_brdr = y;
+	y_lmt = y + 15;
+	while (y < y_lmt)
+	{
+		x_rst = x;
+		x_lmt = x_rst + 15;
+		while (x_rst < x_lmt)
+		{
+			if (x_rst > 2 && x_rst < 183 && y > 2 && y < 183)
+			{
+				if (x_rst == x || x_rst == x_lmt - 1
+					|| y == y_lmt - 1 || y == y_brdr)
+					mini_pixel_put(mini, x_rst, y, 0x00660000);
+				else
+					mini_pixel_put(mini, x_rst, y, rgb);
+			}
+			x_rst++;
+		}
+		y++;
+	}
+}
+
+/**
 **	Draws walls on minimap
 **/
-static void	draw_mini_walls(t_mini *mini, int x, int y, int rgb)
+static void	draw_mini_walls(t_info *info, int x, int y, int rgb)
 {
 	int	y_one;
 	int	x_one;
-	int	x_reset;
+	int	x_rst;
+	int	y_strt;
 
-	y_one = y + MINI_SCALE;
+	y_strt = y;
+	y_one = y + MINI_SCALE - 1;
 	while (y < y_one)
 	{
-		x_one = x + MINI_SCALE;
-		x_reset = x;
-		while (x_reset < x_one)
+		x_one = x + MINI_SCALE - 1;
+		x_rst = x;
+		while (x_rst < x_one)
 		{
-			while (x_reset > 85 && x_reset < 100 && y > 85 && y < 100)
-				x_reset++;
-			mini_pixel_put(mini, x_reset, y, rgb);
-			x_reset++;
-		}
-		y++;
-	}
-}
-
-/**
-**	Draws Player at centre of minimap 
-**/
-static void	draw_mini_player(t_mini *mini, int x, int y, int rgb)
-{
-	int	x_reset;
-
-	while (y < 101)
-	{
-		x_reset = x;
-		while (x_reset < 101)
-		{
-			if (y == 85 || y == 100)
-				mini_pixel_put(mini, x_reset, y, 0x000E5227);
-			else if (x_reset == 85 || x_reset == 100)
-				mini_pixel_put(mini, x_reset, y, 0x000E5227);
-			else
-				mini_pixel_put(mini, x_reset, y, rgb);
-			x_reset++;
-		}
-		y++;
-	}
-}
-
-/**
-*!	TEMP FUNCTION 
-**/
-static void	draw_square(t_mini *mini, int x, int y, int rgb)
-{
-	int	x_reset;
-
-	while (y < 108)
-	{
-		x_reset = x;
-		while (x_reset < 108)
-		{
-			if (y == 78 || y == 107)
-				mini_pixel_put(mini, x_reset, y, rgb);
-			else if (x_reset == 78 || x_reset == 107)
-				mini_pixel_put(mini, x_reset, y, rgb);
-			x_reset++;
+			if (x_rst > 2 && x_rst < 183 && y > 2 && y < 183)
+				mini_pixel_put(info->mini, x_rst, y, rgb);
+			x_rst++;
 		}
 		y++;
 	}
@@ -89,36 +76,23 @@ static void	draw_square(t_mini *mini, int x, int y, int rgb)
 **/
 void	mini_interior(t_info *info, t_mini *mini)
 {
-	int	y;
-	int	x;
-	int	i;
-	int	j;
+	float	y;
+	float	x;
+	int		i;
+	int		j;
 
-	draw_mini_player(mini, 85, 85, 0x003D8758);
-	draw_square(mini, 78, 78, 0x00FFFFFF);
-	i = info->player->y_pos;
-	y = 108;
-	while (info->data->map[i])
+	i = info->player->y_pos - 3;
+	y = 94 - ((MINI_SCALE + 5) * 3);
+	while (i >= 0 && info->data->map[i] && y < 183)
 	{
-		j = info->player->x_pos;
-		x = 108;
-		while (info->data->map[i][j])
+		j = info->player->x_pos - 3;
+		x = 94 - ((MINI_SCALE + 5) * 3);
+		while (j >= 0 && info->data->map[i][j] && x < 183)
 		{
-			j--;
-			x -= MINI_SCALE;
-		}
-		i++;
-		y -= MINI_SCALE;
-	}
-	i = 0;
-	while (info->data->map[i])
-	{
-		j = 0;
-		while (info->data->map[i][j])
-		{
-			if (x > 3 && x < 182 && y > 3 && y < 182)
-				if (info->data->map[i][j] == '1')
-					draw_mini_walls(mini, x, y, 0x00000000);
+			if (info->data->map[i][j] == '1')
+				draw_mini_walls(info, x, y, 0x00000032);
+			else if (info->data->map[i][j] == 'M')
+				draw_mini_enemy(mini, x + 7, y + 7, 0x00990000);
 			x += MINI_SCALE;
 			j++;
 		}
