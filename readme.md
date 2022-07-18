@@ -15,7 +15,7 @@
 ```
 ***NOTES:***
 
------- Added new test.cub with valid map and configurations ------
+TEST
 
 42Docs guide on raycasting:
 https://lodev.org/cgtutor/raycasting.html
