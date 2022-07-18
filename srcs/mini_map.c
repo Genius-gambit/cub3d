@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 19:43:20 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/08 18:28:35 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/15 19:25:50 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,28 @@ void	mini_pixel_put(t_mini *mini, int x, int y, int rgb)
 }
 
 /**
-**	Draws minimap interior
-*	TODO:	Draw miniature version of file map
-**/
-static void	mini_interior(t_info *info, t_mini *mini)
-{
-	int	x;
-	int	y;
-
-	y = 3;
-	while (y < 182)
-	{
-		x = 3;
-		while (x < 257)
-			mini_pixel_put(mini, x++, y, 0x00606060);
-		y++;
-	}
-	draw_walls_player(info, mini);
-}
-
-/**
 **	Draws closer borders and calls function to draw
 **	Outer borders. Calls to draw minimap interior
 **/
 void	draw_minimap(t_info *info, t_mini *mini)
 {
+	int	x;
+	int	y;
+
+	(void)info;
+	y = 3;
+	while (y < 182)
+	{
+		x = 3;
+		while (x < 182)
+		{
+			while (x > 85 && x < 101 && y > 85 && y < 101)
+				x++;
+			mini_pixel_put(mini, x, y, 0x00606060);
+			x++;
+		}
+		y++;
+	}
 	mini_interior(info, mini);
 }
 
@@ -62,7 +59,7 @@ void	init_minimap(t_info *info)
 
 	mini = (t_mini *)ft_calloc(1, sizeof(t_mini));
 	info->mini = mini;
-	info->mini_map = mlx_new_image(info->mlx, 260, 185);
+	info->mini_map = mlx_new_image(info->mlx, 185, 185);
 	if (!info->mini_map)
 	{
 		free_data(info);

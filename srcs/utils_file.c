@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 17:09:10 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/04 21:11:56 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/12 14:59:34 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ int	check_if_map(char *input)
 	temp = input;
 	while (*temp)
 	{
-		if (!ft_isdigit(*temp) && !ft_isspace(*temp))
+		if (!ft_isdigit(*temp) && !ft_isspace(*temp) && !ft_ismapicon(*temp))
 			return (FALSE);
 		temp++;
 	}

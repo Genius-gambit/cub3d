@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 17:29:28 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/05 18:18:36 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/12 18:10:43 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,15 @@ size_t	rgb(t_data *data, int status)
 	rgb = 0x00FFFFFF;
 	if (status == 0)
 	{
-		rgb = (data->ceil.red + 1) * (data->ceil.green + 1)
-			* (data->ceil.blue + 1);
+		rgb += data->ceil.red << 16 & rgb;
+		rgb += data->ceil.green << 8 & rgb;
+		rgb += data->ceil.blue & rgb;
 	}
 	if (status == 1)
 	{
-		rgb = (data->floor.red + 1) * (data->floor.green + 1)
-			* (data->floor.blue + 1);
+		rgb += data->floor.red << 16 & rgb;
+		rgb += data->floor.green << 8 & rgb;
+		rgb += data->floor.blue & rgb;
 	}
 	return (rgb);
 }

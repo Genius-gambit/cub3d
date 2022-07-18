@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_mini_map.c                                   :+:      :+:    :+:   */
+/*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 17:49:05 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/08 19:10:35 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/12 20:20:38 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,8 @@ static int	find_player_array(char **map)
 /**
 **	To draw Walls and Player in Minimap
 **/
-void	draw_walls_player(t_info *inf, t_mini *mini)
+void	init_player(t_info *inf)
 {
-	(void)mini;
 	if (!inf->player)
 	{
 		inf->player = (t_player *)ft_calloc(1, sizeof(t_player));

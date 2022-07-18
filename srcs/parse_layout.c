@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:19:03 by makhtar           #+#    #+#             */
-/*   Updated: 2022/07/08 13:46:56 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/12 21:29:45 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ static int	parse_layout(char **line, int *index, t_info *info)
 	int	i;
 
 	i = 0;
+	info->data->confg = (char **)ft_calloc(confg_count(info->data->file)
+			+ 1, sizeof(char *));
+	if (!info->data->confg)
+		return (EXIT_FAILURE);
 	if (line[i] != NULL && parse_config(line[i++], "NO", info))
 		return (EXIT_FAILURE);
 	if (line[i] != NULL && parse_config(line[i++], "SO", info))
@@ -76,10 +80,10 @@ static int	parse_layout(char **line, int *index, t_info *info)
 static void	print_xpm(t_data *d)
 {
 	printf("\n");
-	printf("NO	:	%s\n", d->north_xpm);
-	printf("SO	:	%s\n", d->south_xpm);
-	printf("WE	:	%s\n", d->west_xpm);
-	printf("EA	:	%s\n", d->east_xpm);
+	printf("NO	:	%s\n", d->confg[0]);
+	printf("SO	:	%s\n", d->confg[1]);
+	printf("WE	:	%s\n", d->confg[2]);
+	printf("EA	:	%s\n", d->confg[3]);
 }
 
 /**

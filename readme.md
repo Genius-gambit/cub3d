@@ -5,20 +5,9 @@
 /*   cub3d                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: makhtar <makhtar@student.42Abudhabi.ae>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*   By: hawadh <hawadh@student.42Abudhabi.ae>    +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 17:31:03 by makhtar           #+#    #+#             */
-/*   Updated: 2022/06/21 17:31:03 by makhtar          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/06/21 17:31:31 by hawadh           ###   ########.fr       */
+/*   Created: 2022/06/21 17:31:31 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 ```
@@ -33,7 +22,7 @@ https://lodev.org/cgtutor/raycasting.html
 
 ```
 
-`#BUGS: #8, #10`
+`#BUGS: NULL`
 
 1.	~~***HA:***	Segfaul in `get_next_line();` due to `ft_strchr();` in `libft`~~
 2.	~~***HA:***	Function parses whole file, should stop at first line of map~~
@@ -42,9 +31,12 @@ https://lodev.org/cgtutor/raycasting.html
 5.	~~***HA:***	Crosshair was not drawing~~
 6.	~~***HA:***	Map printed with extra spaces~~
 7.	~~***HA:***	Memory leak in `parse_layout();` in my function `store_confg_map();` line `#47`~~
-8.	***MAK:***	Parser returning invalid map on checking walls if any `0` is present, `line #13` in file.cub
+8.	~~***MAK:***	Parser returning invalid map on checking walls if any `0` is present, `line #13` in file.cub~~
 9.	~~***HA:***	xpm file opening failing~~
-10.	***HA:***	On full screen, pause causes window to turn red if window resized to full screen
+10.	~~***HA:***	On full screen, pause causes window to turn red if window resized to full screen~~
+11.	~~***HA:***	Parser function `check_tabs();` had issue with iteration (Did I write this late night?) where `i = -1` and `while (++i > 0)`~~
+12.	~~***HA:***	in `add_xpm();` image not placing in only Blue~~
+13.	~~***HA:***	Map not redrawing on clearing window when hitting pause button a second time~~
 
 `#TODO:`
 
@@ -56,19 +48,20 @@ https://lodev.org/cgtutor/raycasting.html
 6.	~~***HA:***	Debug segfault in `get_size();` due to~~
 7.	~~***HA:***	Double check space stripping in squash~~
 8.	~~***MAK:***	Declare a new structure to fetch the info and place it in the main root of the structure which will work on every aspect of the program.~~
-9.	***HA:***	Study Raycasting
+9.	~~***HA:***	Study Raycasting~~
 10.	~~***HA:***	Discuss images to be used with **`MA`**~~
 11.	~~***HA:***	Figure out correct drawing and following of mouse cursor~~
-12.	***MAK:***	Take xpm files and read it to check if the file reading is working perfectly or not.
+12.	~~***MAK:***	Take xpm files and read it to check if the file reading is working perfectly or not.~~
 13.	***MAK:***	Time for raycasting math to solve.
 14.	***HA:***	Draw interior of minimap
 15.	~~***HA:***	Figure out hook management for hook_num 46, see comments in `utils_hooks.c`~~
-16.	***HA:***	Figure out what is the hook num that detects clicking on window edges
-17.	***HA:***	Figure out XPM image for pause in center of screen and implement removal
+16.	***HA:***	Figure out what is the event that detects clicking on window edges
+17.	~~***HA:***	Figure out XPM image for pause in center of screen and implement removal~~
+18.	***HA:***	Correctly implement # 13
 
 `#CURRENT STATUS`
 
-`HA:	4 Jul 2022`
+`HA:	13 Jul 2022`
 
 1.	New files to split functions `parse_file.c`, `errors.c`, `parse_file.c`
 2.	Added .gitignore
@@ -147,6 +140,30 @@ https://lodev.org/cgtutor/raycasting.html
 75.	Added new function  `free_struct_mini();` in `memory_mngmnt.c` to free struct `t_mini` and it's contents
 76.	New File `utils_mini_map.c`
 77.	New Struct `s_player` to save all player related data, also new function, `draw_player_walls();` to extract player position and future drawing of minimap in `mini_interior();` with 2 functions `find_player_array();` for Y and `find_player_index();` for X while also extracting Perspective
+78.	Bug fix `#11`
+79.	New function added to `libft` `ft_ismapicon();` to detect if character in string is a valid map character, now called in `check_if_map();`
+80.	New Approved map walls xpm images
+81.	Implemented Colour bit Masking, and renamed file `utils_mini_map.c` into `player.c` and renamed function `draw_walls_player();` to `init_player`
+82.	New function in `window.c` called `init_all();`, calls all `init?????();` functions before drawing and pushing to window`
+83.	Refactored `open_xpm();` and new function `get_xpm_addr();` to extract addresses of each xpm file for later use in merging with main image
+84.	Added `# define WIDTH 1920` and `# define HEIGHT 1080` in `cub.h`
+85.	New Struct `s_xpm` in array to contain all image data, with new Enum to contain `NO`, `SO`, `WE`, `EA`
+86.	Added free for `data->xpm` struct in `memory_mngmnt.c` and moved `free_split();` to new `utils_memory_mngmnt.c`
+87.	Two new Functions in `draw.c` called `place_xpm();` and `add_xpm();`; Function `place_xpm();` to determine initial player orientation, and `add_xpm();` draws the image to main image address
+88.	New Pause button `'p' == hook_num 35`
+89.	Implemented correct method of adding xpm address to img
+90.	Added `mlx_clear_window();` for pause removal. See bug #13
+91.	New Variable `xpm->divisible` to determine size of walls
+92.	New function to hold Pause code `handle_pause();` located in `utils_hooks.c`
+93.	Refactored `add_xpm();` with correct iteration of image `char *`, still not drawing correctly
+94.	Started mini map drawing, see `mini_map.c` and file `utils_mini_math.c` renamed to `utils_minimap.c`
+95.	New XPM image implemented `Ak47.xpm` for weapon, and new images for `NO SO WE EA`
+96.	Buf #12 FIXED, now correctly implementing copying of image pixels with colours to main image window via `char *`, also added `wi - 4` && `hi - 4` to avoid invalid read within images
+97.	Currently working on and implementing of drawing interior contents of minimap, with 2 new functions, `draw_mini_player();` which draws player in centre of minimap (Currently white square also drawn around to figure out scaling) and `draw_mini_walls();` to attempt to draw walls in respective positions in the minimap.
+98.	Changed size of minimap image from `260x185` to `185x185` and moved function `mini_interior();` to `utils_minimap.c`
+99.	Added new `# define MINI_SCALE 29` for minimap scaling and new variable `data->gun`
+100. New Wall images Implemented
+101. Attempting new algorithm in `mini_interior();` WIP
 
 `MAK:	4 July 2022`
 

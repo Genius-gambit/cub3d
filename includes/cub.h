@@ -6,14 +6,15 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/08 21:19:53 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/18 15:21:55 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_H
 # define CUB_H
-# define TRUE 1
-# define FALSE 0
+# define WIDTH 1920
+# define HEIGHT 1080
+# define MINI_SCALE 29
 
 # include <unistd.h>
 # include <fcntl.h>
@@ -24,6 +25,21 @@
 # include "../libft/libft.h"
 # include "../minilibx_opengl/mlx.h"
 # include "../get_next_line/get_next_line.h"
+
+/**
+**	ENUM for Compass perspective of Player
+*	NO	0	NORTH
+*	SO	1	SOUTH
+*	WE	2	WEST
+*	EA	3	EAST
+**/
+typedef enum e_compass
+{
+	NO,
+	SO,
+	WE,
+	EA,
+}	t_pers;
 
 /**
 **	Player Structure
@@ -37,6 +53,18 @@ typedef struct s_player
 	int		y_pos;
 	int		x_pos;
 }	t_player;
+
+typedef struct s_xpm
+{
+	void	*img;
+	char	*addr;
+	int		bitspix;
+	int		len;
+	int		end;
+	int		wi;
+	int		hi;
+	int		divisible;
+}	t_xpm;
 
 /**
 **	Minimap image address
@@ -65,9 +93,9 @@ typedef struct s_image
 **/
 typedef struct s_mouse
 {
-	int	flag;
-	int	y;
-	int	x;
+	int		flag;
+	int		y;
+	int		x;
 }	t_mouse;
 
 /**
@@ -95,10 +123,6 @@ typedef struct s_ceil
 *	file		file contents
 *	map			map contents
 *	confg		Below config during mlx_xpm_file_to_image();
-*	NO			north_xpm;
-*	SO			south_xpm
-*	WE			west_xpm;
-*	EA			East_xpm;
 *	pause		Pause image
 *	floor		RGB of floor
 *	ceiling		RGB of ceiling
@@ -108,11 +132,9 @@ typedef struct s_data
 	char	**file;
 	char	**map;
 	char	**confg;
-	char	*north_xpm;
-	char	*south_xpm;
-	char	*east_xpm;
-	char	*west_xpm;
 	char	*pause;
+	char	*gun;
+	t_xpm	*xpm;
 	t_floor	floor;
 	t_ceil	ceil;
 }	t_data;
@@ -184,20 +206,24 @@ void	draw_cursor(t_info *info);
 void	draw_map(t_info *info);
 void	ceiling_floor(t_info *info);
 void	draw_minimap(t_info *info, t_mini *mini);
-int		call_draw_cursor(void *info);
+
+/**
+**	player struct functions
+**/
+
+void	init_player(t_info *info);
 
 /**
 **	Mini-map functions
 **/
 void	init_minimap(t_info *info);
+void	mini_interior(t_info *info, t_mini *mini);
 void	mini_pixel_put(t_mini *mini, int x, int y, int rgb);
-void	draw_walls_player(t_info *info, t_mini *mini);
-float	calc_iteration(float x);
 
 /**
 **	XPM Functions 
 **/
-int		open_xpm(t_info *inf, t_data *d, size_t len);
+int		init_xpm(t_info *info, t_data *data);
 
 /**
 **	RGB Functions

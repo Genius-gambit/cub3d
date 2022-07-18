@@ -1,7 +1,7 @@
-NO ./imgs/NO_XPM.xpm
-SO ./imgs/SO_XPM.xpm
-WE ./imgs/WE_XPM.xpm   
-EA ./imgs/SO_XPM.xpm
+NO ./imgs/northWall.xpm
+SO ./imgs/southWall.xpm
+WE ./imgs/westWall.xpm
+EA ./imgs/eastWall.xpm
 
 F 176,216,230
 C 53,228,234
