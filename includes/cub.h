@@ -6,14 +6,12 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/15 19:26:41 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/18 15:21:55 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_H
 # define CUB_H
-# define TRUE 1
-# define FALSE 0
 # define WIDTH 1920
 # define HEIGHT 1080
 # define MINI_SCALE 29
