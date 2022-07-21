@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 09:28:29 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/18 22:09:00 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/21 19:42:28 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ static void	place_xpm(t_info *info, t_data *data)
 **/
 void	draw_map(t_info *info)
 {
+	find_player(info->data, info->player);
 	ceiling_floor(info);
 	place_xpm(info, info->data);
 	draw_minimap(info, info->mini);

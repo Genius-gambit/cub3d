@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 11:48:10 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/15 15:27:03 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/21 19:19:18 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ static void	get_img_addr(t_info *inf)
 
 /**
 **	Calls all functions to initialise all
-*	init_mouse();
+*	init_player();		finds player pos in 2D array
+*	init_mouse();		inits mouse and crosshair
 *	init_minimap();		Includes struct
 *	init_xpm();			all xpm images and their addresses
 **/

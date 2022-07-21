@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 13:41:18 by makhtar           #+#    #+#             */
-/*   Updated: 2022/07/18 21:00:14 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/21 20:03:55 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 /**
 **	Getting valid keys for the map
+*!	LINE #33 -> LINE #34 ADDED BY HA
 **/
 static int	valid_key(int c)
 {

@@ -6,11 +6,29 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 20:02:35 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/13 13:46:41 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/21 20:43:41 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+// static void	free_xpm(t_data *data)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (&data->xpm[i])
+// 	{
+// 		if (data->xpm[i].addr)
+// 		{
+// 			free(data->xpm[i].addr);
+// 			data->xpm[i].addr = NULL;
+// 		}
+// 		if (&data->xpm[i])
+// 			free(&data->xpm[i]);
+// 		i++;
+// 	}
+// }
 
 static void	free_struct_mini(t_mini *mini)
 {
@@ -42,6 +60,8 @@ static void	free_struct_img(t_img *img)
 
 static void	free_struct_data(t_data *data)
 {
+	// if (data->xpm)
+	// 	free_xpm(data);
 	if (data->map)
 	{
 		free_split(data->map);
@@ -57,8 +77,6 @@ static void	free_struct_data(t_data *data)
 		free_split(data->file);
 		data->file = NULL;
 	}
-	if (data->xpm)
-		free(data->xpm);
 }
 
 /**

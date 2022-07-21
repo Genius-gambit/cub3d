@@ -171,6 +171,8 @@ https://lodev.org/cgtutor/raycasting.html
 105. Added acceptable character in `valid_key();` in `parse_map.c` character `'m'` for enemies, `line #32 -> #33`
 106. Refactored scaling and sizes of mini-map drawing to fit player and map exact centre in minimap
 107. Swapped `EA` and `NO` walls images
+108. New function `find_player();` in `player.c` to find player position in map array, Function is `NOT STATIC` so it can be recalled with each iteration to redraw mini-map, added function call in `draw.c draw_map();`
+109. WIP free xpm struct array in `memory_mngmnt.c` and new test map `zmap.cub`
 
 `MAK:	4 July 2022`
 

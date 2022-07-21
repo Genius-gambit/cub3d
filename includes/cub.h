@@ -6,7 +6,7 @@
 /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:38:18 by hawadh            #+#    #+#             */
-/*   Updated: 2022/07/18 20:40:15 by hawadh           ###   ########.fr       */
+/*   Updated: 2022/07/21 19:57:06 by hawadh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,8 +210,8 @@ void	draw_minimap(t_info *info, t_mini *mini);
 /**
 **	player struct functions
 **/
-
 void	init_player(t_info *info);
+void	find_player(t_data *data, t_player *player);
 
 /**
 **	Mini-map functions
